@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import AuthRoute from './Routes/AuthRoute.js';
 
 const app = express();
-const port = 6000;
+const port = 5000;
 dotenv.config();
 
 //middleware 
