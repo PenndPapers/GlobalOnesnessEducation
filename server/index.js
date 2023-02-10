@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import AuthRoute from './Routes/AuthRoute.js';
 
 const app = express();
-const port = 5000;
+const port = 6000;
 dotenv.config();
 
 //middleware 
@@ -21,7 +21,7 @@ mongoose.set("strictQuery", false);
 mongoose
     .connect(process.env.MONGO_DB,
         { useNewUrlParser: true, useUnifiedTopology: true }
-    ).then(() => app.listen(process.env.PORT || 5000, () => console.log(`Server is running on ${process.env.PORT || 5000}`))).
+    ).then(() => app.listen(process.env.PORT || port, () => console.log(`Server is running on ${process.env.PORT || port}`))).
     catch((error) => console.log(error.message));
 
 //usage of routes
