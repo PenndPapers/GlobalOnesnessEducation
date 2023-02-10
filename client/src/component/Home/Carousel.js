@@ -47,8 +47,8 @@ const Carousel = () => {
   } , [slideNumber]);
 
   return (
-    <div className='lg:max-w-[1400px] max-w-[390px]   h-[400px] w-full m-auto   bg-slate-500 relative group '> 
-       <div style={{backgroundImage : `url(${slides[slideNumber].url})`}} className=" lg:w-full w-[390px] lg:h-full h-[100px] bg-center bg-cover duration-700   " > </div>
+    <div className='lg:max-w-[1400px] max-w-[390px]   lg:h-[400px] h-[100px] w-full m-auto   bg-slate-500 relative group mt-8 '> 
+       <div style={{backgroundImage : `url(${slides[slideNumber].url})`}} className=" w-full  h-full  bg-center bg-cover duration-700   " > </div>
        <div  className=' hidden group-hover:block  absolute top-[50%] -translate-x-0   translate-y-[-50%] left-5 rounded-full bg-slate-100 ' onClick={preSlide} > <CgChevronLeft  size={50}/> </div>
       <div    className=' hidden group-hover:block  absolute top-[50%] -translate-x-0    translate-y-[-50%] right-5 rounded-full bg-slate-100 ' onClick={nextSlide}  >  <CgChevronRight  size={50} /> </div>
      </div>
