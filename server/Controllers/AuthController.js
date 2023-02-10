@@ -145,8 +145,8 @@ export const adminlogin = async (req, res) => {
             process.env.JWT_SECRET, { expiresIn: "24h" });
         res.status(200).json({ token: token, admin: admin });
 
-    } catch (error) {
-        console.log(error);
+    } catch (err) {
+        console.log(err);
         res.status(500).json({ error: err.message });
     }
 }
