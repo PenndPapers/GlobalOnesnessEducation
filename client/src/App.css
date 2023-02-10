@@ -1,4 +1,9 @@
 :root{
   --buttonBlue: #6674CC;
-  --whiteshade: #ffffff;
+  --white: #ffffff;
+  --colorPrimary: #6674CC;
+  --grayDark: #767474;
+  --graylight: #BFBFBF;
+  --orange: #FFAF38;
+  --bgBlue: #F8F8FD;
 }

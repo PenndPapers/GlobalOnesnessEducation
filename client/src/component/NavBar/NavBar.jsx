@@ -8,12 +8,12 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className='relative flex flex- items-center  drop-shadow-md justify-between  py-1 bg-slate-50 mb-2'>
+            <nav className=' flex flex-row items-center  drop-shadow-md justify-between  py-1 bg-slate-50 mb-2'>
                 <div className='container px-2  flex flex-wrap items-center justify-between'>
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                        <img  src={logo} alt="" width={140} />
+                        <img  src={logo} alt="logo of globla oneness" width={140} />
                         <div className="lg:hidden cursor-pointer mt-2.5" onClick={() => setNavbarOpen(!navbarOpen)}>
-                            <img src={menu} alt='logo of globla oneness ' width={20} height={10} />
+                            <img src={menu} alt='menu button' width={20} height={10} />
                         </div>
                     </div>
 
@@ -29,7 +29,7 @@ const NavBar = () => {
                             <span className="px-3 py-2 flex items-center  uppercase  leading-snug hover:opacity-75 " style={{fontFamily:'Poppins', letterSpacing: '3px'}} >EMPLOYEE ZONE</span>
                             </li>
                             <li className="nav-item lg:ml-2 ">
-                            <button className=" btn bg-transparent hover:bg-[var(--buttonBlue)] text-blue-700 font-semibold hover:text-white py-2 px-3  border-[var(--buttonBlue)] border-2 hover:border-transparent rounded" style= {{ fontFamily:'Lato'}}>
+                            <button className=" btn bg-transparent hover:bg-[var(--buttonBlue)] text-[var(--buttonBlue)] font-semibold hover:text-white py-2 px-3  border-[var(--buttonBlue)] border-2 hover:border-transparent rounded" style= {{ fontFamily:'Lato'}}>
                                 Student Login
                             </button>
                             </li>
