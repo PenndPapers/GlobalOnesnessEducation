@@ -1,6 +1,7 @@
 import React , {useState , useEffect } from 'react'
 import {CgChevronLeft , CgChevronRight} from 'react-icons/cg';
-
+import s1 from "../../images/promotionglobaloneness.jpg"
+import s2 from "../../images/promotion2globaloneness.jpg"
 const slides = [
     {
         url : "https://allenwebsite-general.s3.ap-south-1.amazonaws.com/allen-website/slider/top-slider/onlinecourse-allendigital.jpg"
@@ -15,6 +16,15 @@ const slides = [
         url : "https://allenwebsite-general.s3.ap-south-1.amazonaws.com/allen-website/slider/top-slider/neet-enthuse-course-14-Feb.jpg"
     }
 ]
+
+// const slides = [
+//     {
+//         url : s1
+//     },
+//     {
+//         url : s2
+//     }
+// ]
 
 const Carousel = () => {
 
@@ -37,12 +47,13 @@ const Carousel = () => {
   } , [slideNumber]);
 
   return (
-    <div className='max-w-[1400px] h-[400px] w-full m-auto   bg-slate-500 relative group '> 
-       <div style={{backgroundImage : `url(${slides[slideNumber].url})`}} className="w-full h-full bg-center bg-cover duration-700   " > </div>
-       <div  className=' hidden group-hover:block  absolute top-[50%] -translate-x-0   translate-y-[-50%] left-5  rounded-full bg-slate-100 ' onClick={preSlide} > <CgChevronLeft  size={50}/> </div>
+    <div className='lg:max-w-[1400px] max-w-[390px]   h-[400px] w-full m-auto   bg-slate-500 relative group '> 
+       <div style={{backgroundImage : `url(${slides[slideNumber].url})`}} className=" lg:w-full w-[390px] lg:h-full h-[100px] bg-center bg-cover duration-700   " > </div>
+       <div  className=' hidden group-hover:block  absolute top-[50%] -translate-x-0   translate-y-[-50%] left-5 rounded-full bg-slate-100 ' onClick={preSlide} > <CgChevronLeft  size={50}/> </div>
       <div    className=' hidden group-hover:block  absolute top-[50%] -translate-x-0    translate-y-[-50%] right-5 rounded-full bg-slate-100 ' onClick={nextSlide}  >  <CgChevronRight  size={50} /> </div>
      </div>
   )
 }
 
 export default Carousel
+

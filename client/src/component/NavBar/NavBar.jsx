@@ -8,7 +8,7 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className='relative flex flex- items-center  drop-shadow-md justify-between  py-1 bg-slate-50 mb-2 w-screen'>
+            <nav className='relative flex flex- items-center  drop-shadow-md justify-between  py-1 bg-slate-50 mb-2 '>
                 <div className='container px-2  flex flex-wrap items-center justify-between'>
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                         <img  src={logo} alt="" width={140} />
