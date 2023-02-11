@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import AuthRoute from './Routes/AuthRoute.js';
+import cors from "cors";
 
 const app = express();
 const port = 5000;
@@ -11,7 +12,7 @@ dotenv.config();
 //middleware 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors());
 
 // heyy
 app.get('/', (req, res) => res.send('Hello World! from server'));
