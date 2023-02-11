@@ -29,6 +29,10 @@ const adminSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    usertype:{
+        type: String,
+        default: "admin"
+    } 
 },{timestamps: true}
 );
 

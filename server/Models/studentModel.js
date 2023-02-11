@@ -50,6 +50,10 @@ const studentSchema = new mongoose.Schema({
         required: true,
     },
     photo: String,
+    usertype:{
+        type: String,
+        default: "student"
+    } 
 },
     { timestamps: true }
 );
