@@ -46,6 +46,10 @@ const teacherSchema = new mongoose.Schema({
         required: true,
     },
     photo: String,
+    usertype:{
+        type: String,
+        default: "teacher"
+    }
 },
     { timestamps: true }
 );
