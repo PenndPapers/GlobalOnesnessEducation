@@ -13,7 +13,7 @@ export const AuthSlice = createSlice({
     error: null,
   },
   reducers: {
-
+      
   },
   
   extraReducers: (builder)=>{
