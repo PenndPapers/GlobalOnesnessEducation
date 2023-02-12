@@ -3,7 +3,7 @@ import logo from '../../images/global-logo.png'
 import menu from '../../images/icons8-menu-100.png'
 import { Link } from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = ({ page }) => {
 
     const [navbarOpen, setNavbarOpen] = useState(false);
   
@@ -25,20 +25,26 @@ const NavBar = () => {
                                     <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >HOME</span>
                                 </li>
                             </Link>
-                            
+
                             <li className="nav-item lg:ml-2">
                                 <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >ABOUT</span>
                             </li>
-                            <Link to='../adminAndTeacher'>
-                                <li className="nav-item">
-                                    <span className="px-3 py-2 flex items-center  uppercase  leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >EMPLOYEE ZONE</span>
-                                </li>
-                            </Link>
+                            {page !== 'AdminLogin' &&
+                                <Link to='../adminAndTeacher'>
+                                    <li className="nav-item">
+                                        <span className="px-3 py-2 flex items-center  uppercase  leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >EMPLOYEE ZONE</span>
+                                    </li>
+                                </Link>
+                            }
 
                             <li className="nav-item lg:ml-2 ">
-                            <button className=" btn bg-transparent hover:bg-[var(--buttonBlue)] text-blue-700 font-semibold hover:text-white py-2 px-3  border-[var(--buttonBlue)] border-2 hover:border-transparent rounded" style= {{ fontFamily:'Lato'}}>
-                                Student Login
-                            </button>
+                                {page !== 'studentLogin' &&
+                                    <Link to='../studentLogin'>
+                                        <button className=" btn bg-transparent hover:bg-[var(--buttonBlue)] text-[var(--buttonBlue)] font-semibold hover:text-white py-2 px-3  border-[var(--buttonBlue)] border-2 hover:border-transparent rounded" style={{ fontFamily: 'Lato' }}>
+                                            Student Login
+                                        </button>
+                                    </Link>
+                                }
                             </li>
                         </ul>
                     </div>
