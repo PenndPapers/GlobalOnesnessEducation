@@ -23,7 +23,7 @@ mongoose
     .connect(process.env.MONGO_DB,
         { useNewUrlParser: true, useUnifiedTopology: true }
     ).then(() => app.listen(process.env.PORT || port, () => console.log(`Server is running on ${process.env.PORT || port}`))).
-    catch((error) => console.log(error.message));
+    catch((error) => console.log("error from DataBase" ,error.message));
 
 //usage of routes
 app.use('/auth',AuthRoute);

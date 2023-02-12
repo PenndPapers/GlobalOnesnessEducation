@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBar from '../../component/NavBar/NavBar'
 import Carousel from '../../component/Home/Carousel'
 import teamglobal from '../../images/team globaloneness.jpg'
 import promotion1 from '../../images/promotion globaloneness.jpg'
@@ -15,7 +14,6 @@ const home = () => {
 
   return (
     <>
-      <NavBar />
       <div className="flex flex-row justify-center items-center ">
         <h1 className="lg:text-5xl lg:font-bold  text-2xl font-normal font-[Roboto] text-[var(--colorPrimary)] mt-8" >
           10 Day Free Classes!!

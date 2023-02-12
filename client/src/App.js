@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import {Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home/Home';
 import StudentLogin from './pages/Auth/StudentLogin';
@@ -9,6 +9,7 @@ import AdminDashboard from './pages/Dashboards/AdminDashboard';
 import StudentDashboard from './pages/Dashboards/StudentDashboard';
 import TeacherDashboard from './pages/Dashboards/TeacherDashboard';
 import { useSelector } from 'react-redux';
+import NavBar from './component/NavBar/NavBar';
 const App = () => {
 
 
@@ -16,16 +17,20 @@ const App = () => {
   console.log(user.usertype);
 
   return (
-    <Routes>
-      <Route path='/' element={user.usertype=== ''? <Navigate to="home" /> : user.usertype === 'student'? <Navigate to="studentLogin" /> : <Navigate to= "adminAndTeacher"/> } />
-      <Route path='home' element={<Home />} />
-      <Route path= 'studentLogin' element={<StudentLogin />} />
-      <Route path= 'studentRegister' element={ <StudentRegister />} />
-      <Route path= 'adminAndTeacher' element={<AdminandTeacher />} />
-      <Route path = 'adminDashboard' element={<AdminDashboard />} />
-      <Route path= 'studentDashboard' element={ user.usertype === 'student'  && <StudentDashboard /> } />
-      <Route path= 'teacherDashboard' element={<TeacherDashboard />} />
-    </Routes>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={user.usertype === '' ? <Navigate to="home" /> : user.usertype === 'student' ? <Navigate to="studentLogin" /> : <Navigate to="adminAndTeacher" />} />
+        <Route path='home' element={<Home />} />
+        <Route path='studentLogin' element={<StudentLogin />} />
+        <Route path='studentRegister' element={<StudentRegister />} />
+        <Route path='adminAndTeacher' element={<AdminandTeacher />} />
+        <Route path='adminDashboard' element={<AdminDashboard />} />
+        <Route path='studentDashboard' element={user.usertype === 'student' && <StudentDashboard />} />
+        <Route path='teacherDashboard' element={<TeacherDashboard />} />
+      </Routes>
+    </>
+
   );
 }
 

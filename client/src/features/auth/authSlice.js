@@ -19,25 +19,20 @@ export const AuthSlice = createSlice({
   extraReducers: (builder)=>{
    
       // Add reducers for additional action types here, and handle loading state as needed
+
+      builder.addCase(studentLogin.pending, (state) => {
+        state.loading = true
+      })
+
       builder.addCase(studentLogin.fulfilled, (state, action) => {
         state.user = action.payload
         state.loading = false
       })
-    
 
-    // [studentLogin.pending]: (state) => {
-    //   state.loading = true
-    // },
-
-    // [studentLogin.fulfilled]: (state, action) => {
-    //   state.user = action.payload
-    //   state.loading = false
-    // },
-
-    // [studentLogin.rejected]: (state, action) => {
-    //   state.loading = false
-    //   state.error = action.error.message
-    // }
+      builder.addCase(studentLogin.rejected, (state, action) => {
+        state.error = action.error.message
+        state.loading = false
+      })
   }
 })
 
