@@ -14,7 +14,7 @@ const home = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-center items-center ">
+      <div className="flex flex-row justify-center items-center pt-20 ">
         <h1 className="lg:text-5xl lg:font-bold  text-2xl font-normal font-[Roboto] text-[var(--colorPrimary)] mt-8" >
           10 Day Free Classes!!
         </h1>

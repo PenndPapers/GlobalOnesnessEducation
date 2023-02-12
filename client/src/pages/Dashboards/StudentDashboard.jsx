@@ -10,7 +10,7 @@ import NavBar from '../../component/NavBar/NavBar'
 const StudentDashboard = () => {
   return (
 
-    <>
+    <div className='pt-20 flex flex-row '>
 {/* // student details
       // courseDetail
       // upcomming test
@@ -25,7 +25,7 @@ const StudentDashboard = () => {
       <FeeOverview/>
       <Announcement/>
 
-    </>
+    </div>
 
 
   )

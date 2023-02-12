@@ -2,11 +2,12 @@ import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons5 from "react-icons/io5";
+import * as MdIcon from 'react-icons/md';
 
 export const SidebarData = [
   {
     title: 'Home',
-    path: '/',
+    path: '/home',
     icon: <AiIcons.AiFillHome />,
     cName: 'nav-text'
   },
@@ -26,6 +27,12 @@ export const SidebarData = [
     title: 'Student Zone',
     path: '/studentLogin',
     icon: <IoIcons5.IoPersonSharp />,
+    cName: 'nav-text'
+  },
+  {
+    title: 'Dashboard',
+    path: '/studentDashboard',
+    icon: <MdIcon.MdSpaceDashboard/>,
     cName: 'nav-text'
   },
 ];
