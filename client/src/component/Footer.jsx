@@ -7,13 +7,13 @@ const Footer = () => {
     const d = new Date();
 
     return (
-        <footer className="bg-gray-900 text-white">
+        <footer className="bg-gray-900 text-white font-[Lato] ">
             <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#ffffff19] py-7">
                 <h1
                     className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold
          md:w-2/5"
                 >
-                    <span className="text-logo-color">Get</span> started with us 
+                    <span className="text-logo-color  ">Get</span> started with us 
                 </h1>
                 <div>
                 <Link to= '../studentRegister'>
