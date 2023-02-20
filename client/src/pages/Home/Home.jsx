@@ -1,8 +1,9 @@
+
 import React from 'react'
 import Carousel from '../../component/Home/Carousel'
-import teamglobal from '../../images/team globaloneness.jpg'
-import promotion1 from '../../images/promotion globaloneness.jpg'
-import promotion2 from '../../images/promotion 2globaloneness.jpg'
+import teamglobal from '../../images/teamglobaloneness.jpg'
+import promotion1 from '../../images/promotionglobaloneness.jpg'
+import promotion2 from '../../images/promotion2globaloneness.jpg'
 import { Link } from 'react-router-dom'
 const home = () => {
 
@@ -26,10 +27,7 @@ const home = () => {
       </div>
       <span className="flex flex-row mt-2 justify-center items-center text-[var(--grayDark)] ">Our result speaks about us !</span>
 
-      <div>
         <Carousel />
-      </div>
-
     </>
   )
 }

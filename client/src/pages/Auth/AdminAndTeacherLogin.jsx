@@ -1,6 +1,6 @@
 import React from 'react'
-import NavBar from '../../component/NavBar/NavBar'
 import img from '../../images/shutterstock_download.jpg'
+import NavBar from '../../component/NavBar/NavBar'
 
 const adminAndTeacherLogin = () => {
   return (

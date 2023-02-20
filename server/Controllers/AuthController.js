@@ -50,7 +50,7 @@ export const studentlogin = async (req, res) => {
                 studentId: student.studentId
             },
                 process.env.JWT_SECRET, { expiresIn: "24h" });
-            res.status(200).json({ token: token, student: student });
+            res.status(200).json({ token: token, user: student });
         }
 
     } catch (err) {
@@ -99,7 +99,7 @@ export const teacherlogin = async (req, res) => {
             teacherId: teacher.teacherId
         },
             process.env.JWT_SECRET, { expiresIn: "24h" });
-        res.status(200).json({ token: token, teacher: teacher });
+        res.status(200).json({ token: token, user: teacher });
 
     } catch (error) {
         console.log(error);
@@ -143,7 +143,7 @@ export const adminlogin = async (req, res) => {
             adminId: admin.adminId
         },
             process.env.JWT_SECRET, { expiresIn: "24h" });
-        res.status(200).json({ token: token, admin: admin });
+        res.status(200).json({ token: token, user: admin });
 
     } catch (err) {
         console.log(err);

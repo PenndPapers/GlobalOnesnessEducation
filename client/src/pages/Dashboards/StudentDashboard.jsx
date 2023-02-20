@@ -3,32 +3,39 @@ import StudentDetails from '../../component/StudentDashboard/StudentDetails'
 import CourseDetails from '../../component/StudentDashboard/CourseDetails'
 import UpcommingTest from '../../component/StudentDashboard/UpcommingTest'
 import FeeOverview from '../../component/StudentDashboard/FeeOverview'
-import Announcement from '../../component/StudentDashboard/Accouncement' 
-import NavBar from '../../component/NavBar/NavBar'
-
+import Announcement from '../../component/StudentDashboard/Accouncement'
 
 const StudentDashboard = () => {
   return (
 
-    <div className='pt-20 flex flex-row '>
-{/* // student details
-      // courseDetail
-      // upcomming test
-      // fees overview
-      // announcement */}
-      <StudentDetails />
-      <CourseDetails />
-      
-      <UpcommingTest/>
-      <CourseDetails/>
+    <div className='pt-20 flex flex-col '>
+      <div className='flex flex-row'>
+        <div className="felx flex-col w-[66%]">
+          <StudentDetails />
+          <CourseDetails />
+        </div>
 
-      <FeeOverview/>
-      <Announcement/>
+        <div className="flex w-[33%]">
+          <UpcommingTest />
+        </div>
+
+      </div>
+
+
+      <div className='flex flex-row justify-center '>
+
+        <div className='flex w-[50%] mr-[5%] ml-[1%] flex-row'>
+          <FeeOverview />
+        </div>
+
+        <div className='flex w-[50%]  mr-[10%]   flex-row'>
+          <Announcement />
+        </div>
+
+      </div>
 
     </div>
-
-
-  )
+      )
 }
 
-export default StudentDashboard
+      export default StudentDashboard

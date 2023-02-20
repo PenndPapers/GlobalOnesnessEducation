@@ -5,7 +5,7 @@ export const AuthSlice = createSlice({
   name: 'Auth',
   initialState: {
     user: {
-      student: {
+      user: {
         usertype: '',
       }
     },
@@ -13,8 +13,14 @@ export const AuthSlice = createSlice({
     error: null,
   },
   reducers: {
-      
-  },
+    logoutReq: (state, action) => {
+      state.user = {
+        user: {
+          usertype: '',
+        }
+      }
+    }
+  },  
   
   extraReducers: (builder)=>{
    
@@ -37,6 +43,6 @@ export const AuthSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { studentLoginReq} = AuthSlice.actions
+export const { studentLoginReq,logoutReq} = AuthSlice.actions
 
 export default AuthSlice.reducer

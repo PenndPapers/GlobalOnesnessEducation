@@ -13,20 +13,20 @@ import NavBar from './component/NavBar/NavBar';
 const App = () => {
 
 
-  const user = useSelector(state => state.auth.user.student)
-  console.log(user.usertype);
+  const user = useSelector(state => state.auth.user)
+  console.log(user.user.usertype);
 
   return (
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element={user.usertype === '' ? <Navigate to="home" /> : user.usertype === 'student' ? <Navigate to="studentLogin" /> : <Navigate to="adminAndTeacher" />} />
+        <Route path='/' element={user.user.usertype === '' ? <Navigate to="home" /> : user.user.usertype === 'student' ? <Navigate to="/studentLogin" /> : <Navigate to="/adminAndTeacher" />} />
         <Route path='home' element={<Home />} />
-        <Route path='studentLogin' element={<StudentLogin />} />
+        <Route path='studentLogin' element={user.user.usertype !== '' ? <Navigate to='/studentDashboard'/> :<StudentLogin />} />
         <Route path='studentRegister' element={<StudentRegister />} />
         <Route path='adminAndTeacher' element={<AdminandTeacher />} />
         <Route path='adminDashboard' element={<AdminDashboard />} />
-        <Route path='studentDashboard' element={user.usertype === 'student' && <StudentDashboard />} />
+        <Route path='studentDashboard' element={user.user.usertype === 'student' ? <StudentDashboard /> :<Navigate to="/studentLogin" />}/>
         <Route path='teacherDashboard' element={<TeacherDashboard />} />
       </Routes>
     </>
