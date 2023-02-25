@@ -60,6 +60,34 @@ export const studentlogin = async (req, res) => {
 };
 
 
+//change password of student
+export const changepassword = async (req, res) => {
+    try {
+        const { oldPassword, newPassword, StudentId } = req.body;
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.newPassword, salt);
+        
+        const oldStudent = await StudentModel.findOne({ studentId: StudentId });
+        if (oldStudent) {
+            const validPassword = await bcrypt.compare(oldPassword, oldStudent.password);
+            if (!validPassword) {
+                return res.status(401).json({ error: "Invalid Old Password" });
+            }
+            else {
+                oldStudent.password = hashedPassword;
+                const savedStudent = await oldStudent.save();
+                res.status(200).json({ student: savedStudent });
+            }
+        }
+        else {
+            return res.status(400).json({ error: "Student not found" });
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
 //register a teacher
 export const teacherregister = async (req, res) => {
     try {
@@ -116,7 +144,7 @@ export const adminregister = async (req, res) => {
 
         const newAdmin = new AdminModel(req.body);
         const { adminId } = req.body;
-        
+
         const oldAdminId = await AdminModel.findOne({ adminId: adminId });
         if (oldAdminId) return res.status(400).json({ error: "Admin already exists" });
 

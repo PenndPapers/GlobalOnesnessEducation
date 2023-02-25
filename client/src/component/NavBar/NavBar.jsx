@@ -36,7 +36,7 @@ const NavBar = ({ page, logout }) => {
       <>
         <div className='navbar bg-[#ffffff] h-[60px] flex justify-between items-center drop-shadow-lg px-[2%]'>
           <div className='flex items-center'>
-            <Link to='#' className={(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/adminAndTeacher') ? 'menu-bars ml-4 text-[2rem] md:hidden ' : 'menu-bars ml-4 text-[2rem] '}>
+            <Link to='#' className={(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/adminAndTeacher') ? 'menu-bars ml-4 text-[2rem] md: ' : 'menu-bars ml-4 text-[2rem] '}>
               <FaIcons.FaBars onClick={showSidebar} />
             </Link>
             <img src={logo} alt="logo of globla oneness" width={140} className='ml-[3%]' />
@@ -105,10 +105,7 @@ const NavBar = ({ page, logout }) => {
                   <>
                     {(item.title === 'Student Zone' || item.title === 'Employee Zone' || item.title === 'Home' || item.title === 'About') &&
                       <li li key={index} className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
-                        <Link to={item.path}>
-                          {item.icon}
-                          <span>{item.title}</span>
-                        </Link>
+                        <Link to={item.path}> {item.icon} <span className='pl-[2%] ml-[2%]'>{item.title}</span> </Link>
                       </li>
                     }
                   </>
@@ -123,7 +120,7 @@ const NavBar = ({ page, logout }) => {
                         <li li key={index} className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
                           <Link to={item.path}>
                             {item.icon}
-                            <span>{item.title}</span>
+                            <span className='ml-[7%] '>{item.title}</span>
                           </Link>
                         </li>
                       }

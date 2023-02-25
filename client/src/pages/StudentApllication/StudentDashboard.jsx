@@ -9,33 +9,34 @@ const StudentDashboard = () => {
   return (
 
     <div className='pt-20 flex flex-col '>
-      <div className='flex flex-row'>
-        <div className="felx flex-col w-[66%]">
+    
+      <div className='flex md:flex-row flex-col '>
+        <div className="felx flex-col md:w-[66%] w-full ">
           <StudentDetails />
           <CourseDetails />
         </div>
 
-        <div className="flex w-[33%]">
+        <div className="flex md:w-[33%] w-full md:h-auto h-[450px]">
           <UpcommingTest />
         </div>
 
       </div>
 
 
-      <div className='flex flex-row justify-center '>
+      <div className='flex md:flex-row  flex-col justify-center '>
 
-        <div className='flex w-[50%] mr-[5%] ml-[1%] flex-row'>
+        <div className='flex md:w-[50%] mr-[5%] ml-[1%] flex-row'>
           <FeeOverview />
         </div>
 
-        <div className='flex w-[50%]  mr-[10%]   flex-row'>
+        <div className='flex md:w-[50%]  mr-[10%]   flex-row'>
           <Announcement />
         </div>
 
       </div>
 
     </div>
-      )
+  )
 }
 
-      export default StudentDashboard
+export default StudentDashboard

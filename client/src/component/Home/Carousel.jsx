@@ -24,7 +24,7 @@ const Carousel = () => {
   const nextSlide = () => {
     setSlideNumber((slideNumber + 1) % slides.length)
   }
-
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       setSlideNumber((slideNumber + 1) % slides.length)  // this  line will run afgter 3 sec 
@@ -33,7 +33,7 @@ const Carousel = () => {
   }, [slideNumber]);
 
   return (
-    <div className='lg:h-[350px] md:h-[200px] h-[140px] w-full m-auto  relative group mt-[3%]  '>
+    <div className='lg:h-[300px] md:h-[250px] sm:h-[180px] xs:h-[150px] h-[80px] w-full m-auto   relative group mt-8   '>
       <div style={{ backgroundImage: `url(${slides[slideNumber].url})` }} className=" w-full  h-full  bg-center bg-cover duration-700   " > </div>
       <div className=' hidden group-hover:block  absolute top-[50%] -translate-x-0   translate-y-[-50%] -left-2 rounded-full bg-slate-100 ' onClick={preSlide} > <CgChevronLeft size={50} /> </div>
       <div className=' hidden group-hover:block  absolute top-[50%] -translate-x-0    translate-y-[-50%] -right-2 rounded-full bg-slate-100 ' onClick={nextSlide}  >  <CgChevronRight size={50} /> </div>
