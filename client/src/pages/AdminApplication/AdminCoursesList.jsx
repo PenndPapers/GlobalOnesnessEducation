@@ -230,7 +230,7 @@ const AdminCoursesList = () => {
           <select
             required={true}
             name="class"
-            className="  p-1  px-3 rounded-md  bg-graylight"
+            className='md:mx-[3%]  border-2 p-2 rounded-md mt-[1%]'
             type="number"
             value={query}
             onChange={onQueryHandler}

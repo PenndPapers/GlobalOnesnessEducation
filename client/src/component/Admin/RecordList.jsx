@@ -45,7 +45,7 @@ const RecordList = ({title ,  DATA}) => {
       <h1 className="font-semibold text-xl ">List of {title}s</h1>
       <form onSubmit={onSearchData} className="flex w-full gap-2 ">
    
-       <div className="flex items-center gap-2 p-1 w-full   rounded-2xl border-2 border-[#BFBFBF]">
+       <div className="flex items-center gap-2 p-1 w-full  bg-white rounded-2xl border-2 border-[#BFBFBF]">
           <BsSearch />
           <input  className="w-full p-1 px-3 "  type="text" placeholder="Search by ID/Name" value={searchData} onChange={onChangeInput} />
         </div>

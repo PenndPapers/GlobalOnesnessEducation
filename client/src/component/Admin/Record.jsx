@@ -10,15 +10,15 @@ const Record = ({ data }) => {
   const s =   (data_header.length === 9 ) ? "grid-cols-9 " : "grid-cols-8"
     return (
       <>
-        <div className={`grid ${s}   gap-4 px-[1%]  font-medium `}>
+        <div className={`grid ${s} gap-4 px-[1%]  font-medium `}>
           {data_header.map((d) => {
             return <span key={Math.random()}> {d} </span>;
           })}
         </div>
-        <div className="">
+        <div className=" ">
           {data.map((d) => {
             return (
-              <div key={d.id} className={`grid ${s}  text-grayDark w-full    gap-4 p-[1%]`}>
+              <div key={d.id} className={`grid ${s}  text-grayDark w-full items-center  bg-white my-[1%] rounded-md  gap-4 p-[1%]`}>
                 <span> {d.id} </span>
                 <img src={d.photo} className="w-[30%] " />
                 <span> {d.name} </span>
