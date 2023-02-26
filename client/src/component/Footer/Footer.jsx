@@ -1,5 +1,5 @@
 import React from "react";
-import {CiFacebook , CiTwitter , CiLinkedin , CiInstagram} from "react-icons/ci"
+import { CiFacebook, CiTwitter, CiLinkedin, CiInstagram } from "react-icons/ci"
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
@@ -13,16 +13,16 @@ const Footer = () => {
                     className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold
          md:w-2/5"
                 >
-                    <span className="text-logo-color  ">Get</span> started with us 
+                    <span className="text-logo-color  ">Get</span> started with us
                 </h1>
                 <div>
-                <Link to= '../studentRegister'>
-                    <button
-                        className="bg-logo-color hover:bg-yellow-500 duration-300 px-10 py-2.5 font-[Poppins]
+                    <Link to='../studentRegister'>
+                        <button
+                            className="bg-logo-color hover:bg-yellow-500 duration-300 px-10 py-2.5 font-[Poppins]
            rounded-md text-white md:w-auto w-full"
-                    >
-                        Apply
-                    </button>
+                        >
+                            Apply
+                        </button>
                     </Link>
                 </div>
             </div>
@@ -131,20 +131,20 @@ const Footer = () => {
             >
 
                 <span>© {d.getFullYear()} Appy. All rights reserved.</span>
-                <span>Terms · Privacy Policy</span>
+                <span>Terms · Privacy Policy · Refund and Cancelation</span>
                 <div className="text-logo-color">
 
                     <span className="p-2 cursor-pointer inline-flex items-center   rounded-full bg-gray-700 mx-1.5 text-xl hover:text-gray-100 hover:bg-logo-color    duration-300 "    >
-                     <CiFacebook/>
+                        <CiFacebook />
                     </span>
                     <span className="p-2 cursor-pointer inline-flex items-center   rounded-full bg-gray-700 mx-1.5 text-xl hover:text-gray-100 hover:bg-logo-color    duration-300 "    >
-                     <CiTwitter/>
+                        <CiTwitter />
                     </span>
                     <span className="p-2 cursor-pointer inline-flex items-center   rounded-full bg-gray-700 mx-1.5 text-xl hover:text-gray-100 hover:bg-logo-color    duration-300 "    >
-                     <CiLinkedin/>
+                        <CiLinkedin />
                     </span>
                     <span className="p-2 cursor-pointer inline-flex items-center   rounded-full bg-gray-700 mx-1.5 text-xl hover:text-gray-100 hover:bg-logo-color    duration-300 "    >
-                     <CiInstagram/>
+                        <CiInstagram />
                     </span>
 
 

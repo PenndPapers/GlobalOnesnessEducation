@@ -2,20 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { CgChevronLeft, CgChevronRight } from 'react-icons/cg';
 import s1 from "../../images/slide01.jpg"
 import s2 from "../../images/slide02.jpg"
-// const slides = [
-//   {
-//     url: "https://allenwebsite-general.s3.ap-south-1.amazonaws.com/allen-website/slider/top-slider/onlinecourse-allendigital.jpg"
-//   },
-//   {
-//     url: "https://allenwebsite-general.s3.ap-south-1.amazonaws.com/allen-website/slider/top-slider/allenace-jaipur.jpg"
-//   },
-//   {
-//     url: "https://allenwebsite-general.s3.ap-south-1.amazonaws.com/allen-website/slider/top-slider/jee-main-enthuse-course13-Feb.jpg"
-//   },
-//   {
-//     url: "https://allenwebsite-general.s3.ap-south-1.amazonaws.com/allen-website/slider/top-slider/neet-enthuse-course-14-Feb.jpg"
-//   }
-// ]
 
 const slides = [
   {

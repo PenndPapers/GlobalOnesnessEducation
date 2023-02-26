@@ -1,12 +1,11 @@
 import React from 'react'
-import NavBar from '../../component/NavBar/NavBar'
 import img from '../../images/shutterstock_download.jpg'
+import NavBar from '../../component/NavBar/NavBar'
 
 const adminAndTeacherLogin = () => {
   return (
-    <>
-      <NavBar  page={'AdminLogin'} />
-      <div className=' font-[Poppins] md:flex md:flex-row rounded-2xl bg-white content-center md:mx-[10%] md:my-[10%] my-[40%] mx-[2%] drop-shadow-2xl ' >
+    <div className='py-20'>
+      <div className=' font-[Poppins] md:flex md:flex-row rounded-2xl bg-white content-center md:mx-[10%] md:my-[10%] yy-[40%] mx-[2%] drop-shadow-2xl ' >
 
         <div className='md:visible hidden leftSide max-h-full rounded-3xl md:flex items-center justify-center'>
           <img className='rounded-3xl' width='700px' height='600px' src={img} alt="image for login" />
@@ -29,7 +28,7 @@ const adminAndTeacherLogin = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

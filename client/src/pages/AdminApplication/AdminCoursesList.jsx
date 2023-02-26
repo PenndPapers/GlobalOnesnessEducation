@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {CiEdit} from "react-icons/ci"
-
-
-
+import { CiEdit } from "react-icons/ci";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { AiOutlineClose } from "react-icons/ai"; // close btn
 const URL = "http://localhost:5000/";
@@ -119,15 +118,14 @@ const URL = "http://localhost:5000/";
 // ];
 
 const Course = ({ d }) => {
-  const src = d.Course.toLowerCase();
- 
+  const src = d.Course;
+
   return (
     <div className="flex gap-2  shadow-lg ">
-
       <div className="p-1 border border-grayDark">
         {" "}
         <img
-          src={require(`../../images/${src}.png`) }
+          src={require(`../../images/${src}.png`)}
           alt="+"
           className="  "
         />{" "}
@@ -137,10 +135,9 @@ const Course = ({ d }) => {
         <p className="text-grayDark">{d.Faculty}</p>
         <p className="text-grayDark">{d.Lectures} Classes</p>
       </div>
-     <button className="flex justify-start"
-      >
-      <CiEdit className="sm:text-xl"/>
-     </button>
+      <button className="flex justify-start">
+        <CiEdit className="sm:text-xl" />
+      </button>
     </div>
   );
 };
@@ -213,7 +210,7 @@ const AdminCoursesList = () => {
       .catch((err) => {
         console.log(err);
         setError((pre) => {
-          return { ...pre, Status: err };
+          return { ...pre, Status: err.response.data };
         });
       });
     setAddCourseData({
@@ -269,7 +266,7 @@ const AdminCoursesList = () => {
       ) : (
         <div className="text-center"> No Courses Available </div>
       )}
-    
+
       {/* form to add new course  */}
       {showForm && (
         <div className="w-full  absolute  py-[5%]">
@@ -288,10 +285,17 @@ const AdminCoursesList = () => {
               </button>
             </div>
 
-            {!error.length && (
-              <div className="text-red-600 text-center"> {error.Status} </div>
-            )}
-
+            {error.length > 0  &&
+              toast.error(error.Status, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              })}
+ 
             <form className="grid p-[2%]" onSubmit={onSubmitHandler}>
               <input
                 required={true}
@@ -372,6 +376,18 @@ const AdminCoursesList = () => {
           </div>
         </div>
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+      
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

@@ -19,13 +19,7 @@ export const AddCourse = async (req, res, next) => {
    existingCourse = await CoursesModel.findOne({ Course: newCourse.Course , Class : newCourse.Class  });
    if (existingCourse) return res.status(400).json("Course already exist");
      await newCourse.save()
-   //.then((r)=>{
-   //    console.log(r)
-   //    res.status(200).json("Success full added ")
-   // }).catch((err)=>{
-   //    console.log(err)
-   //    res.status(400).json("Failed  oops ")
-   // });
+   
    res.status(200).json("Success full added ")
 }
 

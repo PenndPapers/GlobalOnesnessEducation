@@ -1,20 +1,18 @@
 
 import React from 'react'
-
 import Carousel from '../../component/Home/Carousel'
 import g from "../../images/Group.jpg"
 import p from "../../images/dummy-profile-pic.jpg"
 import About from './About'
-
 import { Link } from 'react-router-dom'
 import TeachersSlide from '../../component/Home/TeachersSlide'
+
 const home = () => {
 
 
   return (
     <>
-     
-      <section className="w-5/6 mx-auto  flex flex-row justify-center items-center  ">
+      <section className="w-5/6 mx-auto  flex flex-row justify-center items-center py-[5%] ">
         <h1 className="lg:text-5xl lg:font-bold  sm:text-2xl text-xs font-normal font-[Roboto] text-[var(--colorPrimary)] mt-8" >
           10 Day Free Demo Classes!!
         </h1>
@@ -61,9 +59,7 @@ const home = () => {
       </section>
       <TeachersSlide />
 
-
       <About />
-
     </>
   )
 }

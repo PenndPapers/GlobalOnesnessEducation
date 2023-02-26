@@ -50,7 +50,7 @@ export const studentlogin = async (req, res) => {
                 studentId: student.studentId
             },
                 process.env.JWT_SECRET, { expiresIn: "24h" });
-            res.status(200).json({ token: token, student: student });
+            res.status(200).json({ token: token, user: student });
         }
 
     } catch (err) {
@@ -59,6 +59,34 @@ export const studentlogin = async (req, res) => {
     }
 };
 
+
+//change password of student
+export const changepassword = async (req, res) => {
+    try {
+        const { oldPassword, newPassword, StudentId } = req.body;
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.newPassword, salt);
+        
+        const oldStudent = await StudentModel.findOne({ studentId: StudentId });
+        if (oldStudent) {
+            const validPassword = await bcrypt.compare(oldPassword, oldStudent.password);
+            if (!validPassword) {
+                return res.status(401).json({ error: "Invalid Old Password" });
+            }
+            else {
+                oldStudent.password = hashedPassword;
+                const savedStudent = await oldStudent.save();
+                res.status(200).json({ user: savedStudent });
+            }
+        }
+        else {
+            return res.status(400).json({ error: "Student not found" });
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: err.message });
+    }
+}
 
 //register a teacher
 export const teacherregister = async (req, res) => {
@@ -99,7 +127,7 @@ export const teacherlogin = async (req, res) => {
             teacherId: teacher.teacherId
         },
             process.env.JWT_SECRET, { expiresIn: "24h" });
-        res.status(200).json({ token: token, teacher: teacher });
+        res.status(200).json({ token: token, user: teacher });
 
     } catch (error) {
         console.log(error);
@@ -116,7 +144,7 @@ export const adminregister = async (req, res) => {
 
         const newAdmin = new AdminModel(req.body);
         const { adminId } = req.body;
-        
+
         const oldAdminId = await AdminModel.findOne({ adminId: adminId });
         if (oldAdminId) return res.status(400).json({ error: "Admin already exists" });
 
@@ -143,7 +171,7 @@ export const adminlogin = async (req, res) => {
             adminId: admin.adminId
         },
             process.env.JWT_SECRET, { expiresIn: "24h" });
-        res.status(200).json({ token: token, admin: admin });
+        res.status(200).json({ token: token, user: admin });
 
     } catch (err) {
         console.log(err);
