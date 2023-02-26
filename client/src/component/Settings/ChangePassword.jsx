@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
-import * as AuthApi from '../../api/AuthApi'
+import { useDispatch, useSelector } from 'react-redux';
+import { changeStudentPassword } from '../../features/auth/authAction'
 
 const ChangePassword = () => {
 
     const [data, setData] = useState({ oldPassword: '', newPassword: '', confirmPassword: '', StudentId: null });
 
     const [matchpassword, setMatchPassword] = useState(true);
+
+    const dispatch = useDispatch();
 
     const user = useSelector(state => state.auth.user.user);
 
@@ -20,27 +22,19 @@ const ChangePassword = () => {
 
         if (data.newPassword !== data.confirmPassword) {
             setMatchPassword(false);
+            setData({ oldPassword: '', newPassword: '', confirmPassword: '', StudentId: null });
         } else {
             setMatchPassword(true);
             data.StudentId = user.studentId;
             console.log(data);
-            AuthApi.ChangePassword(data)
-                .then(res => {
-                    if(res.status === 200){
-                    alert("Password Changed Successfully")
-                    }
-                    setData({ oldPassword: '', newPassword: '', confirmPassword: '', StudentId: null });
-                })
-                .catch(err => {
-                    console.log(err);
-                    alert("Invalid Old Password")
-                })
+            dispatch(changeStudentPassword(data))
+            setData({ oldPassword: '', newPassword: '', confirmPassword: '', StudentId: null });
         }
     }
 
 
     return (
-        <div className='flex pt=[20] flex-col w-[30%] h-[350px] mx-[5%] font-[Poppins] border rounded-lg'>
+        <div className='flex pt=[20] flex-col w-[100%] h-[400px] mx-[5%] font-[Poppins] border rounded-lg'>
             <form onSubmit={handleSubmit} className= "flex flex-col">
                 <span className='mx-[2%] mt-[2%]'> Change Password </span>
                 {!matchpassword && <span className='mx-[2%] mt-[2%] text-red-600 text-[12px]'> New Password and Confirm New Password do not match ! </span>} 

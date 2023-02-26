@@ -5,7 +5,6 @@ import Home from './pages/Home/Home';
 import StudentLogin from './pages/Auth/StudentLogin';
 import StudentRegister from './pages/Auth/StudentApply';
 import AdminandTeacher from './pages/Auth/AdminAndTeacherLogin';
-import AdminDashboard from './pages/AdminApllication/AdminDashboard';
 import StudentDashboard from './pages/StudentApllication/StudentDashboard';
 import TeacherDashboard from './pages/TeacherApplication/TeacherDashboard';
 import StudentPYQ from './pages/StudentApllication/StudentPYQ';
@@ -17,12 +16,12 @@ import StudentSetting from './pages/StudentApllication/StudentSetting';
 
 import { useSelector } from 'react-redux';
 import NavBar from './component/NavBar/NavBar';
-import Footer from './component/Footer';
+import Footer from './component/Footer/Footer';
 const App = () => {
 
 
   const user = useSelector(state => state.auth.user)
-  console.log(user.user.usertype);
+  // console.log(user.user.usertype);
 
   return (
     <>
@@ -33,13 +32,6 @@ const App = () => {
         <Route path='studentLogin' element={user.user.usertype !== '' ? <Navigate to='/studentDashboard' /> : <StudentLogin />} />
         <Route path='studentRegister' element={<StudentRegister />} />
         <Route path='adminAndTeacher' element={<AdminandTeacher />} />
-        <Route path='adminDashboard' element={<AdminDashboard />} />
-
-        {/* <Route path='studentDashboard'>
-          
-          <Route element={<StudentDashboard />} />
-          <Route path='studentDashboard/pyq' element={<StudentPYQ />} />
-        </Route> */}
         <Route path='studentDashboard' element={user.user.usertype === 'student' ? <StudentDashboard /> : <Navigate to="/studentLogin" />} />
         <Route path='pyq' element={user.user.usertype === 'student' ? <StudentPYQ /> : <Navigate to="/studentLogin" />} />
         <Route path='notes' element={user.user.usertype === 'student' ? <StudentNotes /> : <Navigate to="/studentLogin" />} />

@@ -76,7 +76,7 @@ export const changepassword = async (req, res) => {
             else {
                 oldStudent.password = hashedPassword;
                 const savedStudent = await oldStudent.save();
-                res.status(200).json({ student: savedStudent });
+                res.status(200).json({ user: savedStudent });
             }
         }
         else {

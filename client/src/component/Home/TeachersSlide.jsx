@@ -1,12 +1,10 @@
-import React , {useState , useEffect } from 'react'
-import { CgChevronLeft, CgChevronRight } from 'react-icons/cg';
-import p1 from "../images/pawan_sir.jpeg"
-import p2 from "../images/rahul.jpeg"
-import p3 from "../images/satpal.jpeg"
-import p4 from "../images/richa.jpeg"
-import p5 from "../images/manoj.jpeg"
-import p6 from "../images/gaurav.jpeg"
-
+import React  from 'react'
+import p1 from "../../images/pawan_sir.jpeg"
+import p2 from "../../images/rahul.jpeg"
+import p3 from "../../images/satpal.jpeg"
+import p4 from "../../images/richa.jpeg"
+import p5 from "../../images/manoj.jpeg"
+import p6 from "../../images/gaurav.jpeg"
 
 
 const dummy_teacher = [
@@ -52,7 +50,7 @@ const dummy_teacher = [
 
 
 
-const Teachers = () => {
+const TeachersSlide = () => {
 
  
 
@@ -81,4 +79,4 @@ const Teachers = () => {
   )
 }
 
-export default Teachers
+export default TeachersSlide

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import * as HiIcon from 'react-icons/hi';
 import * as AiIcons from 'react-icons/ai';
 import pdf from "../../images/pdf.png"
+
+
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");

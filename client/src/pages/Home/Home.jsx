@@ -5,7 +5,8 @@ import g from "../../images/Group.jpg"
 import p from "../../images/dummy-profile-pic.jpg"
 import About from './About'
 import { Link } from 'react-router-dom'
-import Teachers from '../../component/Teachers'
+import Teachers from '../../component/Home/TeachersSlide'
+
 const home = () => {
 
 

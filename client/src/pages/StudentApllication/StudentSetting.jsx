@@ -3,9 +3,21 @@ import ChangePassword from '../../component/Settings/ChangePassword'
 
 const StudentSetting = () => {
   return (
-    <div className='flex flex-col pt-20 w-full h-[500px] items-center '>
-      <ChangePassword/>
-    </div>
+    <main className='flex flex-row pt-20 mx-[5%]'> 
+      <section className='flex flex-col w-[40%] h-[500px] items-center '>
+        <ChangePassword />
+      </section>
+      <section className='flex w-full h-full bg-red-700'>
+      <h1>
+        sdhlkfajgh
+      </h1>
+        your profile picture
+      </section>
+      <section>
+
+      </section>
+    </main>
+
   )
 }
 
