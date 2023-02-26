@@ -19,7 +19,7 @@ const StudentApply = () => {
     setUserData((pre) => {
       return { ...pre, [key]: value }
     })
-
+   
     if (key === "class") {
       setCourseeData([])
       axios.get((`${URL}admin/getAllCourse/${value}`)).then((res) => {
@@ -50,7 +50,7 @@ const StudentApply = () => {
 
   const onDeleteCourse = (e) => {
     console.log(e)
-    console.log("clicked ")
+    
     console.log(e.target.id);
 
     setCourse(course.filter(item => item !== e.target.id))    
@@ -109,6 +109,8 @@ const StudentApply = () => {
                   <option value="10">10</option>
                   <option value="11">11</option>
                   <option value="12">12</option>
+                  <option value="jeemain">JEE-MAIN</option>
+                  <option value="neet">NEET</option>
                 </select>
 
                 <input required={true} id="guardianNumber" className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8" type="tel" value={userData.guardianNumber} onChange={onChangeHandler} placeholder="Guardian Number" />

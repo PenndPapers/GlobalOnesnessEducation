@@ -4,14 +4,28 @@ import CoursesModel from "../Models/coursesModel.js"
 export const AddCourse = async (req, res, next) => {
    
    console.log(req.body)
-   const Course = new CoursesModel({
+
+
+   const newCourse = new CoursesModel({
       Class: req.body.Class,
       Course: req.body.Course,
-      CourseId: req.body.CourseId
+      CourseId: req.body.CourseId,
+      Lectures : req.body.Lectures,
+      Faculty : req.body.Faculty
    })
-   let existingCourse = await CoursesModel.findOne({ Course: Course.Course , Class : Course.Class });
+   console.log(newCourse)
+   let existingCourse = await CoursesModel.findOne({CourseId : newCourse.CourseId  });
+   if (existingCourse) return res.status(400).json("Course ID already exist");
+   existingCourse = await CoursesModel.findOne({ Course: newCourse.Course , Class : newCourse.Class  });
    if (existingCourse) return res.status(400).json("Course already exist");
-   await Course.save();
+     await newCourse.save()
+   //.then((r)=>{
+   //    console.log(r)
+   //    res.status(200).json("Success full added ")
+   // }).catch((err)=>{
+   //    console.log(err)
+   //    res.status(400).json("Failed  oops ")
+   // });
    res.status(200).json("Success full added ")
 }
 

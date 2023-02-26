@@ -7,7 +7,11 @@ module.exports = {
     extend: {
       colors: {
         "logo-color": "#FF9900",
-        "grayDark" : "#767474"
+        "grayDark" : "#767474",
+        "orange" : "#FFAF38",
+        "graylight": "#BFBFBF",
+        "adminbg" : "#F0F1F3"
+
       }
     },
   },

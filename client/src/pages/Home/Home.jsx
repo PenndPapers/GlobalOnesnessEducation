@@ -1,19 +1,19 @@
 
 import React from 'react'
-import NavBar from '../../component/NavBar/NavBar'
+
 import Carousel from '../../component/Home/Carousel'
 import g from "../../images/Group.jpg"
 import p from "../../images/dummy-profile-pic.jpg"
 import About from './About'
-import Footer from '../../component/Footer'
+
 import { Link } from 'react-router-dom'
-import Teachers from '../../component/Teachers'
+import TeachersSlide from '../../component/Home/TeachersSlide'
 const home = () => {
 
 
   return (
     <>
-      <NavBar />
+     
       <section className="w-5/6 mx-auto  flex flex-row justify-center items-center  ">
         <h1 className="lg:text-5xl lg:font-bold  sm:text-2xl text-xs font-normal font-[Roboto] text-[var(--colorPrimary)] mt-8" >
           10 Day Free Demo Classes!!
@@ -33,7 +33,7 @@ const home = () => {
         <div className=' bg-white '>
           <h1 className=' sm:text-xl text-sm text-[var(--colorPrimary)] sm:pb-0 pb-[5%]  '>OUR STUDENTS LOVE US ❤️ </h1>
           <div className='sm:flex  sm:justify-center sm:items-center py-[1%] px-[5%]  ' >
-            <img src={p} className="rounded-[150px] w-[90px] h-[90px] sm:w-[150px] sm:h-[150px]  ring-1 ring-[#ffd658] shadow-md  shadow-[#ffd658] mx-auto  " />
+            <img src={p} alt="students studying in institute" className="rounded-[150px] w-[90px] h-[90px] sm:w-[150px] sm:h-[150px]  ring-1 ring-[#ffd658] shadow-md  shadow-[#ffd658] mx-auto  " />
             <div className='px-[5%] py-[5%] font-medium  sm:text-xl text-sm '>
               Teacher covered all topics in a structured manner which makes you want to study. They have made the course easy to understand for students. I will also get my sister to enroll ."
               VARAD INGALE
@@ -59,12 +59,11 @@ const home = () => {
         </div>
 
       </section>
-      <Teachers />
+      <TeachersSlide />
 
 
       <About />
 
-      <Footer />
     </>
   )
 }

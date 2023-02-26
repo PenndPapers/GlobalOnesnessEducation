@@ -27,9 +27,16 @@ const Footer = () => {
                 </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3  sm:justify-items-center gap-8   py-16 w-5/6 mx-auto ">
-                <ul className="list-disc ">
-                    <h1 className="mb-1 font-semibold">About Us</h1>
+                <ul className=" ">
+                    <h1 className="mb-1 text-xl font-semibold">About Us</h1>
+                    <li  >
+                   
+                        <a className="text-gray-400 hover:text-logo-color       text-sm cursor-pointer   " href="../adminDashboard" >
+                            Admin
+                        </a>
+                  
 
+                    </li>
                     <li  >
 
                         <a className="text-gray-400 hover:text-logo-color       text-sm cursor-pointer   " href="" >
@@ -52,8 +59,8 @@ const Footer = () => {
 
                     </li>
                 </ul>
-                <ul className="list-disc ">
-                    <h1 className="mb-1 font-semibold">Courses And Programmes</h1>
+                <ul className=" ">
+                    <h1 className="mb-1  text-xl font-semibold">Courses And Programmes</h1>
 
                     <li >
 
@@ -84,8 +91,8 @@ const Footer = () => {
 
                     </li>
                 </ul>
-                <ul className="list-disc ">
-                    <h1 className="mb-1 font-semibold">Result</h1>
+                <ul className=" ">
+                    <h1 className="mb-1 text-xl font-semibold">Result</h1>
 
                     <li >
 

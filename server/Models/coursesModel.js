@@ -12,11 +12,20 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    Lectures: {
+        type: String,
+        required: true,
+    },
+    Faculty: {
+        type: String,
+        required: true,
+    },
     CourseId :{
         type: String,
         required: true,
         
-    }
+    },
+   
 },{timestamps: true}
 );
 
