@@ -55,7 +55,7 @@ const NavBar = ({ page, logout }) => {
                   <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >ABOUT</span>
                 </li>
                 {!user.user.usertype &&
-                  <Link to='../adminAndTeacher'>
+                  <Link to='../teacherLogin'>
                     <li className="nav-item">
                       <span className="px-3 py-2 flex items-center  uppercase  leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >EMPLOYEE ZONE</span>
                     </li>
@@ -72,7 +72,7 @@ const NavBar = ({ page, logout }) => {
                 }
                 {user.user.usertype &&
                   <li className="nav-item lg:ml-2 ">
-                    <Link to='../studentLogin'>
+                    <Link to={`${user.user.usertype === 'student' ? '../studentDashboard' : user.user.usertype === 'admin' ? '../adminDashboard' : '../teacherDashboard'}`}>
                       <li className="nav-item">
                         <span className="px-3 py-2 flex items-center  uppercase  leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >DASHBOARD</span>
                       </li>
@@ -100,34 +100,35 @@ const NavBar = ({ page, logout }) => {
             <li className='text-stat ml-8 text-[20px] py-[16px]'>
               <span className='font-[Poppins] '> Hello {user.user.firstname}</span>
             </li>
-            { user.user.usertype === '' && SidebarData.map((item, index) => {
+            {user.user.usertype === '' && SidebarData.map((item, index) => {
+              return (
+                <>
+                  {(item.title === 'Student Zone' || item.title === 'Admin' || item.title === 'Employee Zone' || item.title === 'Home' || item.title === 'About') &&
+                    <li li key={index} className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
+                      <Link to={item.path}> {item.icon} <span className='pl-[2%] ml-[2%]'>{item.title}</span> </Link>
+                    </li>
+                  }
+                </>
+              );
+            })}
+
+            {user.user.usertype !== '' &&
+              SidebarData.map((item, index) => {
+                const activeSidebaColor = user.user.usertype === 'student' ?'bg-[--var(buttonBlue)]': user.user.usertype === 'admin' ?'bg-[--var(adminRed)]': 'bg-[--var(teacherGreen)]'
                 return (
                   <>
-                    {(item.title === 'Student Zone' || item.title === 'Employee Zone' || item.title === 'Home' || item.title === 'About') &&
-                      <li li key={index} className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
-                        <Link to={item.path}> {item.icon} <span className='pl-[2%] ml-[2%]'>{item.title}</span> </Link>
+                    {(item.title !== 'Student Zone' && item.title !== 'Employee Zone' && item.title !== 'Admin' && (item.user === user.user.usertype || item.user === 'Home' || item.user === 'About')) &&
+                      <li li key={index} className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName}  >
+                        <Link to={item.path}>
+                          {item.icon}
+                          <span className='ml-[7%] '>{item.title}</span>
+                        </Link>
                       </li>
                     }
                   </>
                 );
-              })}
-
-              {user.user.usertype !== '' &&
-                SidebarData.map((item, index) => {
-                  return (
-                    <>
-                      {(item.title !== 'Student Zone' &&  item.title !== 'Employee Zone') &&
-                        <li li key={index} className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
-                          <Link to={item.path}>
-                            {item.icon}
-                            <span className='ml-[7%] '>{item.title}</span>
-                          </Link>
-                        </li>
-                      }
-                    </>
-                  );
               })
-              }
+            }
           </ul>
         </nav>
       </>

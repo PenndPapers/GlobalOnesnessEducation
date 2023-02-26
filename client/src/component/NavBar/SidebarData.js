@@ -11,17 +11,20 @@ export const SidebarData = [
     title: 'Home',
     path: '/home',
     icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    user: 'Home'
+
   },
   {
     title: 'About',
     path: '/about',
     icon: <AiIcons.AiFillInfoCircle />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    user: 'About'
   },
   {
     title: 'Employee Zone',
-    path: '/adminAndTeacher',
+    path: '/teacherLogin',
     icon: <FaIcons.FaUsers />,
     cName: 'nav-text'
   },
@@ -34,43 +37,99 @@ export const SidebarData = [
   {
     title: 'Dashboard',
     path: '/studentDashboard',
-    icon: <MdIcon.MdSpaceDashboard/>,
-    cName: 'nav-text'
+    icon: <MdIcon.MdSpaceDashboard />,
+    cName: 'nav-text',
+    user: 'student'
   },
   {
     title: 'PYQs',
     path: '/pyq',
-    icon: <GiIcon.GiPapers/>,
-    cName: 'nav-text'
+    icon: <GiIcon.GiPapers />,
+    cName: 'nav-text',
+    user: 'student'
   },
   {
     title: 'Notes',
     path: '/notes',
-    icon: <BiIcon.BsFileEarmarkPdfFill/>,
-    cName: 'nav-text'
+    icon: <BiIcon.BsFileEarmarkPdfFill />,
+    cName: 'nav-text',
+    user: 'student'
   },
   {
     title: 'Test',
     path: '/test',
-    icon: <FaIcons.FaPenSquare/>,
-    cName: 'nav-text'
+    icon: <FaIcons.FaPenSquare />,
+    cName: 'nav-text',
+    user: 'student'
   },
   {
     title: 'Result',
     path: '/result',
-    icon: <BiIcon.BsGraphUp/>,
-    cName: 'nav-text'
+    icon: <BiIcon.BsGraphUp />,
+    cName: 'nav-text',
+    user: 'student'
   },
   {
     title: 'Settings',
     path: '/setting',
     icon: <AiIcons.AiFillSetting />,
     cName: 'nav-text'
+    ,user: 'student'
   },
   {
     title: 'Feedback',
     path: '/feedback',
     icon: <FaIcons.FaComments />,
+    cName: 'nav-text',
+    user: 'student'
+  } ,
+  {
+    title: 'Dashboard',
+    path: '/adminDashboard',
+    icon: <MdIcon.MdSpaceDashboard />,
+    cName: 'nav-text',
+    user: 'admin'
+  },
+  {
+    title: 'Earning',
+    path: '/adminearning',
+    icon: <GiIcon.GiMoneyStack />,
+    cName: 'nav-text',
+    user: 'admin'
+  },
+  {
+    title: 'Courses',
+    path: '/courses',
+    icon: <AiIcons.AiFillBook />,
+    cName: 'nav-text',
+    user: 'admin'
+  },
+  {
+    title: 'Teacher',
+    path: '/teacher',
+    icon: <GiIcon.GiTeacher />,
+    cName: 'nav-text',
+    user: 'admin'
+  },
+  {
+    title: 'Student',
+    path: '/student',
+    icon: <FaIcons.FaUserGraduate />,
+    cName: 'nav-text',
+    user: 'admin'
+  },
+  {
+    title: 'Settings',
+    path: '/adminsetting',
+    icon: <AiIcons.AiFillSetting />,
     cName: 'nav-text'
-  }
+    ,user: 'admin'
+  },
+  {
+    title: 'Feedback',
+    path: '/adminfeedback',
+    icon: <FaIcons.FaComments />,
+    cName: 'nav-text',
+    user: 'admin'
+  } ,
 ];

@@ -30,7 +30,7 @@ export const studentlogin = async (req, res) => {
     try {
 
         const { studentId, password } = req.body;
-        console.log(studentId, password);
+        console.log("id passs std",studentId, password);
 
         const student = await StudentModel.findOne({ studentId: studentId });
         console.log(student);
@@ -115,7 +115,7 @@ export const teacherregister = async (req, res) => {
 export const teacherlogin = async (req, res) => {
     try {
         const { teacherId, password } = req.body;
-
+        console.log("id pass",teacherId, password);
         const teacher = TeacherModel.findOne({ teacherId: teacherId });
         if (!teacher) return res.status(400).json({ error: "Teacher not found" });
 
@@ -161,7 +161,7 @@ export const adminregister = async (req, res) => {
 export const adminlogin = async (req, res) => {
     try {
         const { adminId, password } = req.body;
-        const admin = AdminModel.findOne({ adminId: adminId });
+        const admin = await AdminModel.findOne({ adminId: adminId });
         if (!admin) return res.status(400).json({ error: "Admin not found" });
 
         const validPassword = await bcrypt.compare(password, admin.password);

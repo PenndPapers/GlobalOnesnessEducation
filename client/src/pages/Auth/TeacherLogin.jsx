@@ -1,8 +1,7 @@
 import React from 'react'
 import img from '../../images/shutterstock_download.jpg'
-import NavBar from '../../component/NavBar/NavBar'
 
-const adminAndTeacherLogin = () => {
+const TeacherLogin = () => {
   return (
     <div className='py-20'>
       <div className=' font-[Poppins] md:flex md:flex-row rounded-2xl bg-white content-center md:mx-[10%] md:my-[10%] yy-[40%] mx-[2%] drop-shadow-2xl ' >
@@ -20,7 +19,7 @@ const adminAndTeacherLogin = () => {
 
           <span className='text-center md:text-[12px] text-[12px]  mt-[1%]'>Please enter your details carefully !</span>
           <form className="flex flex-col max-w-full pb-[5%]" action="">
-            <input className=" md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8" type="text" placeholder="Admin/Teacher ID" />
+            <input className=" md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8" type="text" placeholder="Teacher ID" />
             <input className="md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8 mb-[5%] md:mb-0" type="password" placeholder="Password" />
             <button className="md:mx-[20%] mx-[20%] border-2 p-[2%] font-[Poppins] rounded-md md:mt-[8%] bg-[var(--buttonBlue)] text-white  " >
               Login
@@ -32,4 +31,4 @@ const adminAndTeacherLogin = () => {
   )
 }
 
-export default adminAndTeacherLogin
+export default TeacherLogin

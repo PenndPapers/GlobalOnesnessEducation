@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import NavBar from '../../component/NavBar/NavBar'
 import img from '../../images/dl.beatsnoop.com-600px-1675484921.jpg'
-import {useDispatch ,useSelector} from 'react-redux'
+import {useDispatch } from 'react-redux'
 import {studentLogin} from '../../features/auth/authAction'
 import { Link ,useNavigate } from 'react-router-dom'
 
