@@ -56,7 +56,7 @@ const App = () => {
 
 
 
-        <Route path="adminDashboard" element={user.user.usertype === 'admin'? <AdminDashboard /> : <Navigate to='/Login'/>} />
+        <Route path="adminDashboard" element={user.user.usertype === 'admin'? <AdminDashboard /> : <Navigate to='/adminLogin'/>} />
         <Route path="courses" element={<AdminCoursesList />} />
         <Route path="teacher" element={<AdminTeachersList />} />
         <Route path="student" element={<AdminStudentList />} />

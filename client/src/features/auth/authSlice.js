@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { studentLogin, changeStudentPassword, adminLogin } from './authAction.js'
+import { studentLogin, changeStudentPassword, adminLogin ,teacherLogin } from './authAction.js'
 
 export const AuthSlice = createSlice({
   name: 'Auth',
@@ -68,11 +68,25 @@ export const AuthSlice = createSlice({
       state.loading = false
     })
 
+    builder.addCase(teacherLogin.pending, (state) => {
+      state.loading = true
+    })
+
+    builder.addCase(teacherLogin.fulfilled, (state, action) => {
+      state.user = action.payload
+      state.loading = false
+    })
+
+    builder.addCase(teacherLogin.rejected, (state, action) => {
+      state.error = action.error.message
+      state.loading = false
+    })
+
 
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { studentLoginReq, logoutReq, changeStudentPasswordReq, adminLoginReq } = AuthSlice.actions
+export const { studentLoginReq, logoutReq, changeStudentPasswordReq, adminLoginReq ,teacherLoginReq} = AuthSlice.actions
 
 export default AuthSlice.reducer

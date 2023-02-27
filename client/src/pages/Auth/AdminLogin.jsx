@@ -43,7 +43,7 @@ const AdminLogin = () => {
                     <span className='text-center md:text-[12px] text-[12px]  mt-[1%]'>Please enter your details carefully !</span>
                     <form className="flex flex-col max-w-full pb-[5%]" onSubmit={handleFormSubmit}>
                         <input className=" md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8" type="text" placeholder="Admin ID" name='adminId' value={data.adminId} onChange={handleInputChange} />
-                        <input className="md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8 mb-[5%] md:mb-0" type="password" placeholder="Password" name='password' onChange={handleInputChange}/>
+                        <input className="md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8 mb-[5%] md:mb-0" type="password" placeholder="Password" value={data.password} name='password' onChange={handleInputChange}/>
                         <button className="md:mx-[20%] mx-[20%] border-2 p-[2%] font-[Poppins] rounded-md md:mt-[8%] bg-[var(--buttonBlue)] text-white  " >
                             Login
                         </button>

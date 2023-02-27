@@ -116,7 +116,7 @@ export const teacherlogin = async (req, res) => {
     try {
         const { teacherId, password } = req.body;
         console.log("id pass",teacherId, password);
-        const teacher = TeacherModel.findOne({ teacherId: teacherId });
+        const teacher = await TeacherModel.findOne({ teacherId: teacherId });
         if (!teacher) return res.status(400).json({ error: "Teacher not found" });
 
         const validPassword = await bcrypt.compare(password, teacher.password);

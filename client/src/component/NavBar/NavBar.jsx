@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 import { logoutReq } from '../../features/auth/authSlice';
 
 
-const NavBar = ({ page, logout }) => {
+const NavBar = () => {
 
   const [sidebar, setSidebar] = useState(false);
 
@@ -19,22 +19,24 @@ const NavBar = ({ page, logout }) => {
 
   const showSidebar = () => {
     setSidebar(!sidebar);
-    console.log(sidebar);
+   
   }
 
   const location = useLocation();
   const user = useSelector(state => state.auth.user)
-  console.log(user);
 
   const handleLogout = () => {
     console.log('logout');
     dispatch(logoutReq())
   }
 
+  const buttonhoverstyle = user.user.usertype === "teacher" ?   "hover:bg-[#4BB543]" : user.user.usertype === "student" ?  "hover:bg-[#6674CC]" : "hover:bg-[#F56968]"
+  const buttontextcolor = user.user.usertype === "teacher" ?   "text-[#4BB543]" : user.user.usertype === "student" ?  "text-[#6674CC]" : "text-[#F56968]"
+  const buttonbordercolor = user.user.usertype === "teacher" ?   "border-[#4BB543]" : user.user.usertype === "student" ?  "border-[#6674CC]" : "border-[#F56968]"
   return (
     <Modal>
       <>
-        <div className='navbar bg-[#ffffff] h-[60px] flex justify-between items-center drop-shadow-lg px-[2%]'>
+        <div className='navbar bg-[#ffffff] h-[60px] flex justify-between items-center drop-shadow-lg px-[2%] '>
           <div className='flex items-center'>
             <Link to='#' className={(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/adminAndTeacher') ? 'menu-bars ml-4 text-[2rem] md: ' : 'menu-bars ml-4 text-[2rem] '}>
               <FaIcons.FaBars onClick={showSidebar} />
@@ -82,9 +84,9 @@ const NavBar = ({ page, logout }) => {
               </ul>
             </div>
           }
-          {user.user.usertype !== '' &&
+          { user.user.usertype !== '' &&
             <Link to='../home'>
-              <button className=" btn bg-transparent hover:bg-[var(--buttonBlue)] text-[var(--buttonBlue)]  items-end font-semibold hover:text-white py-2 px-3  border-[var(--buttonBlue)] border-2 hover:border-transparent rounded" style={{ fontFamily: 'Lato' }} onClick={handleLogout}>
+              <button className={`btn bg-transparent ${buttonhoverstyle} ${buttonbordercolor} ${buttontextcolor}  items-end font-semibold hover:text-white py-2 px-3 border-2 hover:border-transparent rounded`} style={{ fontFamily: 'Lato' }} onClick={handleLogout}>
                 Logout
               </button>
             </Link>
@@ -92,14 +94,18 @@ const NavBar = ({ page, logout }) => {
         </div>
         <nav className={sidebar ? 'nav-menu active ' : 'nav-menu'}>
           <ul className='nav-menu-items w-[100%]' onClick={showSidebar}>
-            <li className='navbar-toggle bg-[#ffffff] w-full h-[80px] flex justify-start items-center '>
-              <Link to='#' className='menu-bars ml-8 text-[2rem]'>
+           <li className='flex justify-start px-2 gap-2 '>
+           <div className=' bg-[#ffffff]  flex justify-start items-center '>
+              <Link to='#' className='menu-bars text-[2rem]'>
                 <AiIcons.AiOutlineClose />
               </Link>
-            </li>
-            <li className='text-stat ml-8 text-[20px] py-[16px]'>
+            </div>
+           <div className='text-stat  text-[20px] py-[16px] cursor-pointer'>
               <span className='font-[Poppins] '> Hello {user.user.firstname}</span>
-            </li>
+            </div>
+           
+           
+           </li>
             {user.user.usertype === '' && SidebarData.map((item, index) => {
               return (
                 <>
@@ -114,11 +120,12 @@ const NavBar = ({ page, logout }) => {
 
             {user.user.usertype !== '' &&
               SidebarData.map((item, index) => {
-                const activeSidebaColor = user.user.usertype === 'student' ?'bg-[--var(buttonBlue)]': user.user.usertype === 'admin' ?'bg-[--var(adminRed)]': 'bg-[--var(teacherGreen)]'
+                const activeSidebaColor = user.user.usertype === "teacher" ?   "bg-[#4BB543]" : user.user.usertype === "student" ?  "bg-[#6674CC]" : "bg-[#F56968]"
+                const hoverstyle = user.user.usertype === "teacher" ?   "hover:bg-[#4BB543]" : user.user.usertype === "student" ?  "hover:bg-[#6674CC]" : "hover:bg-[#F56968]"
                 return (
                   <>
                     {(item.title !== 'Student Zone' && item.title !== 'Employee Zone' && item.title !== 'Admin' && (item.user === user.user.usertype || item.user === 'Home' || item.user === 'About')) &&
-                      <li li key={index} className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName}  >
+                      <li  key={index} className={`${location.pathname === item.path ? `${activeSidebaColor}  text-white rounded-l-3xl ml-5 ` : "" } ${hoverstyle} ${item.cName} `}  >
                         <Link to={item.path}>
                           {item.icon}
                           <span className='ml-[7%] '>{item.title}</span>

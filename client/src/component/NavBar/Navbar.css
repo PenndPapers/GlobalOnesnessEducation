@@ -35,11 +35,6 @@
     padding: 0 16px;
     border-radius: 4px;
   }
-  
-  .nav-text a:hover {
-    background-color: var(--buttonBlue);
-  }
-
   .span {
     margin-left: 16px;
   }

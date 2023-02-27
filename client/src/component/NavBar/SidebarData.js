@@ -131,5 +131,26 @@ export const SidebarData = [
     icon: <FaIcons.FaComments />,
     cName: 'nav-text',
     user: 'admin'
-  } ,
+  },
+  {
+    title: 'Dashboard',
+    path: '/teacherDashboard',
+    icon: <MdIcon.MdSpaceDashboard />,
+    cName: 'nav-text',
+    user: 'teacher'
+  },
+  {
+    title: 'Earning',
+    path: '/teacherearning',
+    icon: <GiIcon.GiMoneyStack />,
+    cName: 'nav-text',
+    user: 'teacher'
+  },
+  {
+    title: 'Courses',
+    path: '/teachercourses',
+    icon: <AiIcons.AiFillBook />,
+    cName: 'nav-text',
+    user: 'teacher'
+  },
 ];

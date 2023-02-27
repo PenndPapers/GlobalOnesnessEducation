@@ -57,3 +57,22 @@ export const adminLogin = createAsyncThunk(
         }
     }
 );
+
+export const teacherLogin = createAsyncThunk(
+    "Auth/teacherLoginReq",
+    async (formData, { rejectWithValue }) => {
+        try {
+            console.log("inside adminLogin")
+            const response = await AuthApi.teacherLogin(formData);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            if (error.response && error.response.data) {
+                return rejectWithValue(error.response.data);
+            } else {
+                return rejectWithValue(error.message);
+            }
+        }
+    }
+);
+

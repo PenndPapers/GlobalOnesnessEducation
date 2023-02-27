@@ -1,7 +1,30 @@
-import React from 'react'
+import React ,{useState} from 'react'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { teacherLogin } from '../../features/auth/authAction';
 import img from '../../images/shutterstock_download.jpg'
 
 const TeacherLogin = () => {
+
+    const [data, setData] = useState({ teacherId: '', password: '' });
+    const dispatch = useDispatch()
+    const Navigate = useNavigate()
+
+    const handleInputChange = (e) => {
+        setData({ ...data, [e.target.name]: e.target.value });
+    }
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log(data);
+
+        dispatch(teacherLogin(data))
+
+        Navigate('/teacherDashboard')
+
+        setData({ adminId: '', password: '' });
+    }
+
   return (
     <div className='py-20'>
       <div className=' font-[Poppins] md:flex md:flex-row rounded-2xl bg-white content-center md:mx-[10%] md:my-[10%] yy-[40%] mx-[2%] drop-shadow-2xl ' >
@@ -18,9 +41,9 @@ const TeacherLogin = () => {
           </div>
 
           <span className='text-center md:text-[12px] text-[12px]  mt-[1%]'>Please enter your details carefully !</span>
-          <form className="flex flex-col max-w-full pb-[5%]" action="">
-            <input className=" md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8" type="text" placeholder="Teacher ID" />
-            <input className="md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8 mb-[5%] md:mb-0" type="password" placeholder="Password" />
+          <form className="flex flex-col max-w-full pb-[5%]" onSubmit={handleFormSubmit}>
+            <input className=" md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8" type="text" placeholder="Teacher ID" name='teacherId' value={data.teacherId}  onChange={handleInputChange}/>
+            <input className="md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8 mb-[5%] md:mb-0" type="password" placeholder="Password" name='password' value={data.password} onChange={handleInputChange}/>
             <button className="md:mx-[20%] mx-[20%] border-2 p-[2%] font-[Poppins] rounded-md md:mt-[8%] bg-[var(--buttonBlue)] text-white  " >
               Login
             </button>
