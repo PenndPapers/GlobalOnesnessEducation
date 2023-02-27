@@ -19,7 +19,7 @@ const NavBar = () => {
 
   const showSidebar = () => {
     setSidebar(!sidebar);
-   
+
   }
 
   const location = useLocation();
@@ -29,10 +29,10 @@ const NavBar = () => {
     console.log('logout');
     dispatch(logoutReq())
   }
+  const buttonhoverstyle = user.user.usertype === "teacher" ? "hover:bg-[#4BB543]" : user.user.usertype === "student" ? "hover:bg-[#6674CC]" : "hover:bg-[#F56968]"
+  const buttontextcolor = user.user.usertype === "teacher" ? "text-[#4BB543]" : user.user.usertype === "student" ? "text-[#6674CC]" : "text-[#F56968]"
+  const buttonbordercolor = user.user.usertype === "teacher" ? "border-[#4BB543]" : user.user.usertype === "student" ? "border-[#6674CC]" : "border-[#F56968]"
 
-  const buttonhoverstyle = user.user.usertype === "teacher" ?   "hover:bg-[#4BB543]" : user.user.usertype === "student" ?  "hover:bg-[#6674CC]" : "hover:bg-[#F56968]"
-  const buttontextcolor = user.user.usertype === "teacher" ?   "text-[#4BB543]" : user.user.usertype === "student" ?  "text-[#6674CC]" : "text-[#F56968]"
-  const buttonbordercolor = user.user.usertype === "teacher" ?   "border-[#4BB543]" : user.user.usertype === "student" ?  "border-[#6674CC]" : "border-[#F56968]"
   return (
     <Modal>
       <>
@@ -84,7 +84,7 @@ const NavBar = () => {
               </ul>
             </div>
           }
-          { user.user.usertype !== '' &&
+          {user.user.usertype !== '' &&
             <Link to='../home'>
               <button className={`btn bg-transparent ${buttonhoverstyle} ${buttonbordercolor} ${buttontextcolor}  items-end font-semibold hover:text-white py-2 px-3 border-2 hover:border-transparent rounded`} style={{ fontFamily: 'Lato' }} onClick={handleLogout}>
                 Logout
@@ -94,23 +94,21 @@ const NavBar = () => {
         </div>
         <nav className={sidebar ? 'nav-menu active ' : 'nav-menu'}>
           <ul className='nav-menu-items w-[100%]' onClick={showSidebar}>
-           <li className='flex justify-start px-2 gap-2 '>
-           <div className=' bg-[#ffffff]  flex justify-start items-center '>
-              <Link to='#' className='menu-bars text-[2rem]'>
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </div>
-           <div className='text-stat  text-[20px] py-[16px] cursor-pointer'>
-              <span className='font-[Poppins] '> Hello {user.user.firstname}</span>
-            </div>
-           
-           
-           </li>
+            <li className='flex justify-start px-2 gap-2 '>
+              <div className=' bg-[#ffffff]  flex justify-start items-center '>
+                <Link to='#' className='menu-bars text-[2rem]'>
+                  <AiIcons.AiOutlineClose />
+                </Link>
+              </div>
+              <div className='text-stat  text-[20px] py-[16px] cursor-pointer'>
+                <span className='font-[Poppins] '> Hello {user.user.firstname}</span>
+              </div>
+            </li>
             {user.user.usertype === '' && SidebarData.map((item, index) => {
               return (
                 <>
                   {(item.title === 'Student Zone' || item.title === 'Admin' || item.title === 'Employee Zone' || item.title === 'Home' || item.title === 'About') &&
-                    <li li key={index} className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
+                    <li key={item._id} className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
                       <Link to={item.path}> {item.icon} <span className='pl-[2%] ml-[2%]'>{item.title}</span> </Link>
                     </li>
                   }
@@ -119,13 +117,13 @@ const NavBar = () => {
             })}
 
             {user.user.usertype !== '' &&
-              SidebarData.map((item, index) => {
-                const activeSidebaColor = user.user.usertype === "teacher" ?   "bg-[#4BB543]" : user.user.usertype === "student" ?  "bg-[#6674CC]" : "bg-[#F56968]"
-                const hoverstyle = user.user.usertype === "teacher" ?   "hover:bg-[#4BB543]" : user.user.usertype === "student" ?  "hover:bg-[#6674CC]" : "hover:bg-[#F56968]"
+              SidebarData.map((item) => {
+                const activeSidebaColor = user.user.usertype === "teacher" ? "bg-[#4BB543]" : user.user.usertype === "student" ? "bg-[#6674CC]" : "bg-[#F56968]"
+                const hoverstyle = user.user.usertype === "teacher" ? "hover:bg-[#4BB543] rounded-l-3xl ml-5" : user.user.usertype === "student" ? "hover:bg-[#6674CC] rounded-l-3xl ml-5" : "hover:bg-[#F56968] rounded-l-3xl ml-5"
                 return (
                   <>
                     {(item.title !== 'Student Zone' && item.title !== 'Employee Zone' && item.title !== 'Admin' && (item.user === user.user.usertype || item.user === 'Home' || item.user === 'About')) &&
-                      <li  key={index} className={`${location.pathname === item.path ? `${activeSidebaColor}  text-white rounded-l-3xl ml-5 ` : "" } ${hoverstyle} ${item.cName} `}  >
+                      <li key={item._id} className={`${location.pathname === item.path ? `${activeSidebaColor}  text-white rounded-l-3xl ml-5 ` : ""} ${hoverstyle} ${item.cName} `}  >
                         <Link to={item.path}>
                           {item.icon}
                           <span className='ml-[7%] '>{item.title}</span>

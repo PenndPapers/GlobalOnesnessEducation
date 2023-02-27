@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Carousel from '../../component/Home/Carousel'
-import g from "../../images/Group.jpg"
+import g from "../../images/divider.jpg"
 import p from "../../images/dummy-profile-pic.jpg"
 import About from './About'
 import { Link } from 'react-router-dom'
@@ -12,7 +12,7 @@ const home = () => {
 
   return (
     <>
-      <section className="w-5/6 mx-auto  flex flex-row justify-center items-center py-[5%] ">
+      <section className="w-5/6 mx-auto  flex flex-row justify-center items-center pt-[5%] ">
         <h1 className="lg:text-5xl lg:font-bold  sm:text-2xl text-xs font-normal font-[Roboto] text-[var(--colorPrimary)] mt-8" >
           10 Day Free Demo Classes!!
         </h1>
@@ -22,7 +22,7 @@ const home = () => {
           </button>
         </Link>
       </section>
-      <span className="flex flex-row mt-2 justify-center items-center text-[var(--grayDark)] ">Our result speaks about us !</span>
+      <span className="flex flex-row mt-[] justify-center items-center text-[var(--grayDark)] ">Our result speaks about us !</span>
 
 
 
@@ -40,7 +40,7 @@ const home = () => {
         </div>
 
       </section>
-      <section style={{ backgroundImage: `url(${g})` }} className=' h-[150px] flex justify-around items-center  text-white  sm:font-semibold text-center sm:text-xl  '>
+      <section style={{ backgroundImage: `url(${g})` }} className=' h-[200px] flex justify-around items-center  text-white  sm:font-semibold text-center sm:text-xl  '>
         <div>
           <span> Best </span>
           <div>   Result  </div>

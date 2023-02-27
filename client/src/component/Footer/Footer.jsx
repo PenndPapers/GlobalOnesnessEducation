@@ -28,7 +28,7 @@ const Footer = () => {
                     </Link>
                 </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3  sm:justify-items-center gap-8   py-16 w-5/6 mx-auto ">
+            <div className="grid grid-cols-1 sm:grid-cols-3  sm:justify-items-center gap-8   py-10 w-5/6 mx-auto ">
                 <ul className=" ">
                     <h1 className="mb-1 text-xl font-semibold">About Us</h1>
                     

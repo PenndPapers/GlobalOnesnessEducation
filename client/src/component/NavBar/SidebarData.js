@@ -8,6 +8,7 @@ import * as GiIcon from 'react-icons/gi';
 
 export const SidebarData = [
   {
+    _id: '1',
     title: 'Home',
     path: '/home',
     icon: <AiIcons.AiFillHome />,
@@ -16,6 +17,7 @@ export const SidebarData = [
 
   },
   {
+    _id: '2',
     title: 'About',
     path: '/about',
     icon: <AiIcons.AiFillInfoCircle />,
@@ -23,18 +25,21 @@ export const SidebarData = [
     user: 'About'
   },
   {
+    _id: '3',
     title: 'Employee Zone',
     path: '/teacherLogin',
     icon: <FaIcons.FaUsers />,
     cName: 'nav-text'
   },
   {
+    _id: '4',
     title: 'Student Zone',
     path: '/studentLogin',
     icon: <IoIcons5.IoPersonSharp />,
     cName: 'nav-text'
   },
   {
+    _id: '5',
     title: 'Dashboard',
     path: '/studentDashboard',
     icon: <MdIcon.MdSpaceDashboard />,
@@ -42,6 +47,7 @@ export const SidebarData = [
     user: 'student'
   },
   {
+    _id: '6',
     title: 'PYQs',
     path: '/pyq',
     icon: <GiIcon.GiPapers />,
@@ -49,6 +55,7 @@ export const SidebarData = [
     user: 'student'
   },
   {
+    _id: '7',
     title: 'Notes',
     path: '/notes',
     icon: <BiIcon.BsFileEarmarkPdfFill />,
@@ -56,6 +63,7 @@ export const SidebarData = [
     user: 'student'
   },
   {
+    _id: '8',
     title: 'Test',
     path: '/test',
     icon: <FaIcons.FaPenSquare />,
@@ -63,6 +71,7 @@ export const SidebarData = [
     user: 'student'
   },
   {
+    _id: '9',
     title: 'Result',
     path: '/result',
     icon: <BiIcon.BsGraphUp />,
@@ -70,6 +79,7 @@ export const SidebarData = [
     user: 'student'
   },
   {
+    _id: '10',
     title: 'Settings',
     path: '/setting',
     icon: <AiIcons.AiFillSetting />,
@@ -77,6 +87,7 @@ export const SidebarData = [
     ,user: 'student'
   },
   {
+    _id: '11',
     title: 'Feedback',
     path: '/feedback',
     icon: <FaIcons.FaComments />,
@@ -84,6 +95,7 @@ export const SidebarData = [
     user: 'student'
   } ,
   {
+    _id: '12',  
     title: 'Dashboard',
     path: '/adminDashboard',
     icon: <MdIcon.MdSpaceDashboard />,
@@ -91,6 +103,7 @@ export const SidebarData = [
     user: 'admin'
   },
   {
+    _id: '13',
     title: 'Earning',
     path: '/adminearning',
     icon: <GiIcon.GiMoneyStack />,
@@ -98,6 +111,7 @@ export const SidebarData = [
     user: 'admin'
   },
   {
+    _id: '14',
     title: 'Courses',
     path: '/courses',
     icon: <AiIcons.AiFillBook />,
@@ -105,6 +119,7 @@ export const SidebarData = [
     user: 'admin'
   },
   {
+    _id: '15',
     title: 'Teacher',
     path: '/teacher',
     icon: <GiIcon.GiTeacher />,
@@ -112,6 +127,7 @@ export const SidebarData = [
     user: 'admin'
   },
   {
+    _id: '16',
     title: 'Student',
     path: '/student',
     icon: <FaIcons.FaUserGraduate />,
@@ -119,6 +135,7 @@ export const SidebarData = [
     user: 'admin'
   },
   {
+    _id: '17',
     title: 'Settings',
     path: '/adminsetting',
     icon: <AiIcons.AiFillSetting />,
@@ -126,6 +143,7 @@ export const SidebarData = [
     ,user: 'admin'
   },
   {
+    _id: '18',
     title: 'Feedback',
     path: '/adminfeedback',
     icon: <FaIcons.FaComments />,
@@ -133,6 +151,7 @@ export const SidebarData = [
     user: 'admin'
   },
   {
+    _id: '19',
     title: 'Dashboard',
     path: '/teacherDashboard',
     icon: <MdIcon.MdSpaceDashboard />,
@@ -140,6 +159,7 @@ export const SidebarData = [
     user: 'teacher'
   },
   {
+    _id: '20',
     title: 'Earning',
     path: '/teacherearning',
     icon: <GiIcon.GiMoneyStack />,
@@ -147,6 +167,7 @@ export const SidebarData = [
     user: 'teacher'
   },
   {
+    _id: '21',
     title: 'Courses',
     path: '/teachercourses',
     icon: <AiIcons.AiFillBook />,
@@ -154,6 +175,7 @@ export const SidebarData = [
     user: 'teacher'
   },
   {
+    _id: '22',
     title: 'Test',
     path: '/teachertest',
     icon: <FaIcons.FaPenSquare />,
@@ -161,6 +183,7 @@ export const SidebarData = [
     user: 'teacher'
   },
   {
+    _id: '23',
     title: 'Attendance',
     path: '/teacherattendance',
     icon: <FaIcons.FaUserCheck />,
@@ -168,6 +191,7 @@ export const SidebarData = [
     user: 'teacher'
   },
   {
+    _id: '24',
     title: 'PYQ/Notes',
     path: '/teachernotesandpyq',
     icon: <BiIcon.BsFileEarmarkPdfFill />,
@@ -175,6 +199,7 @@ export const SidebarData = [
     user: 'teacher'
   },
   {
+    _id: '25',
     title: 'Settings',
     path: '/teachersetting',
     icon: <AiIcons.AiFillSetting />,
