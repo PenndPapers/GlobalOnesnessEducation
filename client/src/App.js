@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
-import Footer from "./component/Footer/Footer";
 import NavBar from "./component/NavBar/NavBar";
 import Home from "./pages/Home/Home";
+import Footer from "./component/Footer/Footer";
 
 import StudentLogin from "./pages/Auth/StudentLogin";
 import StudentRegister from "./pages/Auth/StudentApply";
@@ -26,7 +26,12 @@ import StudentTest from './pages/StudentApllication/StudentTest';
 import StudentSetting from './pages/StudentApllication/StudentSetting';
 
 import TeacherDashboard from './pages/TeacherApplication/TeacherDashboard';
-
+import TeacherTest from './pages/TeacherApplication/TeacherTest';
+import TeacherAttendance from './pages/TeacherApplication/TeacherAttendance';
+import TeacherPYQandNotes from './pages/TeacherApplication/TeacherPYQandNotes';
+import TeacherSetting from './pages/TeacherApplication/TeacherSetting';
+import TeacherEarning from './pages/TeacherApplication/TeacherEarning';
+import TeacherCourses from './pages/TeacherApplication/TeacherCourses';
 const App = () => {
 
 
@@ -42,8 +47,8 @@ const App = () => {
 
         <Route path='studentLogin' element={user.user.usertype !== '' ? <Navigate to='/studentDashboard' /> : <StudentLogin />} />
         <Route path='studentRegister' element={<StudentRegister />} />
-        <Route path='teacherLogin' element={user.user.usertype != '' ? <Navigate to='/teacherDashboard' /> : <TeacherLogin />} />
-        <Route path='adminLogin' element={user.user.usertype != '' ? <Navigate to='/adminDashboard' /> : <AdminLogin />} />
+        <Route path='teacherLogin' element={user.user.usertype !== '' ? <Navigate to='/teacherDashboard' /> : <TeacherLogin />} />
+        <Route path='adminLogin' element={user.user.usertype !== '' ? <Navigate to='/adminDashboard' /> : <AdminLogin />} />
 
 
         <Route path='studentDashboard' element={user.user.usertype === 'student' ? <StudentDashboard /> : <Navigate to="/studentLogin" />} />
@@ -56,12 +61,19 @@ const App = () => {
 
 
 
-        <Route path="adminDashboard" element={user.user.usertype === 'admin'? <AdminDashboard /> : <Navigate to='/adminLogin'/>} />
+        <Route path="adminDashboard" element={user.user.usertype === 'admin' ? <AdminDashboard /> : <Navigate to='/adminLogin' />} />
         <Route path="courses" element={<AdminCoursesList />} />
         <Route path="teacher" element={<AdminTeachersList />} />
         <Route path="student" element={<AdminStudentList />} />
 
-        <Route path='teacherDashboard' element={user.user.usertype === 'teacher' ? <TeacherDashboard /> : <Navigate to='/teacherLogin'/>} />
+        <Route path='teacherDashboard' element={user.user.usertype === 'teacher' ? <TeacherDashboard /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teacherearning' element={user.user.usertype === 'teacher' ? <TeacherEarning /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teachercourses' element={user.user.usertype === 'teacher' ? <TeacherCourses /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teachertest' element={user.user.usertype === 'teacher' ? <TeacherTest /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teacherattendance' element={user.user.usertype === 'teacher' ? <TeacherAttendance /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teachernotesandpyq' element={user.user.usertype === 'teacher' ? <TeacherPYQandNotes /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teachersetting' element={user.user.usertype === 'teacher' ? <TeacherSetting /> : <Navigate to='/teacherLogin' />} />
+
       </Routes>
       <Footer />
     </>

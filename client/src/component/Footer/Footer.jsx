@@ -1,8 +1,10 @@
 import React from "react";
 import { CiFacebook, CiTwitter, CiLinkedin, CiInstagram } from "react-icons/ci"
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Footer = () => {
+
+    const location = useLocation();
 
     const d = new Date();
 
@@ -29,14 +31,13 @@ const Footer = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3  sm:justify-items-center gap-8   py-16 w-5/6 mx-auto ">
                 <ul className=" ">
                     <h1 className="mb-1 text-xl font-semibold">About Us</h1>
-                    <li  >
-                   
+                    
+                    {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') &&
+                        <li  >
                         <a className="text-gray-400 hover:text-logo-color       text-sm cursor-pointer   " href="../adminDashboard" >
                             Admin
                         </a>
-                  
-
-                    </li>
+                    </li>}
                     <li  >
 
                         <a className="text-gray-400 hover:text-logo-color       text-sm cursor-pointer   " href="" >

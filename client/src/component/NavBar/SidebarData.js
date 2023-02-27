@@ -153,4 +153,32 @@ export const SidebarData = [
     cName: 'nav-text',
     user: 'teacher'
   },
+  {
+    title: 'Test',
+    path: '/teachertest',
+    icon: <FaIcons.FaPenSquare />,
+    cName: 'nav-text',
+    user: 'teacher'
+  },
+  {
+    title: 'Attendance',
+    path: '/teacherattendance',
+    icon: <FaIcons.FaUserCheck />,
+    cName: 'nav-text',
+    user: 'teacher'
+  },
+  {
+    title: 'PYQ/Notes',
+    path: '/teachernotesandpyq',
+    icon: <BiIcon.BsFileEarmarkPdfFill />,
+    cName: 'nav-text',
+    user: 'teacher'
+  },
+  {
+    title: 'Settings',
+    path: '/teachersetting',
+    icon: <AiIcons.AiFillSetting />,
+    cName: 'nav-text'
+    ,user: 'teacher'
+  },
 ];

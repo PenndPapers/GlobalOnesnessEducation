@@ -38,13 +38,13 @@ const NavBar = () => {
       <>
         <div className='navbar bg-[#ffffff] h-[60px] flex justify-between items-center drop-shadow-lg px-[2%] '>
           <div className='flex items-center'>
-            <Link to='#' className={(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/adminAndTeacher') ? 'menu-bars ml-4 text-[2rem] md: ' : 'menu-bars ml-4 text-[2rem] '}>
+            <Link to='#' className={(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') ? 'menu-bars ml-4 text-[2rem] md:hidden ' : 'menu-bars ml-4 text-[2rem] '}>
               <FaIcons.FaBars onClick={showSidebar} />
             </Link>
             <img src={logo} alt="logo of globla oneness" width={140} className='ml-[3%]' />
           </div>
 
-          {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/adminAndTeacher') &&
+          {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') &&
             <div className='w-full md:flex justify-end hidden '>
               <ul className="flex  flex-row list-none  ml-auto mr-[2%] ">
                 <Link to='../home'>
