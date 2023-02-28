@@ -104,15 +104,15 @@ const NavBar = () => {
                 <span className='font-[Poppins] '> Hello {user.user.firstname}</span>
               </div>
             </li>
-            {user.user.usertype === '' && SidebarData.map((item, index) => {
+            {user.user.usertype === '' && SidebarData.map((item) => {
               return (
-                <>
+                <div key={item._id}>
                   {(item.title === 'Student Zone' || item.title === 'Admin' || item.title === 'Employee Zone' || item.title === 'Home' || item.title === 'About') &&
-                    <li key={item._id} className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
+                    <li className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
                       <Link to={item.path}> {item.icon} <span className='pl-[2%] ml-[2%]'>{item.title}</span> </Link>
                     </li>
                   }
-                </>
+                </div>
               );
             })}
 
@@ -121,16 +121,16 @@ const NavBar = () => {
                 const activeSidebaColor = user.user.usertype === "teacher" ? "bg-[#4BB543]" : user.user.usertype === "student" ? "bg-[#6674CC]" : "bg-[#F56968]"
                 const hoverstyle = user.user.usertype === "teacher" ? "hover:bg-[#4BB543] rounded-l-3xl ml-5" : user.user.usertype === "student" ? "hover:bg-[#6674CC] rounded-l-3xl ml-5" : "hover:bg-[#F56968] rounded-l-3xl ml-5"
                 return (
-                  <>
+                  <div key={item._id}>
                     {(item.title !== 'Student Zone' && item.title !== 'Employee Zone' && item.title !== 'Admin' && (item.user === user.user.usertype || item.user === 'Home' || item.user === 'About')) &&
-                      <li key={item._id} className={`${location.pathname === item.path ? `${activeSidebaColor}  text-white rounded-l-3xl ml-5 ` : ""} ${hoverstyle} ${item.cName} `}  >
+                      <li className={`${location.pathname === item.path ? `${activeSidebaColor}  text-white rounded-l-3xl ml-5 ` : ""} ${hoverstyle} ${item.cName} `}  >
                         <Link to={item.path}>
                           {item.icon}
                           <span className='ml-[7%] '>{item.title}</span>
                         </Link>
                       </li>
                     }
-                  </>
+                  </div>
                 );
               })
             }
