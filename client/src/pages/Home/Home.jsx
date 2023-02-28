@@ -12,7 +12,7 @@ const home = () => {
 
   return (
     <>
-      <section className="w-5/6 mx-auto  flex flex-row justify-center items-center pt-[5%] ">
+      <section className="w-5/6 mx-auto  flex flex-row justify-center items-center md:pt-[5%] pt-10 ">
         <h1 className="lg:text-5xl lg:font-bold  sm:text-2xl text-xs font-normal font-[Roboto] text-[var(--colorPrimary)] mt-8" >
           10 Day Free Demo Classes!!
         </h1>
@@ -51,7 +51,7 @@ const home = () => {
         </div>
 
         <div>
-          <span> Best + </span>
+          <span> Best</span>
           <div>  Faculty  </div>
 
         </div>
