@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
-import NavBar from '../../component/NavBar/NavBar'
-import { FaRegWindowClose } from 'react-icons/fa';
 import { ApplyRegisteration } from '../../api/RegisterApi';
 import dummy_profile from "../../images/dummy-profile-pic.jpg"
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,10 +8,9 @@ import uuid from 'react-uuid';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from '../../config/firebase';
 
-const URL = "http://localhost:5000/";
 const StudentApply = () => {
-  
-  
+
+
   const [CourseeData, setCourseeData] = useState([]);
   const [userData, setUserData] = useState({ firstname: "", lastname: "", email: "", phone: "", guardianNumber: "", class: "", address: "", school: "", photo: "" });
   const [course, setCourse] = useState([]);
@@ -88,12 +85,11 @@ const StudentApply = () => {
         const storageRef = ref(storage, `profile/${userData.photo}`);
         uploadBytes(storageRef, file).then((snapshot) => {
 
-          toast.success('Profile Image Uploaded');
-          const pdfStorageRef = ref(storage, `profile/${userData.photo}`);
-          getDownloadURL(pdfStorageRef).then((url) => {
+          const imgStorageRef = ref(storage, `profile/${userData.photo}`);
+          getDownloadURL(imgStorageRef).then((url) => {
             console.log(url);
           }).catch((error) => {
-            toast.error('Profile Image Upload Failed');
+            toast.error('Can not load profile image');
           });
 
         })
@@ -103,6 +99,13 @@ const StudentApply = () => {
       console.log(course);
 
       ApplyRegisteration({ userData, course })
+        .then((res) => {
+          console.log(res);
+          toast.success('Registration Successfull');
+        }).catch((err) => {
+          console.log(err);
+          toast.error('Registration Failed');
+        })
       setUserData({ firstname: "", lastname: "", email: "", phone: "", guardianNumber: "", class: "", address: "", school: "", photo: "" })
       setCourse([])
 
@@ -142,7 +145,7 @@ const StudentApply = () => {
                 <input required={true} id="lastname" className=" md:mx-0 mx-5 border-2 p-2 rounded-md " type="text" value={userData.lasttname} onChange={onChangeHandler} placeholder="Last Name" />
 
 
-                <select required={true} id="class" className='md:mx-0 mx-5 border-2 p-2 rounded-md mt-8' type="number" value={userData.class} onChange={onChangeHandler}    >
+                <select required={true} id="class" className='md:mx-0 mx-5 border-2 p-2 rounded-md mt-8' type="number" value={userData.class} onChange={onChangeHandler}>
                   <option value=""   >Class</option>
                   <option value="9" >9</option>
                   <option value="10">10</option>
@@ -155,7 +158,7 @@ const StudentApply = () => {
                 <input required={true} id="guardianNumber" className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8" type="tel" value={userData.guardianNumber} onChange={onChangeHandler} placeholder="Guardian Number" />
 
                 <select required={true} id="course" className='md:mx-0 mx-5 border-2 p-2 rounded-md mt-8 snap-y  ' value={course[0]} onChange={onAddCourse}  >
-                <option  value="Select Course" className="text-black" >Select Course </option>
+                  <option value="Select Course" className="text-black" >Select Course </option>
                   {
                     CourseeData.map((c) => {
                       return (
@@ -179,18 +182,6 @@ const StudentApply = () => {
                   </div>
                 )
               })}
-
-
-              {/* <div className='relative border-2 border-blue-400 text-blue-500 rounded-md p-2 px-3 group '>
-                <span className='' >Physics</span>
-                <FaRegWindowClose size={12} className='hidden group-hover:block cursor-pointer absolute top-0 right-0 text-red-500' />
-              </div>
-              <div className='relative border-2 border-blue-400 text-blue-500 rounded-md p-2 px-3 group '>
-                <span className='' >Maths</span>
-                <FaRegWindowClose size={12} className='hidden group-hover:block cursor-pointer absolute top-0 right-0 text-red-500' />
-              </div> */}
-
-
             </div>
 
             <button className="md:mx-10 mx-12 border-2 p-2 font-[Poppins] rounded-md md:mt-8  btn bg-[var(--buttonBlue)] text-white py-2 px-3 " >
@@ -199,19 +190,6 @@ const StudentApply = () => {
             <span className='mx-5 md:mx-0 my-5  md:text-[16px] text-[12px] justify-center text-center '>have an account ? <a className='text-red-600' href='../studentLogin'>Login</a></span>
           </form>
         </div>
-        <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-      
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-
       </div>
       <ToastContainer
         position="top-center"

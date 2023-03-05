@@ -43,44 +43,44 @@ const App = () => {
   return (
     <>
       <NavBar />
-    
-        <Routes>
-          <Route path='/' element={user.user.usertype === '' ? <Navigate to="home" /> : user.user.usertype === 'student' ? <Navigate to="/studentLogin" /> : user.user.usertype === 'teacher' ? <Navigate to="/teacherLogin" /> : <Navigate to="/adminLogin" />} />
-          <Route path='home' element={<Home />} />
-          <Route path='forgotPassword' element={<ForgotPassword />} />
 
-          <Route path='studentLogin' element={user.user.usertype !== '' ? <Navigate to='/studentDashboard' /> : <StudentLogin />} />
-          <Route path='studentRegister' element={<StudentRegister />} />
-          <Route path='teacherLogin' element={user.user.usertype !== '' ? <Navigate to='/teacherDashboard' /> : <TeacherLogin />} />
-          <Route path='adminLogin' element={user.user.usertype !== '' ? <Navigate to='/adminDashboard' /> : <AdminLogin />} />
+      <Routes>
+        <Route path='/' element={user.user.usertype === '' ? <Navigate to="home" /> : user.user.usertype === 'student' ? <Navigate to="/studentLogin" /> : user.user.usertype === 'teacher' ? <Navigate to="/teacherLogin" /> : <Navigate to="/adminLogin" />} />
+        <Route path='home' element={<Home />} />
+        <Route path='forgotPassword' element={<ForgotPassword />} />
 
-
-          <Route path='studentDashboard' element={user.user.usertype === 'student' ? <StudentDashboard /> : <Navigate to="/studentLogin" />} />
-          <Route path='pyq' element={user.user.usertype === 'student' ? <StudentPYQ /> : <Navigate to="/studentLogin" />} />
-          <Route path='notes' element={user.user.usertype === 'student' ? <StudentNotes /> : <Navigate to="/studentLogin" />} />
-          <Route path='feedback' element={user.user.usertype === 'student' ? <StudentFeedback /> : <Navigate to="/studentLogin" />} />
-          <Route path='result' element={user.user.usertype === 'student' ? <StudentResult /> : <Navigate to="/studentLogin" />} />
-          <Route path='test' element={user.user.usertype === 'student' ? <StudentTest /> : <Navigate to="/studentLogin" />} />
-          <Route path='setting' element={user.user.usertype === 'student' ? <StudentSetting /> : <Navigate to="/studentLogin" />} />
+        <Route path='studentLogin' element={user.user.usertype !== '' ? <Navigate to='/studentDashboard' /> : <StudentLogin />} />
+        <Route path='studentRegister' element={<StudentRegister />} />
+        <Route path='teacherLogin' element={user.user.usertype !== '' ? <Navigate to='/teacherDashboard' /> : <TeacherLogin />} />
+        <Route path='adminLogin' element={user.user.usertype !== '' ? <Navigate to='/adminDashboard' /> : <AdminLogin />} />
 
 
+        <Route path='studentDashboard' element={user.user.usertype === 'student' ? <StudentDashboard /> : <Navigate to="/studentLogin" />} />
+        <Route path='pyq' element={user.user.usertype === 'student' ? <StudentPYQ /> : <Navigate to="/studentLogin" />} />
+        <Route path='notes' element={user.user.usertype === 'student' ? <StudentNotes /> : <Navigate to="/studentLogin" />} />
+        <Route path='feedback' element={user.user.usertype === 'student' ? <StudentFeedback /> : <Navigate to="/studentLogin" />} />
+        <Route path='result' element={user.user.usertype === 'student' ? <StudentResult /> : <Navigate to="/studentLogin" />} />
+        <Route path='test' element={user.user.usertype === 'student' ? <StudentTest /> : <Navigate to="/studentLogin" />} />
+        <Route path='setting' element={user.user.usertype === 'student' ? <StudentSetting /> : <Navigate to="/studentLogin" />} />
 
-          <Route path="adminDashboard" element={user.user.usertype === 'admin' ? <AdminDashboard /> : <Navigate to='/adminLogin' />} />
-          <Route path="courses" element={<AdminCoursesList />} />
-          <Route path="teacher" element={<AdminTeachersList />} />
-          <Route path="student" element={<AdminStudentList />} />
-          <Route  path='/adminregistration' element={<AdminRegistration />} />
 
-          <Route path='teacherDashboard' element={user.user.usertype === 'teacher' ? <TeacherDashboard /> : <Navigate to='/teacherLogin' />} />
-          <Route path='teacherearning' element={user.user.usertype === 'teacher' ? <TeacherEarning /> : <Navigate to='/teacherLogin' />} />
-          <Route path='teachercourses' element={user.user.usertype === 'teacher' ? <TeacherCourses /> : <Navigate to='/teacherLogin' />} />
-          <Route path='teachertest' element={user.user.usertype === 'teacher' ? <TeacherTest /> : <Navigate to='/teacherLogin' />} />
-          <Route path='teacherattendance' element={user.user.usertype === 'teacher' ? <TeacherAttendance /> : <Navigate to='/teacherLogin' />} />
-          <Route path='teachernotesandpyq' element={user.user.usertype === 'teacher' ? <TeacherPYQandNotes /> : <Navigate to='/teacherLogin' />} />
-          <Route path='teachersetting' element={user.user.usertype === 'teacher' ? <TeacherSetting /> : <Navigate to='/teacherLogin' />} />
 
-        </Routes>
-      
+        <Route path="adminDashboard" element={user.user.usertype === 'admin' ? <AdminDashboard /> : <Navigate to='/adminLogin' />} />
+        <Route path="courses" element={user.user.usertype === 'admin' ? <AdminCoursesList /> : <Navigate to='/adminLogin' />} />
+        <Route path="teacher" element={user.user.usertype === 'admin' ? <AdminTeachersList /> : <Navigate to='/adminLogin' />} />
+        <Route path="student" element={user.user.usertype === 'admin' ? <AdminStudentList /> : <Navigate to='/adminLogin' />} />
+        <Route path='/adminregistration' element={user.user.usertype === 'admin' ? <AdminRegistration /> : <Navigate to='/adminLogin' />} />
+
+        <Route path='teacherDashboard' element={user.user.usertype === 'teacher' ? <TeacherDashboard /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teacherearning' element={user.user.usertype === 'teacher' ? <TeacherEarning /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teachercourses' element={user.user.usertype === 'teacher' ? <TeacherCourses /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teachertest' element={user.user.usertype === 'teacher' ? <TeacherTest /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teacherattendance' element={user.user.usertype === 'teacher' ? <TeacherAttendance /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teachernotesandpyq' element={user.user.usertype === 'teacher' ? <TeacherPYQandNotes /> : <Navigate to='/teacherLogin' />} />
+        <Route path='teachersetting' element={user.user.usertype === 'teacher' ? <TeacherSetting /> : <Navigate to='/teacherLogin' />} />
+
+      </Routes>
+
       <Footer />
     </>
 
