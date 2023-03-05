@@ -1,6 +1,6 @@
 
 import RegistrationModel from "../Models/RegistrationModel.js"
-
+import StudentModel from "../Models/studentModel.js"
 
 export const Applyregistration = async (req, res, next) => {
 
@@ -26,10 +26,10 @@ export const Applyregistration = async (req, res, next) => {
   console.log(user);
   
 
-  
-  let existingUser = await RegistrationModel.findOne({ email: user.email });
+  let existingUser = await StudentModel.findOne({ email: user.email }) || await RegistrationModel.findOne({ email: user.email });
   if (existingUser) return res.status(400).json("Email already exist");
-   
+      
+ 
   const savedUser = await user.save();
   return res.status(200).json("sucessfully registered !!");
 }
