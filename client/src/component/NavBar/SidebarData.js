@@ -206,4 +206,12 @@ export const SidebarData = [
     cName: 'nav-text'
     ,user: 'teacher'
   },
+  {
+    _id: '26',
+    title: 'Registration',
+    path: '/adminregistration',
+    icon: <GiIcon.GiMoneyStack />,
+    cName: 'nav-text',
+    user: 'admin'
+  },
 ];

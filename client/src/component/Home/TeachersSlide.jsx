@@ -55,7 +55,7 @@ const TeachersSlide = () => {
  
 
   return (
-    <section className='w-5/6 mx-auto  py-10    '>
+    <section className='sm:w-5/6 mx-auto p-2  py-10    '>
       <div>
       <h1 className='text-xl sm:text-4xl my-10 font-bold font-[Roboto] '>Our faculty </h1>
         <div className='grid grid-flow-col auto-cols-max  overflow-x-auto   scrollbar-hide gap-10  sm:gap-20 ' >

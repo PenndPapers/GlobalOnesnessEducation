@@ -4,13 +4,17 @@ import NavBar from '../../component/NavBar/NavBar'
 import { FaRegWindowClose } from 'react-icons/fa';
 import { ApplyRegisteration  } from '../../api/RegisterApi';
 import dummy_profile from "../../images/dummy-profile-pic.jpg"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const URL = "http://localhost:5000/";
 const StudentApply = () => {
-
+  
+  
   const [CourseeData, setCourseeData] = useState([]);
   const [userData, setUserData] = useState({ firstname: "", lastname: "", email: "", phone: "", guardianNumber: "", class: "", address: "", school: "" });
   const [course, setCourse] = useState([]);
+
 
   const onChangeHandler = (e) => {
     const key = e.target.id;
@@ -30,6 +34,7 @@ const StudentApply = () => {
         })
       }).catch(((err) => {
         console.log(err);
+
       }))
     }
   }
@@ -60,12 +65,47 @@ const StudentApply = () => {
 
 
   
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     console.log(userData);
     console.log(course);
-  
-    ApplyRegisteration({ userData ,   course  })
+     if(course.length == 0 ) {
+      toast.warning("Select a course " , {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
+     }
+   try{
+    const response = await ApplyRegisteration({ userData ,   course  })
+    console.log("res" , response.data);
+    toast.success(response.data , {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    })
+   }catch(err){
+    console.log("res" , err.response.data);
+    toast.error(err.response.data , {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    })
+   }
+
+    
     setUserData({ firstname: "", lastname: "", email: "", phone: "", guardianNumber: "", class: "", address: "", school: "" })
     setCourse([])
     
@@ -116,7 +156,7 @@ const StudentApply = () => {
                 <input required={true} id="guardianNumber" className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8" type="tel" value={userData.guardianNumber} onChange={onChangeHandler} placeholder="Guardian Number" />
 
                 <select required={true} id="course" className='md:mx-0 mx-5 border-2 p-2 rounded-md mt-8 snap-y  ' value={course[0]} onChange={onAddCourse}  >
-
+                <option  value="Select Course" className="text-black" >Select Course </option>
                   {
                     CourseeData.map((c) => {
                       return (
@@ -160,6 +200,18 @@ const StudentApply = () => {
             <span className='mx-5 md:mx-0 my-5  md:text-[16px] text-[12px] justify-center text-center '>have an account ? <a className='text-red-600' href='../studentLogin'>Login</a></span>
           </form>
         </div>
+        <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+      
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
       </div>
     </div>

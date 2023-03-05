@@ -21,7 +21,7 @@ const studentSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    parentNo: {
+    guardianNumber: {
         type: Number,
         required: true,
     },

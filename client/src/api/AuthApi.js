@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const Api = axios.create({ baseURL: 'http://localhost:5000' });
 
+export const StudentRegister= (formData) => Api.post('/auth/studentregister', formData);   
+
 export const studentLogin= (formData) => Api.post('/auth/studentlogin', formData);
 
 export const adminLogin= (formData) => Api.post('/auth/adminlogin', formData);

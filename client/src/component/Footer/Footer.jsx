@@ -9,7 +9,12 @@ const Footer = () => {
     const d = new Date();
 
     return (
-        <footer className="bg-gray-900 text-white font-[Lato] ">
+        <footer className="bg-gray-900 text-white font-[Lato]  mt-auto ">
+           
+           {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') &&
+                       
+                       
+           
             <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#ffffff19] py-7">
                 <h1
                     className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold
@@ -28,6 +33,7 @@ const Footer = () => {
                     </Link>
                 </div>
             </div>
+           }
             <div className="grid grid-cols-1 sm:grid-cols-3  sm:justify-items-center gap-8   py-10 w-5/6 mx-auto ">
                 <ul className=" ">
                     <h1 className="mb-1 text-xl font-semibold">About Us</h1>
