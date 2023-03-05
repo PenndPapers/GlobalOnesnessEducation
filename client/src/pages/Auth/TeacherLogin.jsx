@@ -1,29 +1,38 @@
-import React ,{useState} from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react'
+import { useDispatch ,useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { teacherLogin } from '../../features/auth/authAction';
 import img from '../../images/shutterstock_download.jpg'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const TeacherLogin = () => {
 
-    const [data, setData] = useState({ teacherId: '', password: '' });
-    const dispatch = useDispatch()
-    const Navigate = useNavigate()
+  const [data, setData] = useState({ teacherId: '', password: '' });
+  const dispatch = useDispatch()
+  const Navigate = useNavigate()
+  const user = useSelector(state => state.auth)
 
-    const handleInputChange = (e) => {
-        setData({ ...data, [e.target.name]: e.target.value });
+  const handleInputChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  }
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(data);
+
+    dispatch(teacherLogin(data))
+    if (user.loading === false) {
+
+      if (user.error !== null) {
+        toast.error(user.error.error);
+      }
+    } else {
+      Navigate('/teacherDashboard')
     }
 
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        console.log(data);
-
-        dispatch(teacherLogin(data))
-
-        Navigate('/teacherDashboard')
-
-        setData({ adminId: '', password: '' });
-    }
+    setData({ adminId: '', password: '' });
+  }
 
   return (
     <div className='py-20'>
@@ -42,14 +51,27 @@ const TeacherLogin = () => {
 
           <span className='text-center md:text-[12px] text-[12px]  mt-[1%]'>Please enter your details carefully !</span>
           <form className="flex flex-col max-w-full pb-[5%]" onSubmit={handleFormSubmit}>
-            <input className=" md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8" type="text" placeholder="Teacher ID" name='teacherId' value={data.teacherId}  onChange={handleInputChange}/>
-            <input className="md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8 mb-[5%] md:mb-0" type="password" placeholder="Password" name='password' value={data.password} onChange={handleInputChange}/>
+            <input className=" md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8" type="text" placeholder="Teacher ID" name='teacherId' value={data.teacherId} onChange={handleInputChange} />
+            <input className="md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8 mb-[5%] md:mb-0" type="password" placeholder="Password" name='password' value={data.password} onChange={handleInputChange} />
             <button className="md:mx-[20%] mx-[20%] border-2 p-[2%] font-[Poppins] rounded-md md:mt-[8%] bg-[var(--buttonBlue)] text-white  " >
               Login
             </button>
+            <span className='mx-[3%] md:mx-0   md:text-[16px] text-[12px] justify-center text-center text-blue-600'><a href='../forgotPassword'>Forgot Password</a></span>
           </form>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   )
 }

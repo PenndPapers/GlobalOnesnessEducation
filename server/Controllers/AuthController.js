@@ -4,6 +4,19 @@ import AdminModel from "../Models/adminModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
+import nodemailer from "nodemailer";
+
+let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+        type: "login", // default
+        user: "globalonenesseducation@gmail.com", // generated ethereal user
+        pass: "dgolyzakhjbahmdh" // generated ethereal password
+    },
+});
+
 //register a student
 export const studentregister = async (req, res) => {
     try {
@@ -30,13 +43,13 @@ export const studentlogin = async (req, res) => {
     try {
 
         const { studentId, password } = req.body;
-        console.log("id passs std",studentId, password);
+        console.log("id passs std", studentId, password);
 
         const student = await StudentModel.findOne({ studentId: studentId });
         console.log(student);
 
         if (!student) {
-            return res.status(400).json({ error: "Student not found" });
+            return res.status(400).json({ error: "Invalid Student ID" });
         }
         console.log(student.password);
 
@@ -66,7 +79,7 @@ export const changepassword = async (req, res) => {
         const { oldPassword, newPassword, StudentId } = req.body;
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.newPassword, salt);
-        
+
         const oldStudent = await StudentModel.findOne({ studentId: StudentId });
         if (oldStudent) {
             const validPassword = await bcrypt.compare(oldPassword, oldStudent.password);
@@ -115,9 +128,9 @@ export const teacherregister = async (req, res) => {
 export const teacherlogin = async (req, res) => {
     try {
         const { teacherId, password } = req.body;
-        console.log("id pass",teacherId, password);
+        console.log("id pass", teacherId, password);
         const teacher = await TeacherModel.findOne({ teacherId: teacherId });
-        if (!teacher) return res.status(400).json({ error: "Teacher not found" });
+        if (!teacher) return res.status(400).json({ error: "Invalid Teacher ID " });
 
         const validPassword = await bcrypt.compare(password, teacher.password);
         if (!validPassword) return res.status(400).json({ error: "Invalid Password" });
@@ -162,7 +175,7 @@ export const adminlogin = async (req, res) => {
     try {
         const { adminId, password } = req.body;
         const admin = await AdminModel.findOne({ adminId: adminId });
-        if (!admin) return res.status(400).json({ error: "Admin not found" });
+        if (!admin) return res.status(400).json({ error: "Invalid Admin ID" });
 
         const validPassword = await bcrypt.compare(password, admin.password);
         if (!validPassword) return res.status(400).json({ error: "Invalid Password" });
@@ -176,5 +189,93 @@ export const adminlogin = async (req, res) => {
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: err.message });
+    }
+}
+
+export const forgotpassword = async (req, res) => {
+    console.log(req.body);
+    const { email, userId, password, usertype } = req.body;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    if (usertype === "student") {
+        const oldStudent = await StudentModel.findOne({ studentId: userId });
+        if (oldStudent) {
+            if (oldStudent.email !== email) {
+                return res.status(401).json({ error: "Invalid Email" });
+            } else {
+                oldStudent.password = hashedPassword;
+                const savedStudent = await oldStudent.save();
+                try {
+                    let info = await transporter.sendMail({
+                        from: '"GlobalOneness Education" globalonenesseducation@gmail.com', // sender address
+                        to: `${email}`, // list of receivers
+                        subject: "Password Change Successfully", // Subject line
+                        html: "<h2>Dear " + oldStudent.firstname + "</h2><h4>This email is to confirm that your password has been successfully changed</h4><h4>Your new Password is " + password + " </h4><h3>Please Dont Forget to change the password before further user</h3><h5>Best regards</h5><h2>GlobalOneness Educaiton </h2>", // html body
+                    });
+                    console.log("Message sent: %s", info.messageId);
+                    return res.status(200).json({ message: "Password Changed Successfully Check Your Mail For further Steps" });
+                } catch (err) {
+                    console.log(err);
+                  return  res.status(500).json({ error: err.message });
+                }
+            }
+        } else {
+            return res.status(400).json({ error: "Invalid Student ID" });
+        }
+    } else if (usertype === "teacher") {
+        const oldTeacher = await TeacherModel.findOne({ teacherId: userId });
+        if (oldTeacher) {
+            if (oldTeacher.email !== email) {
+                return res.status(401).json({ error: "Invalid Email" });
+            } else {
+                oldTeacher.password = hashedPassword;
+                const savedTeacher = await oldTeacher.save();
+                try {
+                    let info = await transporter.sendMail({
+                        from: '"GlobalOneness Education" globalonenesseducation@gmail.com',
+                        to: `${email}`,
+                        subject: "Password Change Successfully", // Subject line
+                        html: "<h2>Dear " + oldTeacher.firstname + "</h2><h4>This email is to confirm that your password has been successfully changed</h4><h4>Your new Password is " + password + " </h4><h3>Please Dont Forget to change the password before further user</h3><h5>Best regards</h5><h2>GlobalOneness Educaiton </h2>", // html body
+
+                    }); console.log("Message sent: %s", info.messageId);
+                    return res.status(200).json({ message: "Password Changed Successfully Check Your Mail For further Steps" });
+                } catch (err) {
+                    console.log(err);
+                    return res.status(500).json({ error: err.message });
+                }
+            }
+        }
+        else {
+            return res.status(400).json({ error: "Invalid Teacher ID" });
+        }
+    } else if (usertype === "admin") {
+        const oldadmin = await AdminModel.findOne({ adminId: userId });
+        if (oldadmin) {
+
+            if (oldadmin.email !== email) {
+                console.log("email not same", oldadmin.email, email);
+                return res.status(401).json({ error: "Invalid Email" });
+            } else {
+                oldadmin.password = hashedPassword;
+                const savedAdmin = await oldadmin.save();
+                try {
+                    let info = await transporter.sendMail({
+                        from: '"GlobalOneness Education" globalonenesseducation@gmail.com',
+                        to: `${email}`,
+                        subject: "Password Change Successfully", // Subject line
+                        html: "<h2>Dear " + oldadmin.firstname + "</h2><h4>This email is to confirm that your password has been successfully changed</h4><h4>Your new Password is " + password + " </h4><h3>Please Dont Forget to change the password before further user</h3><h5>Best regards</h5><h2>GlobalOneness Educaiton </h2>", // html body
+
+                    }); console.log("Message sent: %s", info.messageId);
+                   return  res.status(200).json({ message: "Password Changed Successfully Check Your Mail For further Steps" });
+                } catch (err) {
+                    console.log(err);
+                    return res.status(500).json({ error: err.message });
+                }
+            }
+        }else {
+            return res.status(400).json({ error: "Invalid Admin ID" });
+        }
+
     }
 }

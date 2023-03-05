@@ -7,6 +7,7 @@ import cors from "cors";
 import AdminRoute from './Routes/AdminRoute.js';
 import Registstion from './Routes/RegistrationRoutes.js';
 import StudentRoute from './Routes/StudentRoutes.js';
+import TeacherRoute from './Routes/TeacherRoutes.js';
 
 const app = express();
 const port = 5000;
@@ -35,5 +36,6 @@ app.use('/auth', AuthRoute);
 app.use('/admin', AdminRoute);
 app.use('/registration', Registstion);
 app.use('/student' , StudentRoute);
+app.use('/teacher' , TeacherRoute);
 
 

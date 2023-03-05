@@ -2,15 +2,21 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import NavBar from '../../component/NavBar/NavBar'
 import { FaRegWindowClose } from 'react-icons/fa';
-import { ApplyRegisteration  } from '../../api/RegisterApi';
+import { ApplyRegisteration } from '../../api/RegisterApi';
 import dummy_profile from "../../images/dummy-profile-pic.jpg"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import uuid from 'react-uuid';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { storage } from '../../config/firebase';
 
 const URL = "http://localhost:5000/";
 const StudentApply = () => {
 
   const [CourseeData, setCourseeData] = useState([]);
-  const [userData, setUserData] = useState({ firstname: "", lastname: "", email: "", phone: "", guardianNumber: "", class: "", address: "", school: "" });
+  const [userData, setUserData] = useState({ firstname: "", lastname: "", email: "", phone: "", guardianNumber: "", class: "", address: "", school: "", photo: "" });
   const [course, setCourse] = useState([]);
+  const [file, setFile] = useState([]);
 
   const onChangeHandler = (e) => {
     const key = e.target.id;
@@ -19,7 +25,7 @@ const StudentApply = () => {
     setUserData((pre) => {
       return { ...pre, [key]: value }
     })
-   
+
     if (key === "class") {
       setCourseeData([])
       axios.get((`${URL}admin/getAllCourse/${value}`)).then((res) => {
@@ -50,25 +56,54 @@ const StudentApply = () => {
 
   const onDeleteCourse = (e) => {
     console.log(e)
-    
+
     console.log(e.target.id);
 
-    setCourse(course.filter(item => item !== e.target.id))    
+    setCourse(course.filter(item => item !== e.target.id))
 
   }
 
 
 
-  
+
   const onSubmitHandler = (e) => {
-    e.preventDefault();
     console.log(userData);
-    console.log(course);
-  
-    ApplyRegisteration({ userData ,   course  })
-    setUserData({ firstname: "", lastname: "", email: "", phone: "", guardianNumber: "", class: "", address: "", school: "" })
-    setCourse([])
-    
+    if (userData.firstname === "" || userData.lastname === "" || userData.email === "" || userData.phone === "" || userData.guardianNumber === "" || userData.class === "" || userData.address === "" || userData.school === "") {
+      e.preventDefault();
+      toast.warning('Please Fill All the Fields');
+    } else if (CourseeData.length === 0) {
+      e.preventDefault();
+      toast.warning('Please Select a Course');
+    } else if (file.length === 0) {
+      e.preventDefault();
+      toast.warning('Please Select a Image');
+    }
+    else {
+      if (file !== null) {
+        console.log(userData);
+        userData.photo = uuid();
+        const storageRef = ref(storage, `profile/${userData.photo}`);
+        uploadBytes(storageRef, file).then((snapshot) => {
+
+          toast.success('Profile Image Uploaded');
+          const pdfStorageRef = ref(storage, `profile/${userData.photo}`);
+          getDownloadURL(pdfStorageRef).then((url) => {
+            console.log(url);
+          }).catch((error) => {
+            toast.error('Profile Image Upload Failed');
+          });
+
+        })
+      }
+      e.preventDefault();
+      console.log(userData);
+      console.log(course);
+
+      ApplyRegisteration({ userData, course })
+      setUserData({ firstname: "", lastname: "", email: "", phone: "", guardianNumber: "", class: "", address: "", school: "", photo: "" })
+      setCourse([])
+
+    }
   }
   return (
     <div className='pt-20 '>
@@ -86,9 +121,10 @@ const StudentApply = () => {
           <form className="flex flex-col max-w-full mt-5  " onSubmit={onSubmitHandler} >
             <div className='flex md:flex-row flex-col   gap-3 justify-around    '>
 
-              <div className='w-[100px] h-[100px] cursor-pointer  mx-5  '>
+              <div className='w-[150px] h-[150px] cursor-pointer text-center m-[5%]  '>
                 <img src={dummy_profile} />
-                <span className='text-sm '> Upload Photo</span>
+                <span className='text-md '> Upload Photo</span>
+                <input type="file" accept="image/png, image/jpeg" className='text-sm' required={true} onChange={(e) => { setFile(e.target.files[0]) }} />
               </div>
 
               <div className='flex flex-col  max-w-[400px] w-full md:mt-0  mt-5  '>
@@ -128,15 +164,15 @@ const StudentApply = () => {
 
               </div>
             </div>
-             
-            { course.length >= 1 &&  <span className='text-center md:text-[12px] text-[6px]  mt-3'>Click to Delete</span> } 
+
+            {course.length >= 1 && <span className='text-center md:text-[12px] text-[6px]  mt-3'>Click to Delete</span>}
             <div className='w-full flex flex-row gap-2 justify-center mt-5 my-3 '>
-            
+
               {course.map((c) => {
                 return (
-                <div key={Math.random()} className='relative border-2 border-blue-400 text-blue-500 rounded-md p-2 px-3 hover:text-red-600 hover:border-red-600 cursor-pointer  ' id={c} onClick={onDeleteCourse}  >
-                  {c}
-                  
+                  <div key={Math.random()} className='relative border-2 border-blue-400 text-blue-500 rounded-md p-2 px-3 hover:text-red-600 hover:border-red-600 cursor-pointer  ' id={c} onClick={onDeleteCourse}  >
+                    {c}
+
                   </div>
                 )
               })}
@@ -162,6 +198,18 @@ const StudentApply = () => {
         </div>
 
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   )
 }

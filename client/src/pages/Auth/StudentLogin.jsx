@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import img from '../../images/dl.beatsnoop.com-600px-1675484921.jpg'
-import {useDispatch } from 'react-redux'
-import {studentLogin} from '../../features/auth/authAction'
-import { Link ,useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { studentLogin } from '../../features/auth/authAction'
+import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const StudentLogin = () => {
 
   const [data, setData] = useState({ studentId: '', password: '' });
   const dispatch = useDispatch()
   const Navigate = useNavigate()
- 
+  const user = useSelector(state => state.auth)
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   }
@@ -20,8 +22,17 @@ const StudentLogin = () => {
 
     dispatch(studentLogin(data))
 
-    Navigate('/studentDashboard')
-   
+    console.log(user);
+
+    if (user.loading === false) {
+
+      if (user.error !== null) {
+        toast.error(user.error.error);
+      }
+    } else {
+      Navigate('/studentDashboard')
+    }
+
     // console.log(user)
     setData({ studentId: '', password: '' });
   }
@@ -60,10 +71,23 @@ const StudentLogin = () => {
             <button className="md:mx-[20%] mx-[20%] border-2 p-[2%] font-[Poppins] rounded-md md:mt-[8%] bg-[var(--buttonBlue)] text-white  " >
               Login
             </button>
-            <span className='mx-[3%] md:mx-0 my-[5%]  md:text-[16px] text-[12px] justify-center text-center '>Don!t have an account ? <a className='text-red-600' href='../studentRegister'>Register</a></span>
+            <span className='mx-[3%] md:mx-0 my-[3%]  md:text-[16px] text-[12px] justify-center text-center '>Don!t have an account ? <a className='text-red-600' href='../studentRegister'>Register</a></span>
+            <span className='mx-[3%] md:mx-0   md:text-[16px] text-[12px] justify-center text-center text-blue-600'><a href='../forgotPassword'>Forgot Password</a></span>
           </form>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   )
 

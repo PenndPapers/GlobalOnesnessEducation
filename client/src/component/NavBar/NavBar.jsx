@@ -47,21 +47,23 @@ const NavBar = () => {
           {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') &&
             <div className='w-full md:flex justify-end hidden '>
               <ul className="flex  flex-row list-none  ml-auto mr-[2%] ">
-                <Link to='../home'>
-                  <li className="nav-item">
+                <li className="nav-item">
+                  <Link to='../home'>
                     <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >HOME</span>
-                  </li>
-                </Link>
+                  </Link>
+                </li>
 
                 <li className="nav-item lg:ml-2">
                   <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >ABOUT</span>
                 </li>
                 {!user.user.usertype &&
-                  <Link to='../teacherLogin'>
-                    <li className="nav-item">
+
+                  <li className="nav-item">
+                    <Link to='../teacherLogin'>
                       <span className="px-3 py-2 flex items-center  uppercase  leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >EMPLOYEE ZONE</span>
-                    </li>
-                  </Link>
+
+                    </Link>
+                  </li>
                 }
                 {!user.user.usertype &&
                   <li className="nav-item lg:ml-2 ">
@@ -75,9 +77,7 @@ const NavBar = () => {
                 {user.user.usertype &&
                   <li className="nav-item lg:ml-2 ">
                     <Link to={`${user.user.usertype === 'student' ? '../studentDashboard' : user.user.usertype === 'admin' ? '../adminDashboard' : '../teacherDashboard'}`}>
-                      <li className="nav-item">
-                        <span className="px-3 py-2 flex items-center  uppercase  leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >DASHBOARD</span>
-                      </li>
+                      <span className="px-3 py-2 flex items-center  uppercase  leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >DASHBOARD</span>
                     </Link>
                   </li>
                 }

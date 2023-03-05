@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { adminLogin } from '../../features/auth/authAction';
 import img from '../../images/adminlogin.jpg'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminLogin = () => {
 
     const [data, setData] = useState({ adminId: '', password: '' });
     const dispatch = useDispatch()
     const Navigate = useNavigate()
+    const user = useSelector(state => state.auth)
 
     const handleInputChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
@@ -21,7 +23,15 @@ const AdminLogin = () => {
 
         dispatch(adminLogin(data))
 
-        Navigate('/adminDashboard')
+        if (user.loading === false) {
+
+            if (user.error !== null) {
+                toast.error(user.error.error);
+            }
+        } else {
+
+            Navigate('/adminDashboard')
+        }
 
         setData({ adminId: '', password: '' });
     }
@@ -43,13 +53,26 @@ const AdminLogin = () => {
                     <span className='text-center md:text-[12px] text-[12px]  mt-[1%]'>Please enter your details carefully !</span>
                     <form className="flex flex-col max-w-full pb-[5%]" onSubmit={handleFormSubmit}>
                         <input className=" md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8" type="text" placeholder="Admin ID" name='adminId' value={data.adminId} onChange={handleInputChange} />
-                        <input className="md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8 mb-[5%] md:mb-0" type="password" placeholder="Password" value={data.password} name='password' onChange={handleInputChange}/>
+                        <input className="md:mx-0 mx-[5%] border-2 p-[2%] rounded-md mt-8 mb-[5%] md:mb-0" type="password" placeholder="Password" value={data.password} name='password' onChange={handleInputChange} />
                         <button className="md:mx-[20%] mx-[20%] border-2 p-[2%] font-[Poppins] rounded-md md:mt-[8%] bg-[var(--buttonBlue)] text-white  " >
                             Login
                         </button>
+                        <span className='mx-[3%] md:mx-0   md:text-[16px] text-[12px] justify-center text-center text-blue-600'><a href='../forgotPassword'>Forgot Password</a></span>
                     </form>
                 </div>
             </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     )
 }

@@ -20,6 +20,7 @@ export const Applyregistration = async (req, res, next) => {
       school: req.body.userData.school,
       courses : req.body.course,
       joiningDate : d ,
+      photo : req.body.userData.photo
     }
   )
   console.log(user);

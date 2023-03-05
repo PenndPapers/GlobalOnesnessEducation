@@ -35,7 +35,7 @@ export const AuthSlice = createSlice({
     })
 
     builder.addCase(studentLogin.rejected, (state, action) => {
-      state.error = action.error.message
+      state.error = action.payload
       state.loading = false
     })
 
@@ -46,10 +46,11 @@ export const AuthSlice = createSlice({
       console.log(action.payload)
       state.user = action.payload
       state.loading = false
+      state.error =null
     })
     builder.addCase(changeStudentPassword.rejected, (state, action) => {
       console.log(action.error.message)
-      state.error = action.error.message
+      state.error = action.payload
       state.loading = false
     })
 
@@ -64,7 +65,7 @@ export const AuthSlice = createSlice({
     })
 
     builder.addCase(adminLogin.rejected, (state, action) => {
-      state.error = action.error.message
+      state.error = action.payload
       state.loading = false
     })
 
@@ -78,7 +79,7 @@ export const AuthSlice = createSlice({
     })
 
     builder.addCase(teacherLogin.rejected, (state, action) => {
-      state.error = action.error.message
+      state.error = action.payload
       state.loading = false
     })
 

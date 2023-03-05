@@ -10,6 +10,7 @@ module.exports = {
         "grayDark" : "#767474",
         "orange" : "#FFAF38",
         "graylight": "#BFBFBF",
+        "graydimmer":"#E8E8E8",
         "adminbg" : "#F0F1F3"
 
       }

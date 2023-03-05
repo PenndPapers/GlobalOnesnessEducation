@@ -1,5 +1,5 @@
 import express from 'express';
-import {AddImportantNotes, AddImportantPYQ,getAllImportantNotes,getAllImportantPYQ} from '../Controllers/StudentController.js';
+import {AddImportantNotes, AddImportantPYQ,getAllImportantNotes,getAllImportantPYQ,getAllDocuments} from '../Controllers/StudentController.js';
 import {addFeedback} from '../Controllers/feedbackController.js';
 
 const router = express.Router();
@@ -9,4 +9,5 @@ router.post('/addImportantPYQ', AddImportantPYQ)
 router.get('/getAllImportantNotes/:studentId', getAllImportantNotes)
 router.get('/getAllImportantPYQ/:studentId', getAllImportantPYQ)
 router.post('/feedback', addFeedback)
+router.get('/getNotes/:classes', getAllDocuments)
 export default router;

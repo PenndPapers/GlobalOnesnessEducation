@@ -41,7 +41,7 @@ const RegistrationSchema = new mongoose.Schema({
         type: [],
         required: true,
     },
-    photo: String,
+    photo: String
    
 },
     { timestamps: true }

@@ -1,11 +1,12 @@
 import React from "react";
 import { CiFacebook, CiTwitter, CiLinkedin, CiInstagram } from "react-icons/ci"
+import { useSelector } from "react-redux";
 import { Link, useLocation } from 'react-router-dom'
 
 const Footer = () => {
 
     const location = useLocation();
-
+    const user = useSelector(state => state.auth.user.user)
     const d = new Date();
 
     return (
@@ -32,7 +33,7 @@ const Footer = () => {
                 <ul className=" ">
                     <h1 className="mb-1 text-xl font-semibold">About Us</h1>
                     
-                    {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') &&
+                    {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') && (user.usertype === '' || user.usertype ==='admin') &&
                         <li  >
                         <a className="text-gray-400 hover:text-logo-color       text-sm cursor-pointer   " href="../adminDashboard" >
                             Admin

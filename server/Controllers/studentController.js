@@ -1,4 +1,5 @@
 import NotesModel from "../Models/NotesModel.js";
+import PyqAndNotes from "../Models/pyqAndNotes.js";
 
 export const AddImportantNotes = async (req, res, next) => {
     const { studentId, ImportantNotes } = req.body;
@@ -95,6 +96,22 @@ export const getAllImportantPYQ = async (req, res) => {
         const { studentId } = req.params;
 
         const find = await NotesModel.findOne({ studentId: studentId });
+        if (find) {
+            res.status(200).json(find);
+        }
+        else {
+            res.status(200).json(null);
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Something went wrong" });
+    }
+}
+
+export const getAllDocuments = async (req, res) => {
+    const { classes } = req.params;
+    try {
+        const find = await PyqAndNotes.find({ classes: classes });
         if (find) {
             res.status(200).json(find);
         }
