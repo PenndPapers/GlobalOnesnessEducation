@@ -3,11 +3,11 @@ import Chart from "react-apexcharts";
 
 const BarChart = ({ title , datax, datay }) => {
   return (
-    <div className="bg-white p-[3%] rounded-2xl snap-x ">
+    <div className="bg-white p-2 rounded snap-x ">
       <Chart
         type="bar"
-        width={500}
-        height={400}
+        width={330}
+        height={300}
         series={[
           {
            
@@ -18,13 +18,13 @@ const BarChart = ({ title , datax, datay }) => {
      
          plotOptions : {
             bar:{
-              columnWidth : "35%"
+              columnWidth : "20%"
             }
          },
       
           title: {
             text: `${title}`,
-            style: { fontSize: 30, fontWeight: 500 },
+            style: { fontSize: 20, fontWeight: 500 },
           },
           colors: ["#6B68F5"],
           theme: { mode: "light" },
@@ -33,6 +33,9 @@ const BarChart = ({ title , datax, datay }) => {
           xaxis: {
             tickPlacement: "on",
             categories: datax,
+            labels:{
+              style :{fontSize : 7}
+            }
           },
           yaxis: {
             // min : 0 ,
@@ -41,7 +44,7 @@ const BarChart = ({ title , datax, datay }) => {
               formatter: (val) => {
                 return `${val}`;
               },
-              style: { fontSize: "15", colors: ["#767474"] },
+              style: { fontSize: 8, colors: ["#767474"] },
             },
           },
           legend: {
@@ -55,7 +58,7 @@ const BarChart = ({ title , datax, datay }) => {
           
             style: {
               colors: ["#767474", "#E91E63", "#9C27B0"],
-              fontSize: 15,
+              fontSize: 10,
             },
           },
         }}

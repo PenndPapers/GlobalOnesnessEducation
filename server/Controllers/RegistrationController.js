@@ -24,12 +24,12 @@ export const Applyregistration = async (req, res, next) => {
     }
   )
   console.log(user);
+  
 
-
-
+  
   let existingUser = await RegistrationModel.findOne({ email: user.email });
-  if (existingUser) return res.status(400).json("Student already exist");
-
+  if (existingUser) return res.status(400).json("Email already exist");
+   
   const savedUser = await user.save();
-  return res.json(savedUser);
+  return res.status(200).json("sucessfully registered !!");
 }

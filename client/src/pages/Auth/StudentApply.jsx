@@ -12,11 +12,13 @@ import { storage } from '../../config/firebase';
 
 const URL = "http://localhost:5000/";
 const StudentApply = () => {
-
+  
+  
   const [CourseeData, setCourseeData] = useState([]);
   const [userData, setUserData] = useState({ firstname: "", lastname: "", email: "", phone: "", guardianNumber: "", class: "", address: "", school: "", photo: "" });
   const [course, setCourse] = useState([]);
   const [file, setFile] = useState([]);
+
 
   const onChangeHandler = (e) => {
     const key = e.target.id;
@@ -36,6 +38,7 @@ const StudentApply = () => {
         })
       }).catch(((err) => {
         console.log(err);
+
       }))
     }
   }
@@ -152,7 +155,7 @@ const StudentApply = () => {
                 <input required={true} id="guardianNumber" className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8" type="tel" value={userData.guardianNumber} onChange={onChangeHandler} placeholder="Guardian Number" />
 
                 <select required={true} id="course" className='md:mx-0 mx-5 border-2 p-2 rounded-md mt-8 snap-y  ' value={course[0]} onChange={onAddCourse}  >
-
+                <option  value="Select Course" className="text-black" >Select Course </option>
                   {
                     CourseeData.map((c) => {
                       return (
@@ -196,6 +199,18 @@ const StudentApply = () => {
             <span className='mx-5 md:mx-0 my-5  md:text-[16px] text-[12px] justify-center text-center '>have an account ? <a className='text-red-600' href='../studentLogin'>Login</a></span>
           </form>
         </div>
+        <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+      
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
       </div>
       <ToastContainer

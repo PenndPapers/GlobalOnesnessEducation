@@ -41,7 +41,7 @@ const RecordList = ({title ,  DATA}) => {
 
 
   return (
-    <div className="flex flex-col gap-5  p-[2%] font-[Roboto]  ">
+    <div className="flex flex-col gap-5   p-[2%] font-[Roboto]  ">
       <h1 className="font-semibold text-xl ">List of {title}s</h1>
       <form onSubmit={onSearchData} className="flex w-full gap-2 ">
    

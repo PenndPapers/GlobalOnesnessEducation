@@ -17,7 +17,6 @@ const TeacherPYQandNotes = () => {
   const [prevdoc, setPrevdoc] = useState([]);
 
   useEffect(() => {
-    console.log("effect run once");
     TeacherApi.getPreviousUploadedNotes(user.teacherId).then((res) => {
       setPrevdoc(res.data.allnotes);
       console.log(prevdoc);

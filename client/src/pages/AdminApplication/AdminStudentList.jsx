@@ -22,6 +22,28 @@ const dummy_student = [
    
   },
   {
+    id: "104",
+    name: "Richa Ma'am ",
+    course: "Chemistry",
+    photo: p4,
+    gender: "Male",
+    email: "pawan@gmaiil.com",
+    phone: "1234567890",
+  
+    joiningDate: "01/01/2023",
+  },
+  {
+    id: "105",
+    name: "Manoj Sir",
+    course: "Physics",
+    photo: p5,
+    gender: "Male",
+    email: "pawan@gmaiil.com",
+    phone: "1234567890",
+    
+    joiningDate: "01/01/2023",
+  },
+  {
     id: "102",
     name: "Rahul Sir",
     course: "Physics",
@@ -80,7 +102,7 @@ const dummy_student = [
 const AdminStudentList = () => {
 
   return (
-   <div className='bg-adminbg'>
+   <div className='bg-adminbg pt-[90px] py-10 px-3 '>
  <RecordList title="Student" DATA={dummy_student } />
    </div>
   )

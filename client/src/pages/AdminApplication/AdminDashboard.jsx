@@ -49,46 +49,48 @@ const datay = dummy_data.map((d) => {
 
 const AdminDashboard = () => {
   return (
-    <main className="bg-[#F0F1F3] p-[2%] h-full font-[Poppins]    ">
-      <section className="flex justify-between items-center py-10   ">
-        <div className="sm:flex sm:flex-row   bg-white  shadow-lg    sm:items-start  rounded gap-4 p-4 m-2  ">
+    <main className=" h-full font-[Poppins] bg-adminbg pt-[90px] py-10  px-5    ">
+      <section className="flex justify-between items-center  gap-2 ">
+        <div className="sm:flex sm:flex-row   bg-white  shadow-lg    sm:items-start  rounded gap-4 p-4   ">
           <img
             src={studentPhoto}
             alt="Student photo"
-            className="bg-[#D1F3E0]  rounded-full p-[2%] sm:p-[5%] w-[40%] mx-auto  "
+            className="bg-[#D1F3E0]  rounded-full p-[2%] sm:p-[5%] w-[40px] mx-auto  "
           />
-          <div className="flex flex-col sm:items-start items-center">
+          <div className="flex flex-col text-sm sm:items-start items-center">
             <div className="md:text-xl  text-grayDark "> Student </div>
             <div className="   font-medium">150</div>
           </div>
         </div>
-        <div className="sm:flex sm:flex-row  bg-white  shadow-lg   items-start rounded gap-4 p-4 m-2   ">
+        <div className="sm:flex sm:flex-row  bg-white  shadow-lg   items-start rounded gap-4 p-4   ">
           <img
             src={techersPhoto}
             alt="Techers photo"
-            className="bg-[#E1F1FF] rounded-full p-[2%] sm:p-[5%]  w-[40%] mx-auto"
+            className="bg-[#E1F1FF] rounded-full p-[2%] sm:p-[5%]  w-[40px] mx-auto"
           />
-          <div className="flex flex-col sm:items-start items-center">
+          <div className="flex flex-col text-sm sm:items-start items-center">
             <div className="md:text-xl  text-grayDark "> Teachers </div>
-            <div className="  font-medium">150</div>
+            <div className="  ">150</div>
           </div>
         </div>
-        <div className="sm:flex sm:flex-row  bg-white  shadow-lg     items-start rounded gap-4 p-4 m-2 2   ">
+        <div className="sm:flex sm:flex-row  bg-white  shadow-lg     items-start rounded gap-4 p-4   ">
           <img
             src={earningPhoto}
             alt="earning photo"
-            className="bg-[#FFEAEA] rounded-full p-[2%] sm:p-[5%]  w-[40%] mx-auto"
+            className="bg-[#FFEAEA] rounded-full p-[2%] sm:p-[5%]  w-[40px] mx-auto"
           />
-          <div className="flex flex-col sm:items-start items-center">
+          <div className="flex flex-col text-sm sm:items-start items-center">
             <div className="md:text-xl  text-grayDark "> Earnings </div>
-            <div className="  text-sm   font-medium">₹ 500000</div>
+            <div className="    ">₹500000</div>
           </div>
         </div>
       </section>
 
-      <section className="sm:flex  sm:justify-between w-full py-10">
+      <section className="grid lg:grid-cols-3 md:grid-cols-2  gap-3   w-full py-10">
         <BarGraph title="Enrollment" datax={datax} datay={datay} />
-        <BarGraph title="Expences" datax={datax} datay={datay} />
+        <BarGraph title="Enrollment" datax={datax} datay={datay} />
+        <BarGraph title="Enrollment" datax={datax} datay={datay} />
+      
       </section>
     </main>
   );

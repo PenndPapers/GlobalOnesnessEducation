@@ -23,10 +23,10 @@ export const studentregister = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
         req.body.password = hashedPassword;
-
+        
         const newStudent = new StudentModel(req.body);
         const { studentId } = req.body;
-
+        
         const oldStudent = await StudentModel.findOne({ studentId: studentId });
         if (oldStudent) return res.status(400).json({ error: "Student already exists" });
 
