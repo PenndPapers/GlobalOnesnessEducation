@@ -5,21 +5,21 @@ import * as IoIcons5 from "react-icons/io5";
 import * as MdIcon from 'react-icons/md';
 import * as BiIcon from 'react-icons/bs';
 import * as GiIcon from 'react-icons/gi';
-
+import * as GrIcon from 'react-icons/gr';
 export const SidebarData = [
   {
     _id: '1',
     title: 'Home',
-    path: '/home',
+    path: '/home#home',
     icon: <AiIcons.AiFillHome />,
     cName: 'nav-text',
     user: 'Home'
 
-  },
+  },            
   {
     _id: '2',
     title: 'About',
-    path: '/about',
+    path: '/home#aboutpage',
     icon: <AiIcons.AiFillInfoCircle />,
     cName: 'nav-text',
     user: 'About'
@@ -213,5 +213,21 @@ export const SidebarData = [
     icon: <GiIcon.GiMoneyStack />,
     cName: 'nav-text',
     user: 'admin'
+  },
+  {
+    _id: '201',
+    title: 'AllCourses',
+    path: '/homecourses',
+    icon: <AiIcons.AiFillBook />,
+    cName: 'nav-text',
+    user: 'About'
+  },
+  {
+    _id: '202',
+    title: 'Gallery',
+    path: '/gallery',
+    icon: <GrIcon.GrGallery />,
+    cName: 'nav-text',
+    user: 'About'
   },
 ];

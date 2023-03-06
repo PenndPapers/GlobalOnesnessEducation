@@ -32,11 +32,11 @@ const NavBar = () => {
   const buttonhoverstyle = user.user.usertype === "teacher" ? "hover:bg-[#4BB543]" : user.user.usertype === "student" ? "hover:bg-[#6674CC]" : "hover:bg-[#F56968]"
   const buttontextcolor = user.user.usertype === "teacher" ? "text-[#4BB543]" : user.user.usertype === "student" ? "text-[#6674CC]" : "text-[#F56968]"
   const buttonbordercolor = user.user.usertype === "teacher" ? "border-[#4BB543]" : user.user.usertype === "student" ? "border-[#6674CC]" : "border-[#F56968]"
-
+         
   return (
     <Modal>
       <>
-        <div className='navbar bg-[#ffffff] h-[60px] flex justify-between items-center drop-shadow-lg px-[2%] '>
+        <div className='navbar fixed top-0 w-full  bg-[#ffffff] h-[60px] flex justify-between items-center drop-shadow-lg px-[2%] '>
           <div className='flex items-center'>
             <Link to='#' className={(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') ? 'menu-bars ml-4 text-[2rem] md:hidden ' : 'menu-bars ml-4 text-[2rem] '}>
               <FaIcons.FaBars onClick={showSidebar} />
@@ -54,7 +54,20 @@ const NavBar = () => {
                 </li>
 
                 <li className="nav-item lg:ml-2">
-                  <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >ABOUT</span>
+                  <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >
+                    <a href='#aboutpage' >ABOUT</a>
+                  </span>
+                </li>
+                <li className="nav-item lg:ml-2">
+                  <a href='#courses'>
+                    <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >COURSES</span>
+                  </a>
+                </li>
+
+                <li className="nav-item lg:ml-2">
+                  <a href='#gallery'>
+                    <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >GALLERY</span>
+                  </a>
                 </li>
                 {!user.user.usertype &&
 
@@ -93,7 +106,7 @@ const NavBar = () => {
           }
         </div>
         <nav className={sidebar ? 'nav-menu active ' : 'nav-menu'}>
-          <ul className='nav-menu-items w-[100%]' onClick={showSidebar}>
+          <ul className='nav-menu-items w-[100%] overflow-y-scroll scroll scrollbar-hide' onClick={showSidebar}>
             <li className='flex justify-start px-2 gap-2 '>
               <div className=' bg-[#ffffff]  flex justify-start items-center '>
                 <Link to='#' className='menu-bars text-[2rem]'>
@@ -103,11 +116,11 @@ const NavBar = () => {
               <div className='text-stat  text-[20px] py-[16px] cursor-pointer'>
                 <span className='font-[Poppins] '> Hello {user.user.firstname}</span>
               </div>
-            </li>
+            </li>  
             {user.user.usertype === '' && SidebarData.map((item) => {
               return (
-                <div key={item._id}>
-                  {(item.title === 'Student Zone' || item.title === 'Admin' || item.title === 'Employee Zone' || item.title === 'Home' || item.title === 'About') &&
+                <div key={item._id} >
+                  {(item.title === 'Student Zone' || item.title === 'Admin' || item.title === 'Employee Zone' || item.title === 'Home' || item.title === 'About' || item.title === "AllCourses" || item.title ==="Gallery") &&
                     <li className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
                       <Link to={item.path}> {item.icon} <span className='pl-[2%] ml-[2%]'>{item.title}</span> </Link>
                     </li>

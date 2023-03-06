@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { useLocation } from "react-router-dom";
 import Carousel from "../../component/Home/Carousel";
 import g from "../../images/divider.jpg";
@@ -9,13 +10,17 @@ import TeachersSlide from "../../component/Home/TeachersSlide";
 
 import CoursesList from "../../component/Admin/CoursesList";
 import { useSelector } from "react-redux";
+import Gallary from "../../component/Admin/Gallary";
 
 const Home = () => {
-  const user = useSelector(state => state.auth.user)
+  const user = useSelector((state) => state.auth.user.user);
   const location = useLocation();
+
+  
+
   return (
-    <>
-      {location.pathname === "/home" && (
+    <div id="home" className="bg-adminbg">
+      {user.usertype === "" && (
         <section className="flex flex-col gap-3">
           <div className="w-5/6 mx-auto  flex flex-row justify-center items-center md:pt-[5%] pt-10 ">
             <h1 className="lg:text-5xl lg:font-bold  sm:text-2xl text-xs font-normal font-[Roboto] text-[var(--colorPrimary)] mt-8">
@@ -34,7 +39,7 @@ const Home = () => {
       )}
 
       <Carousel />
-      <section className="w-5/6 mx-auto sm:px-[10%]  font-[Poppins] text-center   py-10  bg-[#f8f8fd]">
+      <section className="w-5/6 mx-auto sm:px-[10%]  font-[Poppins] text-center   py-10  ">
         <div className=" bg-white ">
           <h1 className=" sm:text-xl text-sm text-[var(--colorPrimary)] sm:pb-0 pb-[5%]  ">
             OUR STUDENTS LOVE US ❤️{" "}
@@ -75,7 +80,10 @@ const Home = () => {
 
       <About />
       <CoursesList />
-      <div className="bg-adminbg">
+
+      <Gallary/>
+      
+      {/* <section className="">
         <h1 className="text-3xl font-semibold text-center py-10 ">
           Visit Our Center{" "}
         </h1>
@@ -88,8 +96,8 @@ const Home = () => {
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         />
-      </div>
-    </>
+      </section> */}
+    </div>
   );
 };
 

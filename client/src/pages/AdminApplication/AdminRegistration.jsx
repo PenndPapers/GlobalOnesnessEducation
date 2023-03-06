@@ -101,8 +101,6 @@ const AdminRegistration = () => {
     
   }, []);
 
-
-
   const onRejectHandler =  (id) => {
     
      AdminApi.deleteStudentApplication(id).then((res)=>{
@@ -133,7 +131,8 @@ const AdminRegistration = () => {
       const NewStudent = {...data  ,  photo: d.photo ,  password: "student@123", studentId: id};
        AuthApi.StudentRegister(NewStudent).then((res)=>{
         if (res.status == 200) {
-          onRejectHandler(data._id);
+            onRejectHandler(data._id);
+            
         }
        }).catch(err=>console.log(err))
       }

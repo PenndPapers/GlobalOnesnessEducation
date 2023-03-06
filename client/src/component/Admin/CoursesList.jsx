@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { CiEdit } from "react-icons/ci";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
@@ -9,7 +10,8 @@ import { AiOutlineClose } from "react-icons/ai"; // close btn
 const URL = "http://localhost:5000/";
 
 const Course = ({d}) => {
-  const location = useLocation();
+  const user = useSelector((state) => state.auth.user.user);
+  
     const src = d.Course;
     return (
         <div className="flex gap-2 bg-white p-2 rounded-lg shadow ">
@@ -26,7 +28,7 @@ const Course = ({d}) => {
             <p className="text-grayDark sm:text-sm text-xs ">{d.Faculty}</p>
             <p className="text-grayDark sm:text-sm text-xs ">{d.Lectures} Classes</p>
           </div>
-          {location.pathname !== '/home' &&  <button className="flex justify-start">
+          {user.usertype !== "" &&  <button className="flex justify-start">
             <CiEdit className="sm:text-xl" />
           </button>}
         </div>
@@ -57,7 +59,7 @@ const CoursesList = () => {
         setListOfCourses([]);
       });
   }, [query, showForm]);
-
+  
   const onQueryHandler = (e) => {
     const value = e.target.value;
     setQuery(value);
@@ -71,7 +73,7 @@ const CoursesList = () => {
         setListOfCourses([]);
       });
   };
-
+  
   const onChangeHandler = (e) => {
     setError({});
     const key = e.target.name;
@@ -81,7 +83,7 @@ const CoursesList = () => {
       return { ...pre, [key]: val };
     });
   };
-
+  
   const onSubmitHandler = (e) => {
     e.preventDefault();
     console.log(addCourseData);
