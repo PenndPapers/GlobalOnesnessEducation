@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import * as AdminApi from "../../api/AdminApi";
 import { ApplyRegisteration } from "../../api/RegisterApi";
 import dummy_profile from "../../images/dummy-profile-pic.jpg";
@@ -24,7 +23,6 @@ const StudentApply = () => {
   });
   const [course, setCourse] = useState([]);
   const [file, setFile] = useState();
-  
 
   const onChangeHandler = (e) => {
     const key = e.target.id;
@@ -86,25 +84,26 @@ const StudentApply = () => {
     } else if (CourseeData.length === 0) {
       e.preventDefault();
       toast.warning("Please Select a Course");
-    } else if (file.length === 0) {
+    } else if (!file) {
       e.preventDefault();
       toast.warning("Please Select a Image");
+    } else if (userData.phone.length !== 10 || userData.guardianNumber.length !== 10) {
+      e.preventDefault();
+      toast.warning("Please Enter a Valid Phone Number");
     } else {
-      if (file !== null) {
-        console.log(userData);
-        userData.photo = uuid();
-        const storageRef = ref(storage, `profile/${userData.photo}`);
-        uploadBytes(storageRef, file).then((snapshot) => {
-          const imgStorageRef = ref(storage, `profile/${userData.photo}`);
-          getDownloadURL(imgStorageRef)
-            .then((url) => {
-              console.log(url);
-            })
-            .catch((error) => {
-              toast.error("Can not load profile image");
-            });
-        });
-      }
+      console.log(userData);
+      userData.photo = uuid();
+      const storageRef = ref(storage, `profile/${userData.photo}`);
+      uploadBytes(storageRef, file).then((snapshot) => {
+        const imgStorageRef = ref(storage, `profile/${userData.photo}`);
+        getDownloadURL(imgStorageRef)
+          .then((url) => {
+            console.log(url);
+          })
+          .catch((error) => {
+            toast.error("Can not load profile image");
+          });
+      });
       e.preventDefault();
       ApplyRegisteration({ userData, course })
         .then((res) => {
@@ -122,7 +121,7 @@ const StudentApply = () => {
           });
           setCourse([]);
           setFile();
-         
+
         })
         .catch((err) => {
           console.log(err);
@@ -159,28 +158,29 @@ const StudentApply = () => {
           >
             <div className="flex md:flex-row flex-col   gap-3 justify-around    ">
               <div className="flex flex-col justify-center  items-center space-y-2 cursor-pointer text-center m-[5%]  ">
-              <div className="text-md font-medium "> Upload Photo</div>
+                <div className="text-md font-medium "> Upload Photo</div>
                 <div className="  w-[150px]  bg-rose-500   ">
-                  {file  ? (
+                  {file ? (
                     <img src={URL.createObjectURL(file)} className="object-cover " />
                   ) : (
                     <img src={dummy_profile} />
                   )}
                 </div>
 
-               
-               <div>
-               <input
-                  type="file"
-                  accept="image/png, image/jpeg"
-                  className="text-sm     "
-                  required={true}
-                  onChange={(e) => {
-                    setFile(e.target.files[0]);
-                   
-                  }}
-                />
-               </div>
+
+                <div>
+                  <input
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    className="text-sm overflow-hidden"
+
+                    required={true}
+                    onChange={(e) => {
+                      setFile(e.target.files[0]);
+
+                    }}
+                  />
+                </div>
               </div>
 
               <div className="flex flex-col  max-w-[400px] w-full md:mt-0  mt-5  ">

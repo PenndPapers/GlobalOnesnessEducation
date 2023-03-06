@@ -18,7 +18,7 @@ const Course = ({d}) => {
             <img
               src={require(`../../images/${src}.png`)}
               alt="+"
-              className=" "
+              className="w-[100px]"
             />{" "}
           </div>
           <div className="flex flex-col w-full pb-1 ">
@@ -116,7 +116,7 @@ const CoursesList = () => {
   };
 
   return (
-   <section className="font-[Roboto] bg-adminbg pt-[90px] py-10 px-3 ">
+   <section className="font-[Roboto] bg-adminbg pt-[90px] py-10 px-3 " id='courses'>
      <div className="flex flex-col gap-5  sm:w-5/6 mx-auto    relative ">
       <h1 className="font-semibold sm:text-3xl ">Lists of courses </h1>
       <div className="flex ">
@@ -152,7 +152,7 @@ const CoursesList = () => {
       </div>
       <div className={`h-0.5   bg-grayDark`}></div>
       {listOfCourses.length > 0 ? (
-        <div className="grid lg:grid-cols-4 md:grid-cols-3   grid-cols-2 gap-5  justify-items-center p-[1%]  ">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3   grid-cols-2 gap-4  justify-items-center p-[1%]  ">
           {listOfCourses.map((d) => {
             return <Course key={d._id} d={d} />;
           })}

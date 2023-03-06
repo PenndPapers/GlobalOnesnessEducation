@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <>
       {location.pathname === "/home" && (
-        <section className="flex flex-col gap-3">
+        <section className="flex flex-col gap-3" id="home">
           <div className="w-5/6 mx-auto  flex flex-row justify-center items-center md:pt-[5%] pt-10 ">
             <h1 className="lg:text-5xl lg:font-bold  sm:text-2xl text-xs font-normal font-[Roboto] text-[var(--colorPrimary)] mt-8">
               10 Day Free Demo Classes!!
@@ -73,7 +73,7 @@ const Home = () => {
       </section>
       <TeachersSlide />
 
-      <About />
+      <About/>
       <CoursesList />
       <div className="bg-adminbg">
         <h1 className="text-3xl font-semibold text-center py-10 ">

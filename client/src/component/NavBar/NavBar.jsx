@@ -54,7 +54,20 @@ const NavBar = () => {
                 </li>
 
                 <li className="nav-item lg:ml-2">
-                  <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >ABOUT</span>
+                  <a href='home#about'>
+                    <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >ABOUT</span>
+                  </a>
+                </li>
+                <li className="nav-item lg:ml-2">
+                  <a href='#courses'>
+                    <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >COURSES</span>
+                  </a>
+                </li>
+
+                <li className="nav-item lg:ml-2">
+                  <a href='#gallery'>
+                    <span className="px-3 py-2 flex items-center uppercase leading-snug hover:opacity-75 " style={{ fontFamily: 'Poppins', letterSpacing: '3px' }} >GALLERY</span>
+                  </a>
                 </li>
                 {!user.user.usertype &&
 
@@ -107,9 +120,9 @@ const NavBar = () => {
             {user.user.usertype === '' && SidebarData.map((item) => {
               return (
                 <div key={item._id}>
-                  {(item.title === 'Student Zone' || item.title === 'Admin' || item.title === 'Employee Zone' || item.title === 'Home' || item.title === 'About') &&
+                  {(item.title === 'Student Zone' || item.title === 'Admin' || item.title === 'Employee Zone' || item.title === 'Home' || item.title === 'About' || item.title === "AllCourses" || item.title ==="Gallery") &&
                     <li className={location.pathname === item.path ? item.cName + " bg-[var(--buttonBlue)] text-white rounded-l-3xl ml-5" : item.cName} >
-                      <Link to={item.path}> {item.icon} <span className='pl-[2%] ml-[2%]'>{item.title}</span> </Link>
+                      <a href={item.path}> {item.icon} <span className='pl-[2%] ml-[2%]'>{item.title}</span> </a>
                     </li>
                   }
                 </div>

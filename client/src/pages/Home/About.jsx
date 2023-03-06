@@ -4,7 +4,7 @@ import p from "../../images/pawan_sir.jpeg"
 
 const About = () => {
     return (
-        <section className='w-5/6 mx-auto py-10  '>
+        <section className='w-5/6 mx-auto py-10  ' id ="about">
             <h1 className='text-xl sm:text-4xl my-5  font-[Poppins] '> <span className='text-grayDark  sm:text-3xl  '>know about  </span><span className='font-semibold '>GLOBAL ONENESS </span> </h1>
             <div className='sm:flex sm:flex-row  justify-between  items-center  '>
                 <div className='sm:order-2 flex flex-col justify-center    ' >

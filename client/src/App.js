@@ -7,6 +7,9 @@ import NavBar from "./component/NavBar/NavBar";
 import Home from "./pages/Home/Home";
 import Footer from "./component/Footer/Footer";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
+import TermsofUse from "./pages/Extras/TermsofUse";
+import PrivacyPolicy from "./pages/Extras/PrivacyPolicy";
+import RefundandCancellatoin from "./pages/Extras/RefundandCancellatoin";
 
 import StudentLogin from "./pages/Auth/StudentLogin";
 import StudentRegister from "./pages/Auth/StudentApply";
@@ -48,6 +51,9 @@ const App = () => {
         <Route path='/' element={user.user.usertype === '' ? <Navigate to="home" /> : user.user.usertype === 'student' ? <Navigate to="/studentLogin" /> : user.user.usertype === 'teacher' ? <Navigate to="/teacherLogin" /> : <Navigate to="/adminLogin" />} />
         <Route path='home' element={<Home />} />
         <Route path='forgotPassword' element={<ForgotPassword />} />
+        <Route path="termsofuse" element={<TermsofUse />} />
+        <Route path="privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="refundandcancellatoin" element={<RefundandCancellatoin />} />
 
         <Route path='studentLogin' element={user.user.usertype !== '' ? <Navigate to='/studentDashboard' /> : <StudentLogin />} />
         <Route path='studentRegister' element={<StudentRegister />} />
