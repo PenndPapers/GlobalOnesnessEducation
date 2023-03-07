@@ -41,6 +41,21 @@ export const adminLogin = createAsyncThunk(
     }
 );
 
+export const changeAdminPassword = createAsyncThunk(
+    "Auth/changeAdminPasswordReq",
+    async (formData, { rejectWithValue }) => {
+        try {
+            const response = await AuthApi.ChangeAdminPassword(formData)
+            return response.data;
+        } catch (error) {
+            throw rejectWithValue(error.response.data);
+        }
+    }
+);
+
+
+
+
 export const teacherLogin = createAsyncThunk(
     "Auth/teacherLoginReq",
     async (formData, { rejectWithValue }) => {
@@ -53,3 +68,14 @@ export const teacherLogin = createAsyncThunk(
     }
 );
 
+export const changeTeacherPassword = createAsyncThunk(
+    "Auth/changeTeacherPasswordReq",
+    async (formData, { rejectWithValue }) => {
+        try {
+            const response = await AuthApi.ChangeTeacherPassword(formData)
+            return response.data;
+        } catch (error) {
+            throw rejectWithValue(error.response.data);
+        }
+    }
+);

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { studentLogin, changeStudentPassword, adminLogin ,teacherLogin } from './authAction.js'
+import { studentLogin, changeStudentPassword, adminLogin ,teacherLogin, changeAdminPassword,changeTeacherPassword } from './authAction.js'
 
 export const AuthSlice = createSlice({
   name: 'Auth',
@@ -55,6 +55,8 @@ export const AuthSlice = createSlice({
     })
 
 
+
+
     builder.addCase(adminLogin.pending, (state) => {
       state.loading = true
     })
@@ -68,6 +70,22 @@ export const AuthSlice = createSlice({
       state.error = action.payload
       state.loading = false
     })
+    builder.addCase(changeAdminPassword.pending, (state) => {
+      state.loading = true
+    })
+    builder.addCase(changeAdminPassword.fulfilled, (state, action) => {
+      console.log(action.payload)
+      state.user = action.payload
+      state.loading = false
+      state.error =null
+    })
+    builder.addCase(changeAdminPassword.rejected, (state, action) => {
+      console.log(action.error.message)
+      state.error = action.payload
+      state.loading = false
+    })
+
+
 
     builder.addCase(teacherLogin.pending, (state) => {
       state.loading = true
@@ -82,12 +100,25 @@ export const AuthSlice = createSlice({
       state.error = action.payload
       state.loading = false
     })
-
+    builder.addCase(changeTeacherPassword.pending, (state) => {
+      state.loading = true
+    })
+    builder.addCase(changeTeacherPassword.fulfilled, (state, action) => {
+      console.log(action.payload)
+      state.user = action.payload
+      state.loading = false
+      state.error =null
+    })
+    builder.addCase(changeTeacherPassword.rejected, (state, action) => {
+      console.log(action.error.message)
+      state.error = action.payload
+      state.loading = false
+    })
 
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { studentLoginReq, logoutReq, changeStudentPasswordReq, adminLoginReq ,teacherLoginReq} = AuthSlice.actions
+export const { studentLoginReq, logoutReq, changeStudentPasswordReq, adminLoginReq ,changeAdminPasswordReq,teacherLoginReq,changeTeacherPasswordReq} = AuthSlice.actions
 
 export default AuthSlice.reducer

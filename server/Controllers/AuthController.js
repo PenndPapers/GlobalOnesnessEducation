@@ -148,6 +148,35 @@ export const teacherlogin = async (req, res) => {
     }
 };
 
+export const changeteacherpassword = async (req, res) => {
+    try {
+        const { oldPassword, newPassword, teacherId } = req.body;
+        console.log(req);
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.newPassword, salt);
+
+        const oldTeacher = await TeacherModel.findOne({ teacherId: teacherId });
+        if (oldTeacher) {
+            const validPassword = await bcrypt.compare(oldPassword, oldTeacher.password);
+            if (!validPassword) {
+                return res.status(401).json({ error: "Invalid Old Password" });
+            }
+            else {
+                oldTeacher.password = hashedPassword;
+                const savedTeacher = await oldTeacher.save();
+                res.status(200).json({ user: savedTeacher });
+            }
+        }
+        else {
+            return res.status(400).json({ error: "Teacher not found" });
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
+
 //register a admin
 export const adminregister = async (req, res) => {
     try {
@@ -191,6 +220,35 @@ export const adminlogin = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 }
+
+
+export const changeadminpassword = async (req, res) => {
+    try {
+        const { oldPassword, newPassword, adminId } = req.body;
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(req.body.newPassword, salt);
+
+        const oldAdmin = await AdminModel.findOne({ adminId: adminId });
+        if (oldAdmin) {
+            const validPassword = await bcrypt.compare(oldPassword, oldAdmin.password);
+            if (!validPassword) {
+                return res.status(401).json({ error: "Invalid Old Password" });
+            }
+            else {
+                oldAdmin.password = hashedPassword;
+                const savedadmin = await oldAdmin.save();
+                res.status(200).json({ user: savedadmin });
+            }
+        }
+        else {
+            return res.status(400).json({ error: "Admin not found" });
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: err.message });
+    }
+}
+
 
 export const forgotpassword = async (req, res) => {
     console.log(req.body);

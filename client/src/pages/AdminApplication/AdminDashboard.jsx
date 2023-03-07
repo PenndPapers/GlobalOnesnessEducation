@@ -90,7 +90,7 @@ const AdminDashboard = () => {
         <BarGraph title="Enrollment" datax={datax} datay={datay} />
         <BarGraph title="Enrollment" datax={datax} datay={datay} />
         <BarGraph title="Enrollment" datax={datax} datay={datay} />
-      
+        
       </section>
     </main>
   );

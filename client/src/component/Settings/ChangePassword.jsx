@@ -40,7 +40,7 @@ const ChangePassword = () => {
         }
     }
 
-
+    const buttonColor = user.user.usertype === "teacher" ? "bg-[#4BB543]" : user.user.usertype === "student" ? "bg-[#6674CC]" : "bg-[#F56968]"
     return (
         <div className='flex pt=[20] flex-col w-[100%] h-[300px] mx-[5%] font-[Poppins] border rounded-lg'>
             <form onSubmit={handleSubmit} className="flex flex-col">
@@ -66,7 +66,8 @@ const ChangePassword = () => {
                     placeholder="Confirm New Password"
                     onChange={handleChange}
                 />
-                <button className="md:mx-[5%] border-2 p-[2%] rounded-md mt-[5%] text-white bg-[var(--buttonBlue)]" onClick={handleSubmit}>Change Password</button>
+
+                <button className='md:mx-[5%] border-2 p-[2%] rounded-md mt-[5%] text-white bg-[var(--buttonBlue)]' onClick={handleSubmit}>Change Password</button>
             </form>
 
             <ToastContainer

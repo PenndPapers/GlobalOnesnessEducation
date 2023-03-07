@@ -21,6 +21,7 @@ import AdminCoursesList from "./pages/AdminApplication/AdminCoursesList";
 import AdminTeachersList from "./pages/AdminApplication/AdminTeachersList";
 import AdminStudentList from "./pages/AdminApplication/AdminStudentList";
 import AdminRegistration from "./pages/AdminApplication/AdminRegistration";
+import AdminSetting from "./pages/AdminApplication/AdminSetting";
 
 import StudentDashboard from './pages/StudentApllication/StudentDashboard';
 import StudentPYQ from './pages/StudentApllication/StudentPYQ';
@@ -75,6 +76,7 @@ const App = () => {
         <Route path="courses" element={user.user.usertype === 'admin' ? <AdminCoursesList /> : <Navigate to='/adminLogin' />} />
         <Route path="teacher" element={user.user.usertype === 'admin' ? <AdminTeachersList /> : <Navigate to='/adminLogin' />} />
         <Route path="student" element={user.user.usertype === 'admin' ? <AdminStudentList /> : <Navigate to='/adminLogin' />} />
+        <Route path="adminsetting" element={user.user.usertype === 'admin' ? <AdminSetting /> : <Navigate to='/adminLogin' />} />
         <Route path='/adminregistration' element={user.user.usertype === 'admin' ? <AdminRegistration /> : <Navigate to='/adminLogin' />} />
 
         <Route path='teacherDashboard' element={user.user.usertype === 'teacher' ? <TeacherDashboard /> : <Navigate to='/teacherLogin' />} />

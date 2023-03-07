@@ -64,11 +64,11 @@ const AppliactionRecord = ({ data, onRejectHandler, onAcceptHandler }) => {
 };
 
 const AdminRegistration = () => {
-  const [studentApplyDataStore , setStudentApplyDataStore] = useState([]);
+  const [studentApplyDataStore, setStudentApplyDataStore] = useState([]);
   const [studentApplyData, setStudentApplyData] = useState([]);
   const [btnClicked, setBtnClicked] = useState(false);
-  
-  
+
+
   useEffect(() => {
     const fetch = async () => {
       try {
@@ -76,18 +76,19 @@ const AdminRegistration = () => {
         console.log("feteching ->", response.data);
         setStudentApplyDataStore(response.data)  // x 
         setStudentApplyData([]);                // y
-                  
-        response.data.map((d) => {   
+
+        response.data.map((d) => {
           if (d.photo == null) {
             setStudentApplyData((prev) => [...prev, d]);
           }
           const imgStorageRef = ref(storage, `profile/${d.photo}`);
           getDownloadURL(imgStorageRef)
             .then((url) => {
-             const temp =   {...d , photo : url}; 
-           //  console.log("temp" , temp);
-              setStudentApplyData((prev)=>{
-                return        [...prev , temp ]   })
+              const temp = { ...d, photo: url };
+              //  console.log("temp" , temp);
+              setStudentApplyData((prev) => {
+                return [...prev, temp]
+              })
             })
             .catch((error) => {
               console.log(error);
@@ -98,53 +99,52 @@ const AdminRegistration = () => {
       }
     };
     fetch();
-    
+
   }, []);
 
 
 
-  const onRejectHandler =  (id) => {
-    
-     AdminApi.deleteStudentApplication(id).then((res)=>{
-      if(res.status === 200 )
-      {
+  const onRejectHandler = (id) => {
+
+    AdminApi.deleteStudentApplication(id).then((res) => {
+      if (res.status === 200) {
         const DATA = studentApplyData.filter((d) => {
           return d._id !== id;
         });
         setStudentApplyData(DATA);
       }
-    }).catch(err=>{console.log(err)})
-   
-   
+    }).catch(err => { console.log(err) })
+
+
   };
-  
-  const onAcceptHandler =  (data) => {
+
+  const onAcceptHandler = (data) => {
     // console.log(data);
-     // const d = data;
+    // const d = data;
 
     const date = new Date();
     const id = +(
       date.getFullYear().toString() + date.getTime().toString().slice(9, 13)
     );
-   //  console.log("Store" , studentApplyDataStore)  
-    studentApplyDataStore.map((d)=>{
-      if(d._id === data._id) 
-      {
-      const NewStudent = {...data  ,  photo: d.photo ,  password: "student@123", studentId: id};
-       AuthApi.StudentRegister(NewStudent).then((res)=>{
-        if (res.status == 200) {
-          onRejectHandler(data._id);
-        }
-       }).catch(err=>console.log(err))
+    //  console.log("Store" , studentApplyDataStore)  
+    studentApplyDataStore.map((d) => {
+      if (d._id === data._id) {
+        const NewStudent = { ...data, photo: d.photo, password: "student@123", studentId: id };
+        AuthApi.StudentRegister(NewStudent).then((res) => {
+          if (res.status == 200) {
+
+            onRejectHandler(data._id);
+          }
+        }).catch(err => console.log(err))
       }
     })
-    
+
   };
-  
+
 
   return (
     <section className=" h-full font-[Poppins] bg-adminbg pt-[90px] py-10  px-5 ">
-  
+
       {studentApplyData.length == 0 && (
         <div className="w-full text-center text-2xl  text-red-500 ">
           No Application Here !!
