@@ -6,28 +6,31 @@ export const AddCourse = async (req, res, next) => {
    console.log(req.body)
 
 
-   const newCourse = new CoursesModel({
-      Class: req.body.Class,
-      Course: req.body.Course,
-      CourseId: req.body.CourseId,
-      Lectures : req.body.Lectures,
-      Faculty : req.body.Faculty
-   })
+   const newCourse = new CoursesModel(req.body)
    console.log(newCourse)
-   let existingCourse = await CoursesModel.findOne({CourseId : newCourse.CourseId  });
-   if (existingCourse) return res.status(400).json("Course ID already exist");
-   existingCourse = await CoursesModel.findOne({ Course: newCourse.Course , Class : newCourse.Class  });
+     let existingCourse = await CoursesModel.findOne({CourseId : newCourse.CourseId  });
    if (existingCourse) return res.status(400).json("Course already exist");
+  
      await newCourse.save()
    
    res.status(200).json("Success full added ")
 }
 
-export const getAllCourse = async (req, res, next) => {
+export const getAllCoursebyclass = async (req, res, next) => {
    const AllCourse = await CoursesModel.find({Class : req.params.class});
    if (AllCourse.length === 0 ) return res.status(400).json("No Course ");
    else  res.status(200).json(AllCourse)
 }
+
+export const getAllCourse = async (req, res, next) => {
+
+   const AllCourse = await CoursesModel.find();
+   console.log(AddCourse);
+   if (AllCourse.length === 0 ) return res.status(400).json("No Course ");
+ 
+   else  res.status(200).json(AllCourse)
+}
+
 
 export const getStudentApplication = async (req, res , next ) => {
    

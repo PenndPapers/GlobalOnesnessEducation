@@ -6,7 +6,7 @@ const BarChart = ({ title , datax, datay }) => {
     <div className="bg-white p-2 rounded snap-x ">
       <Chart
         type="bar"
-        width={330}
+        width={350}
         height={300}
         series={[
           {

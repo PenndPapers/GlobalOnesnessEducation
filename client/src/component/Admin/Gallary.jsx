@@ -78,7 +78,7 @@ const Gallary = () => {
   };
 
   return (
-    <section className="font-[Roboto] relative ">
+    <section className="font-[Poppins] relative py-10  ">
       <div className="flex items-center justify-between w-5/6 mx-auto ">
         <h1 className="sm:text-3xl font-semibold   py-10 "> Our Events </h1>
 
@@ -158,7 +158,7 @@ const Gallary = () => {
 
       <div className="relative flex items-center">
         <MdChevronLeft
-          className="opacity-50 cursor-pointer hover:opacity-100"
+          className="opacity-50 cursor-pointer hover:opacity-100 "
           onClick={slideLeft}
           size={40}
         />

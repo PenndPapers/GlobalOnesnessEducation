@@ -55,7 +55,7 @@ const AdminDashboard = () => {
           <img
             src={studentPhoto}
             alt="Student photo"
-            className="bg-[#D1F3E0]  rounded-full p-[2%] sm:p-[5%] w-[40px] mx-auto  "
+            className="bg-[#D1F3E0]  rounded-full p-[2%] sm:p-[5%] w-[80px] mx-auto  "
           />
           <div className="flex flex-col text-sm sm:items-start items-center">
             <div className="md:text-xl  text-grayDark "> Student </div>
@@ -66,7 +66,7 @@ const AdminDashboard = () => {
           <img
             src={techersPhoto}
             alt="Techers photo"
-            className="bg-[#E1F1FF] rounded-full p-[2%] sm:p-[5%]  w-[40px] mx-auto"
+            className="bg-[#E1F1FF] rounded-full p-[2%] sm:p-[5%]  w-[80px] mx-auto"
           />
           <div className="flex flex-col text-sm sm:items-start items-center">
             <div className="md:text-xl  text-grayDark "> Teachers </div>
@@ -77,7 +77,7 @@ const AdminDashboard = () => {
           <img
             src={earningPhoto}
             alt="earning photo"
-            className="bg-[#FFEAEA] rounded-full p-[2%] sm:p-[5%]  w-[40px] mx-auto"
+            className="bg-[#FFEAEA] rounded-full p-[2%] sm:p-[5%]  w-[80px] mx-auto"
           />
           <div className="flex flex-col text-sm sm:items-start items-center">
             <div className="md:text-xl  text-grayDark "> Earnings </div>

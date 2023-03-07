@@ -3,7 +3,7 @@ import CoursesList from '../../component/Admin/CoursesList'
 
 const AdminCoursesList = () => {
   return (
-   <CoursesList/>
+ <div className='bg-adminbg'>  <CoursesList/></div>
   )
 }
 

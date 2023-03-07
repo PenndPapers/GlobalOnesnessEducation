@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useLocation } from "react-router-dom";
+
 import Carousel from "../../component/Home/Carousel";
 import g from "../../images/divider.jpg";
 import p from "../../images/dummy-profile-pic.jpg";
@@ -14,12 +14,11 @@ import Gallary from "../../component/Admin/Gallary";
 
 const Home = () => {
   const user = useSelector((state) => state.auth.user.user);
-  const location = useLocation();
-
   
 
+
   return (
-    <div id="home" className="bg-adminbg">
+    <div id="home" className="">
       {user.usertype === "" && (
         <section className="flex flex-col gap-3">
           <div className="w-5/6 mx-auto  flex flex-row justify-center items-center md:pt-[5%] pt-10 ">
@@ -60,7 +59,7 @@ const Home = () => {
       </section>
       <section
         style={{ backgroundImage: `url(${g})` }}
-        className=" h-[200px] flex justify-around items-center  text-white  sm:font-semibold text-center sm:text-xl  "
+        className=" h-[200px] font-[Poppins] flex justify-around items-center  text-white  sm:font-semibold text-center sm:text-xl  "
       >
         <div>
           <span> Best </span>
@@ -78,13 +77,13 @@ const Home = () => {
       </section>
       <TeachersSlide />
 
-      <About />
+      <About/>
       <CoursesList />
 
       <Gallary/>
       
-      {/* <section className="">
-        <h1 className="text-3xl font-semibold text-center py-10 ">
+      <section className="font-[Poppins] ">
+        <h1 className="text-3xl font-semibold w-5/6 mx-auto  py-10 ">
           Visit Our Center{" "}
         </h1>
         <iframe
@@ -96,7 +95,7 @@ const Home = () => {
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         />
-      </section> */}
+      </section>
     </div>
   );
 };

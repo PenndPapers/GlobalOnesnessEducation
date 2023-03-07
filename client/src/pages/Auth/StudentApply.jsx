@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import * as AdminApi from "../../api/AdminApi";
 import { ApplyRegisteration } from "../../api/RegisterApi";
 import dummy_profile from "../../images/dummy-profile-pic.jpg";
@@ -35,7 +34,7 @@ const StudentApply = () => {
 
     if (key === "class") {
       setCourseeData([]);
-      AdminApi.getAllCourse(value)
+      AdminApi.getAllCoursebyClass(value)
         .then((res) => {
           res.data.map((c) => {
             setCourseeData((pre) => {
@@ -85,13 +84,10 @@ const StudentApply = () => {
     } else if (CourseeData.length === 0) {
       e.preventDefault();
       toast.warning("Please Select a Course");
-    } else if (file.length === 0) {
+    } else if (!file) {
       e.preventDefault();
       toast.warning("Please Select a Image");
-    } else if (
-      userData.phone.length !== 10 ||
-      userData.guardianNumber.length !== 10
-    ) {
+    } else if (userData.phone.length !== 10 || userData.guardianNumber.length !== 10) {
       e.preventDefault();
       toast.warning("Please Enter a Valid Phone Number");
     } else {
@@ -108,7 +104,6 @@ const StudentApply = () => {
             toast.error("Can not load profile image");
           });
       });
-
       e.preventDefault();
       ApplyRegisteration({ userData, course })
         .then((res) => {

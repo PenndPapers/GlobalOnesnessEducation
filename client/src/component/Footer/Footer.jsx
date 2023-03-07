@@ -11,40 +11,40 @@ const Footer = () => {
 
     return (
         <footer className="bg-gray-900 text-white font-[Lato]  mt-auto ">
-           
-           {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') &&
-                       
-                       
-           
-            <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#ffffff19] py-7">
-                <h1
-                    className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold
+
+            {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') &&
+
+
+
+                <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#ffffff19] py-7">
+                    <h1
+                        className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold
          md:w-2/5"
-                >
-                    <span className="text-logo-color  ">Get</span> started with us
-                </h1>
-                <div>
-                    <Link to='../studentRegister'>
-                        <button
-                            className="bg-logo-color hover:bg-yellow-500 duration-300 px-10 py-2.5 font-[Poppins]
+                    >
+                        <span className="text-logo-color  ">Get</span> started with us
+                    </h1>
+                    <div>
+                        <Link to='../studentRegister'>
+                            <button
+                                className="bg-logo-color hover:bg-yellow-500 duration-300 px-10 py-2.5 font-[Poppins]
            rounded-md text-white md:w-auto w-full"
-                        >
-                            Apply
-                        </button>
-                    </Link>
+                            >
+                                Apply
+                            </button>
+                        </Link>
+                    </div>
                 </div>
-            </div>
-           }
+            }
             <div className="grid grid-cols-1 sm:grid-cols-3  sm:justify-items-center gap-8   py-10 w-5/6 mx-auto ">
                 <ul className=" ">
                     <h1 className="mb-1 text-xl font-semibold">About Us</h1>
-                    
-                    {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') && (user.usertype === '' || user.usertype ==='admin') &&
+
+                    {(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') && (user.usertype === '' || user.usertype === 'admin') &&
                         <li  >
-                        <a className="text-gray-400 hover:text-logo-color       text-sm cursor-pointer   " href="../adminDashboard" >
-                            Admin
-                        </a>
-                    </li>}
+                            <a className="text-gray-400 hover:text-logo-color       text-sm cursor-pointer   " href="../adminDashboard" >
+                                Admin
+                            </a>
+                        </li>}
                     <li  >
 
                         <a className="text-gray-400 hover:text-logo-color       text-sm cursor-pointer   " href="" >
@@ -133,13 +133,15 @@ const Footer = () => {
                 </ul>
 
             </div>
-            <div
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10
-      text-center pt-2 text-gray-400 text-sm pb-8"
-            >
-
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center pt-2 text-gray-400 text-sm pb-8">
                 <span>© {d.getFullYear()} Appy. All rights reserved.</span>
-                <span>Terms · Privacy Policy · Refund and Cancelation</span>
+                <div>
+                    <Link className="text-gray-400 hover:text-logo-color text-sm cursor-pointer" to="termsofuse" >Terms </Link>
+                    <Link to="privacypolicy" className="text-gray-400 hover:text-logo-color text-sm cursor-pointer" >· Privacy Policy</Link>
+                    <Link to="refundandcancellatoin" className="text-gray-400 hover:text-logo-color text-sm cursor-pointer" >· Refund and Cancellation</Link>
+
+                </div>
+
                 <div className="text-logo-color">
 
                     <span className="p-2 cursor-pointer inline-flex items-center   rounded-full bg-gray-700 mx-1.5 text-xl hover:text-gray-100 hover:bg-logo-color    duration-300 "    >
