@@ -179,8 +179,8 @@ const StudentApply = () => {
       file:mr-4 file:py-2 file:px-4
       file:rounded-full file:border-0
       file:text-sm file:font-semibold
-      file:bg-[var(--orange)] file:text-black
-      hover:file:bg-[var(--orange)] hover:file:text-white 
+      file:bg-yellow-300 file:text-black
+      hover:file:bg-yellow-500 hover:file:text-white 
     "
                     onChange={(e) => {
                       setFile(e.target.files[0]);
@@ -201,6 +201,15 @@ const StudentApply = () => {
                 />
                 <input
                   required={true}
+                  id="lastname"
+                  className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8"
+                  type="text"
+                  value={userData.lastname}
+                  onChange={onChangeHandler}
+                  placeholder="Last Name"
+                />
+                <input
+                  required={true}
                   id="email"
                   className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8"
                   type="email"
@@ -208,45 +217,6 @@ const StudentApply = () => {
                   onChange={onChangeHandler}
                   placeholder="Email"
                 />
-                <input
-                  required={true}
-                  id="phone"
-                  className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8"
-                  type="tel"
-                  value={userData.phone}
-                  onChange={onChangeHandler}
-                  placeholder="Phone Number"
-                />
-                <input
-                  required={true}
-                  id="school"
-                  className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8"
-                  type="text"
-                  value={userData.school}
-                  onChange={onChangeHandler}
-                  placeholder="School"
-                />
-                <input
-                  required={true}
-                  id="address"
-                  className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8"
-                  type="text"
-                  value={userData.address}
-                  onChange={onChangeHandler}
-                  placeholder="Address"
-                />
-              </div>
-              <div className="flex flex-col  max-w-[400px] w-full ">
-                <input
-                  required={true}
-                  id="lastname"
-                  className=" md:mx-0 mx-5 border-2 p-2 rounded-md "
-                  type="text"
-                  value={userData.lastname}
-                  onChange={onChangeHandler}
-                  placeholder="Last Name"
-                />
-
                 <select
                   required={true}
                   id="class"
@@ -265,17 +235,6 @@ const StudentApply = () => {
                   <option value="jeemain">JEE-MAIN</option>
                   <option value="neet">NEET</option>
                 </select>
-
-                <input
-                  required={true}
-                  id="guardianNumber"
-                  className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8"
-                  type="tel"
-                  value={userData.guardianNumber}
-                  onChange={onChangeHandler}
-                  placeholder="Guardian Number"
-                />
-
                 <select
                   required={true}
                   id="course"
@@ -298,6 +257,49 @@ const StudentApply = () => {
                     );
                   })}
                 </select>
+
+              </div>
+              <div className="flex flex-col md:mt-0 mt-4 max-w-[400px] w-full ">
+
+
+
+                <input
+                  required={true}
+                  id="phone"
+                  className=" md:mx-0 mx-5 border-2 p-2 rounded-md "
+                  type="tel"
+                  value={userData.phone}
+                  onChange={onChangeHandler}
+                  placeholder="Phone Number"
+                />
+                <input
+                  required={true}
+                  id="guardianNumber"
+                  className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8"
+                  type="tel"
+                  value={userData.guardianNumber}
+                  onChange={onChangeHandler}
+                  placeholder="Guardian Number"
+                />
+                <input
+                  required={true}
+                  id="school"
+                  className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8"
+                  type="text"
+                  value={userData.school}
+                  onChange={onChangeHandler}
+                  placeholder="School"
+                />
+                <input
+                  required={true}
+                  id="address"
+                  className=" md:mx-0 mx-5 border-2 p-2 rounded-md mt-8"
+                  type="text"
+                  value={userData.address}
+                  onChange={onChangeHandler}
+                  placeholder="Address"
+                />
+
               </div>
             </div>
 
