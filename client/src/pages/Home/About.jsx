@@ -4,11 +4,12 @@ import p from "../../images/pawan_sir.jpeg"
 
 const About = () => {
     return (
-        <section className='w-5/6 mx-auto py-10  ' id ="about">
+      
+        <section id="aboutpage" className='w-5/6 mx-auto py-10  '>
             <h1 className='text-xl sm:text-4xl my-5  font-[Poppins] '> <span className='text-grayDark  sm:text-3xl  '>know about  </span><span className='font-semibold '>GLOBAL ONENESS </span> </h1>
             <div className='sm:flex sm:flex-row  justify-between  items-center  '>
                 <div className='sm:order-2 flex flex-col justify-center    ' >
-                    <img className='    h-[200px] w-[200px]  m-5   sm:w-[300px] sm:h-[300px]  ' src={p} />
+                    <img className='    h-[200px] w-[200px]  m-5   sm:w-[300px] sm:h-[300px]  ' src={p} alt="pawan" />
                     <div className='text-center font-bold '>Director Mr. Pawan Dev </div>
                 </div>
                 <div className=' flex flex-col gap-5 w-full  sm:w-[60%] font-[Poppins]   '>

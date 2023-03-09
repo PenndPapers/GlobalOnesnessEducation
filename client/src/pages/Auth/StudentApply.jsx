@@ -34,7 +34,7 @@ const StudentApply = () => {
 
     if (key === "class") {
       setCourseeData([]);
-      AdminApi.getAllCourse(value)
+      AdminApi.getAllCoursebyClass(value)
         .then((res) => {
           res.data.map((c) => {
             setCourseeData((pre) => {
@@ -121,7 +121,6 @@ const StudentApply = () => {
           });
           setCourse([]);
           setFile();
-
         })
         .catch((err) => {
           console.log(err);
@@ -132,6 +131,7 @@ const StudentApply = () => {
         });
     }
   };
+
   return (
     <div className="pt-20 ">
       <div className="  font-[Poppins] md:flex md:flex-row rounded-2xl bg-white content-center    mx-5 drop-shadow-2xl ">
@@ -149,7 +149,7 @@ const StudentApply = () => {
             </h1>
           </div>
 
-          <span className="text-center md:text-[12px] text-[6px]  mt-3">
+          <span className="text-center   mt-3">
             Please enter your details carefully !
           </span>
           <form
@@ -157,30 +157,48 @@ const StudentApply = () => {
             onSubmit={onSubmitHandler}
           >
             <div className="flex md:flex-row flex-col   gap-3 justify-around    ">
-              <div className="flex flex-col justify-center  items-center space-y-2 cursor-pointer text-center m-[5%]  ">
+              <div className="flex flex-col justify-center  items-center space-y-3 cursor-pointer text-center m-[5%]  ">
                 <div className="text-md font-medium "> Upload Photo</div>
-                <div className="  w-[150px]  bg-rose-500   ">
+                <div className="  w-[150px]     ">
                   {file ? (
-                    <img src={URL.createObjectURL(file)} className="object-cover " />
+                    <img
+                      src={URL.createObjectURL(file)}
+                      className="md:h-36 md:w-48 h-28 w-32 object-contain "
+                    />
                   ) : (
-                    <img src={dummy_profile} />
+                    <img
+                      src={dummy_profile}
+                      className="md:h-36 md:w-48 h-28 w-32 object-contain "
+                    />
                   )}
                 </div>
 
-
-                <div>
+                <label className="block">
+                  <span className="sr-only">Choose profile photo</span>
                   <input
+                    required={true}
                     type="file"
                     accept="image/png, image/jpeg"
-                    className="text-sm overflow-hidden"
-
-                    required={true}
+                    className="block   text-sm text-slate-500
+      file:mr-4 file:py-2 file:px-4
+      file:rounded-full file:border-0
+      file:text-sm file:font-semibold
+      file:bg-[var(--orange)] file:text-black
+      hover:file:bg-[var(--orange)] hover:file:text-white 
+    "
                     onChange={(e) => {
                       setFile(e.target.files[0]);
-
                     }}
                   />
-                </div>
+                </label>
+                {/* <input
+                  type="file"
+                  className="text-sm   overflow-hidden  "
+                  required={true}
+                  onChange={(e) => {
+                    setFile(e.target.files[0]);
+                  }}
+                /> */}
               </div>
 
               <div className="flex flex-col  max-w-[400px] w-full md:mt-0  mt-5  ">

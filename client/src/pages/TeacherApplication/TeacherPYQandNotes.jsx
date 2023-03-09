@@ -33,10 +33,10 @@ const TeacherPYQandNotes = () => {
 
   const handleSubmit = (e) => {
     console.log(file);
-    if (doc.name === "" || doc.board === "" || doc.type === "" || doc.subject === "" || doc.classes === null ) {
+    if (doc.name === "" || doc.board === "" || doc.type === "" || doc.subject === "" || doc.classes === null) {
       e.preventDefault();
       toast.warning('Please Fill all the Fields');
-    } else if( file.length === 0){
+    } else if (file.length === 0) {
       e.preventDefault();
       toast.warning('Please Select a File');
     }
@@ -58,7 +58,7 @@ const TeacherPYQandNotes = () => {
 
         const storageRef = ref(storage, `pdf/${doc.pdfid}`);
         uploadBytes(storageRef, file).then((snapshot) => {
-          
+
         }).catch((error) => {
           toast.error('File Upload Failed');
         });
@@ -122,7 +122,14 @@ const TeacherPYQandNotes = () => {
               <img src={pdf} className="p-[3%] justify-center m-auto" alt="pdf icon" />
             </div>
             <span className='text-[12px]'>Upload Document</span>
-            <input type="file" accept='application/pdf' required={true} onChange={(e) => { setFile(e.target.files[0]) }}  />
+            <input
+              className="block   text-sm text-slate-500 file:mr-4 file:py-2 file:px-4
+      file:rounded-xl file:border-2 file:border-[var(--teacherGreen)]
+      file:text-sm file:font-semibold 
+      file:bg-[var(--teacherGreen)] file:text-white
+      hover:file:bg-white hover:file:text-[var(--teacherGreen)] 
+    "
+              type="file" accept='application/pdf' required={true} onChange={(e) => { setFile(e.target.files[0]) }} />
           </section>
 
           <section className='flex flex-col md:w-[50%] my-[2%] mx-[5%] sm:mx-[2%] md:mx-[0%]'>
@@ -145,7 +152,7 @@ const TeacherPYQandNotes = () => {
                   <option value="State Boards"> Other State Boards</option>
                 </select>
               </div>
-              <input required={true} className='md:mx-[3%] text-black bg-graydimmer border-2 p-2 rounded-md md:my-[2%] mt-[2%]' name="name" placeholder='Name of Document' type="String" onChange={updateDoc}  />
+              <input required={true} className='md:mx-[3%] text-black bg-graydimmer border-2 p-2 rounded-md md:my-[2%] mt-[2%]' name="name" placeholder='Name of Document' type="String" onChange={updateDoc} />
             </div>
           </section>
 
@@ -196,7 +203,7 @@ const TeacherPYQandNotes = () => {
           return (
             <>
               <div className="flex justify-between flex-row my-[3%] border-2 rounded-2xl bg-[white] hover:cursor-pointer " >
-                <div className="flex justify-between flex-row mx-[3%] my-[1%] w-[90%]  bg-[white]  hover:cursor-pointer " onClick={()=>{openDoc(item.pdfid)}}>
+                <div className="flex justify-between flex-row mx-[3%] my-[1%] w-[90%]  bg-[white]  hover:cursor-pointer " onClick={() => { openDoc(item.pdfid) }}>
                   <div className="flex flex-row">
                     <img src={pdf} alt="pdf icon" />
                     <div className="flex flex-col justify-center">
@@ -209,7 +216,7 @@ const TeacherPYQandNotes = () => {
                   </div>
                 </div>
                 {/* if the pdf is already marked as important then if we want to mark it as not important then we use this markimportant function */}
-                <div className="flex  flex-row items-center gap-4 mr-[5%]" onClick={()=>{deleteDoc(item.pdfid)}} >
+                <div className="flex  flex-row items-center gap-4 mr-[5%]" onClick={() => { deleteDoc(item.pdfid) }} >
                   <img src={bin} alt="pen" width={"32px"} />
                 </div>
               </div>

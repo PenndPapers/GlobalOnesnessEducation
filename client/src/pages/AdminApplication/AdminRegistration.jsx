@@ -102,12 +102,11 @@ const AdminRegistration = () => {
 
   }, []);
 
-
-
-  const onRejectHandler = (id) => {
-
-    AdminApi.deleteStudentApplication(id).then((res) => {
-      if (res.status === 200) {
+  const onRejectHandler =  (id) => {
+    
+     AdminApi.deleteStudentApplication(id).then((res)=>{
+      if(res.status === 200 )
+      {
         const DATA = studentApplyData.filter((d) => {
           return d._id !== id;
         });
@@ -126,16 +125,17 @@ const AdminRegistration = () => {
     const id = +(
       date.getFullYear().toString() + date.getTime().toString().slice(9, 13)
     );
-    //  console.log("Store" , studentApplyDataStore)  
-    studentApplyDataStore.map((d) => {
-      if (d._id === data._id) {
-        const NewStudent = { ...data, photo: d.photo, password: "student@123", studentId: id };
-        AuthApi.StudentRegister(NewStudent).then((res) => {
-          if (res.status == 200) {
-
+   //  console.log("Store" , studentApplyDataStore)  
+    studentApplyDataStore.map((d)=>{
+      if(d._id === data._id) 
+      {
+      const NewStudent = {...data  ,  photo: d.photo ,  password: "student@123", studentId: id};
+       AuthApi.StudentRegister(NewStudent).then((res)=>{
+        if (res.status == 200) {
             onRejectHandler(data._id);
-          }
-        }).catch(err => console.log(err))
+            
+        }
+       }).catch(err=>console.log(err))
       }
     })
 

@@ -60,7 +60,7 @@ const TeachersSlide = () => {
       <h1 className='text-xl sm:text-4xl my-10 font-bold font-[Roboto] '>Our faculty </h1>
         <div className='grid grid-flow-col auto-cols-max  overflow-x-auto   scrollbar-hide gap-10  sm:gap-20 ' >
           {dummy_teacher.map((t) => {
-            console.log(t);
+          
             return (
               <div key={t.id} className="flex flex-col     text-center " >
                 <img className='w-[200px] h-[200px] rounded-[200px] drop-shadow-2xl   ' src={`${t.src}`}  alt="imagejkvfd" />

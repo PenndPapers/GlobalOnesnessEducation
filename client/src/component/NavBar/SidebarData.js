@@ -6,7 +6,6 @@ import * as MdIcon from 'react-icons/md';
 import * as BiIcon from 'react-icons/bs';
 import * as GiIcon from 'react-icons/gi';
 import * as GrIcon from 'react-icons/gr';
-
 export const SidebarData = [
   {
     _id: '1',
@@ -16,11 +15,11 @@ export const SidebarData = [
     cName: 'nav-text',
     user: 'Home'
 
-  },
+  },            
   {
     _id: '2',
     title: 'About',
-    path: '/about',
+    path: '/home#aboutpage',
     icon: <AiIcons.AiFillInfoCircle />,
     cName: 'nav-text',
     user: 'About'

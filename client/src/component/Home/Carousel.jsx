@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from "react-redux";
 import { CgChevronLeft, CgChevronRight } from 'react-icons/cg';
 import s1 from "../../images/slide01.jpg"
 import s2 from "../../images/slide02.jpg"
@@ -13,7 +14,7 @@ const slides = [
 ]
 
 const Carousel = () => {
-
+  const user = useSelector((state) => state.auth.user.user);
   const [slideNumber, setSlideNumber] = useState(0);
 
   const preSlide = () => {
@@ -31,9 +32,9 @@ const Carousel = () => {
     }, 3000);
     return () => clearTimeout(timer);
   }, [slideNumber]);
-
+  const crouselcss = user.usertype !== "" ? "mt-28" : "mt-5";
   return (
-    <div className='lg:h-[350px] md:h-[200px] sm:h-[180px] xs:h-[150px] h-[90px] w-full m-auto   relative group mt-8   '>
+    <div className={`${crouselcss}  lg:h-[350px] md:h-[200px] sm:h-[180px] xs:h-[150px] h-[90px] w-full m-auto   relative group  `}>
       <div style={{ backgroundImage: `url(${slides[slideNumber].url})` }} className=" w-full  h-full  bg-center bg-cover duration-700   " > </div>
       <div className=' hidden group-hover:block  absolute top-[50%] -translate-x-0   translate-y-[-50%] -left-2 rounded-full bg-slate-100 ' onClick={preSlide} > <CgChevronLeft size={50} /> </div>
       <div className=' hidden group-hover:block  absolute top-[50%] -translate-x-0    translate-y-[-50%] -right-2 rounded-full bg-slate-100 ' onClick={nextSlide}  >  <CgChevronRight size={50} /> </div>

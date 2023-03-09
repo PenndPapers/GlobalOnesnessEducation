@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+
+
 import Carousel from "../../component/Home/Carousel";
 import g from "../../images/divider.jpg";
 import p from "../../images/dummy-profile-pic.jpg";
@@ -9,14 +10,17 @@ import TeachersSlide from "../../component/Home/TeachersSlide";
 
 import CoursesList from "../../component/Admin/CoursesList";
 import { useSelector } from "react-redux";
+import Gallary from "../../component/Admin/Gallary";
 
 const Home = () => {
-  const user = useSelector(state => state.auth.user)
-  const location = useLocation();
+  const user = useSelector((state) => state.auth.user.user);
+  
+
+
   return (
-    <>
-      {location.pathname === "/home" && (
-        <section className="flex flex-col gap-3" id="home">
+    <div id="home" className="">
+      {user.usertype === "" && (
+        <section className="flex flex-col gap-3">
           <div className="w-5/6 mx-auto  flex flex-row justify-center items-center md:pt-[5%] pt-10 ">
             <h1 className="lg:text-5xl lg:font-bold  sm:text-2xl text-xs font-normal font-[Roboto] text-[var(--colorPrimary)] mt-8">
               10 Day Free Demo Classes!!
@@ -34,7 +38,7 @@ const Home = () => {
       )}
 
       <Carousel />
-      <section className="w-5/6 mx-auto sm:px-[10%]  font-[Poppins] text-center   py-10  bg-[#f8f8fd]">
+      <section className="w-5/6 mx-auto sm:px-[10%]  font-[Poppins] text-center   py-10  ">
         <div className=" bg-white ">
           <h1 className=" sm:text-xl text-sm text-[var(--colorPrimary)] sm:pb-0 pb-[5%]  ">
             OUR STUDENTS LOVE US ❤️{" "}
@@ -55,7 +59,7 @@ const Home = () => {
       </section>
       <section
         style={{ backgroundImage: `url(${g})` }}
-        className=" h-[200px] flex justify-around items-center  text-white  sm:font-semibold text-center sm:text-xl  "
+        className=" h-[200px] font-[Poppins] flex justify-around items-center  text-white  sm:font-semibold text-center sm:text-xl  "
       >
         <div>
           <span> Best </span>
@@ -75,8 +79,11 @@ const Home = () => {
 
       <About/>
       <CoursesList />
-      <div className="bg-adminbg">
-        <h1 className="text-3xl font-semibold text-center py-10 ">
+
+      <Gallary/>
+      
+      <section className="font-[Poppins] ">
+        <h1 className="text-3xl font-semibold w-5/6 mx-auto  py-10 ">
           Visit Our Center{" "}
         </h1>
         <iframe
@@ -88,8 +95,8 @@ const Home = () => {
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         />
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 

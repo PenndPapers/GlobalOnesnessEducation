@@ -32,11 +32,11 @@ const NavBar = () => {
   const buttonhoverstyle = user.user.usertype === "teacher" ? "hover:bg-[#4BB543]" : user.user.usertype === "student" ? "hover:bg-[#6674CC]" : "hover:bg-[#F56968]"
   const buttontextcolor = user.user.usertype === "teacher" ? "text-[#4BB543]" : user.user.usertype === "student" ? "text-[#6674CC]" : "text-[#F56968]"
   const buttonbordercolor = user.user.usertype === "teacher" ? "border-[#4BB543]" : user.user.usertype === "student" ? "border-[#6674CC]" : "border-[#F56968]"
-
+         
   return (
     <Modal>
       <>
-        <div className='navbar bg-[#ffffff] h-[60px] flex justify-between items-center drop-shadow-lg px-[2%] '>
+        <div className='navbar fixed top-0 w-full  bg-[#ffffff] h-[60px] flex justify-between items-center drop-shadow-lg px-[2%] '>
           <div className='flex items-center'>
             <Link to='#' className={(location.pathname === '/home' || location.pathname === '/studentLogin' || location.pathname === '/teacherLogin' || location.pathname === '/adminLogin') ? 'menu-bars ml-4 text-[2rem] md:hidden ' : 'menu-bars ml-4 text-[2rem] '}>
               <FaIcons.FaBars onClick={showSidebar} />
@@ -106,7 +106,7 @@ const NavBar = () => {
           }
         </div>
         <nav className={sidebar ? 'nav-menu active ' : 'nav-menu'}>
-          <ul className='nav-menu-items w-[100%]' onClick={showSidebar}>
+          <ul className='nav-menu-items w-[100%] overflow-y-scroll scroll scrollbar-hide' onClick={showSidebar}>
             <li className='flex justify-start px-2 gap-2 '>
               <div className=' bg-[#ffffff]  flex justify-start items-center '>
                 <Link to='#' className='menu-bars text-[2rem]'>
@@ -116,7 +116,7 @@ const NavBar = () => {
               <div className='text-stat  text-[20px] py-[16px] cursor-pointer'>
                 <span className='font-[Poppins] '> Hello {user.user.firstname}</span>
               </div>
-            </li>
+            </li>  
             {user.user.usertype === '' && SidebarData.map((item) => {
               return (
                 <div key={item._id}>

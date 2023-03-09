@@ -4,7 +4,8 @@ const Api = axios.create({ baseURL: 'http://localhost:5000' });
 
 export const addCourse= (formData) => Api.post('admin/addCourse', formData);
 
-export const getAllCourse= (query) => Api.get(`admin/getAllCourse/${query}`);
+export const getAllCoursebyClass= (query) => Api.get(`admin/getAllCourse/${query}`);
+export const getAllCourse= () => Api.get(`admin/getAllCourse`);
 export const getStudentApplication= () => Api.get(`admin/getStudentApplication`);
 export const deleteStudentApplication= (query) => Api.delete(`admin/deleteStudentApplication/${query}`);
 export const postStudentApplication= (query) => Api.post(`admin/postStudentApplication/${query}`);
