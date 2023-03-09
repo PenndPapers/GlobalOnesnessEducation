@@ -10,38 +10,38 @@ import p6 from "../../images/gaurav.jpeg"
 const dummy_teacher = [
   {
     id: 1,
-    name: "Pawan Sir",
-    course: "Chemistry",
+    name: "Pawan Dev Khanduri",
+    course: " Director & HOD Chemistry",
     src: p1
   },
   {
     id: 2,
-    name: "Rahul Sir",
-    course: "Physics",
+    name: "Rahul Mehra",
+    course: "Co-Director & HOD Maths",
     src: p2
   },
   {
     id: 3,
-    name: "Satpal Sir",
-    course: "Accounts",
+    name: "Satpal Rana",
+    course: "HOD Commerce & Accounts",
     src: p3
   },
   {
     id: 4,
-    name: "Richa Ma'am ",
-    course: "Chemistry",
+    name: "Chhavi Barthwal",
+    course: "HOD Biology",
     src: p4
   },
   {
     id: 5,
-    name: "Manoj Sir",
-    course: "Physics",
+    name: "Manoj Rawat",
+    course: "HOD Physics",
     src: p5
   },
   {
     id: 6,
-    name: "Gaurav Sir ",
-    course: "Maths",
+    name: "Gaurav Bhatt ",
+    course: "AP Maths ",
     src: p6
   }
 ]
