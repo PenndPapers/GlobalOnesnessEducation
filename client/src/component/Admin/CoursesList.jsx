@@ -11,15 +11,18 @@ import bin from "../../images/bin.png"
 import possible_courses from "../../Data/PossibleCourses.json";
 
 
-const Course = ({ d }) => {
+const Course = ({ d , onDeleteCourse  }) => {
   const user = useSelector((state) => state.auth.user.user);
 
   const src = d.Course;
   return (
     <div className="flex flex-col gap-2 bg-white p-2 rounded-2xl shadow-lg ">
       {user.usertype !== "" && (
-        <button className="flex justify-end">
+        <button className="flex justify-end"  onClick={() => {
+            onDeleteCourse(d._id);
+          }} >
         <img width="16px"  src={bin}/>
+      
         </button>
       )}
       <div className="p-1  flex items-center  border-grayDark">
@@ -168,7 +171,7 @@ const CoursesList = () => {
   const [queryCoursesList, setQueryCoursesList] = useState([]); //
   const [showForm, setShowForm] = useState(false);
   const location = useLocation();
-
+  
   useEffect(() => {
     AdminApi.getAllCourse()
       .then((res) => {
@@ -195,6 +198,24 @@ const CoursesList = () => {
   const toggleForm = () => {
     setShowForm(!showForm);
   };
+
+  const onDeleteCourse =  (id)=>{
+    
+     AdminApi.deleteCourse(id).then((res)=>{
+      toast.success(res.data)
+      if(res.status === 200 )
+      {
+        const DATA = listOfAllCourses.filter((d) => {
+          return d._id !== id;
+        });
+        setListOfAllCourses(DATA);
+      }
+      
+
+     }).catch(err=>console.log(err))
+
+
+  }
 
   return (
     <section
@@ -248,14 +269,14 @@ const CoursesList = () => {
         {queryCoursesList.length > 0 ? (
           <div className="grid lg:grid-cols-4 md:grid-cols-3   grid-cols-2 gap-4  justify-items-center p-[1%]  ">
             {queryCoursesList.map((d , index) => {
-              return <Course key={index} d={d} />;
+              return <Course key={index} d={d}  onDeleteCourse={onDeleteCourse} />;
             })}
           </div>
         ) : (
           <div className="text-center"> No Courses Available </div>
         )}
         
-        {showForm && <AddNewCourse toggleForm={toggleForm} setListOfAllCourses={setListOfAllCourses} />}
+        {showForm && <AddNewCourse  toggleForm={toggleForm} setListOfAllCourses={setListOfAllCourses} />}
         <ToastContainer
           position="top-center"
           autoClose={3000}

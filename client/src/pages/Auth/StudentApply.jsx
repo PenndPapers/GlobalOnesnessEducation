@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as AdminApi from "../../api/AdminApi";
+import {Link} from "react-router-dom"
 import { ApplyRegisteration } from "../../api/RegisterApi";
 import dummy_profile from "../../images/dummy-profile-pic.jpg";
 import { ToastContainer, toast } from "react-toastify";
@@ -66,7 +67,7 @@ const StudentApply = () => {
 
     setCourse(course.filter((item) => item !== e.target.id));
   };
-
+  
   const onSubmitHandler = (e) => {
     console.log(userData);
     if (
@@ -191,14 +192,6 @@ const StudentApply = () => {
                     }}
                   />
                 </label>
-                {/* <input
-                  type="file"
-                  className="text-sm   overflow-hidden  "
-                  required={true}
-                  onChange={(e) => {
-                    setFile(e.target.files[0]);
-                  }}
-                /> */}
               </div>
 
               <div className="flex flex-col  max-w-[400px] w-full md:mt-0  mt-5  ">
@@ -314,8 +307,8 @@ const StudentApply = () => {
             </div>
 
             {course.length >= 1 && (
-              <span className="text-center md:text-[12px] text-[6px]  mt-3">
-                Click to Delete
+              <span className="text-center text-red-500  md:text-[12px] text-[6px]  mt-3">
+                Click on subject to Delete
               </span>
             )}
             <div className="w-full flex flex-row gap-2 justify-center mt-5 my-3 ">
@@ -332,8 +325,10 @@ const StudentApply = () => {
                 );
               })}
             </div>
-
-            <button className="md:mx-10 mx-12 border-2 p-2 font-[Poppins] rounded-md md:mt-8  btn bg-[var(--buttonBlue)] text-white py-2 px-3 ">
+            <label className=" md:mt-6 p-2 text-center"> <input required={true} type="checkbox" class="rounded text-pink-500" /> 
+             <span > I , accept <Link to="../termsofuse" className="text-blue-500">terms</Link> , <Link to="../privacypolicy" className="text-blue-500">privacy policy</Link>  , <Link to="../refundandcancellatoin" className="text-blue-500">refund and cancellation</Link>   by submitted by application </span>
+             </label>
+            <button className="md:mx-10 mx-12 border-2 p-2 font-[Poppins] rounded-md   btn bg-[var(--buttonBlue)] text-white py-2 px-3 ">
               Register
             </button>
             <span className="mx-5 md:mx-0 my-5  md:text-[16px] text-[12px] justify-center text-center ">
