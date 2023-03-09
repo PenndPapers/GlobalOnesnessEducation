@@ -29,9 +29,21 @@ export const studentregister = async (req, res) => {
         
         const oldStudent = await StudentModel.findOne({ studentId: studentId });
         if (oldStudent) return res.status(400).json({ error: "Student already exists" });
-
+         
         const savedStudent = await newStudent.save();
-        res.status(200).json({ student: savedStudent });
+        try {
+            let info = await transporter.sendMail({
+                from: '"GlobalOneness Education" globalonenesseducation@gmail.com', // sender address
+                to: `${newStudent.email}`, // list of receivers
+                subject: "Application accepted", // Subject line
+                html: "<h2>Dear " + newStudent.firstname + "</h2> <h2>You can now login with ..</h2> <h4>Student ID : " +newStudent.studentId +"  </h4><h4>Password : student@123 </h4><h3>Please Dont Forget to change the password before further user</h3><h5>Best regards</h5><h2>GlobalOneness Educaiton </h2>", // html body
+            });
+            console.log("Message sent: %s", info.messageId); 
+            return  res.status(200).json({ student: savedStudent });
+        } catch (err) {
+            console.log(err);
+          return  res.status(500).json({ error: err.message }); 
+        }
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: err.message });
@@ -72,6 +84,17 @@ export const studentlogin = async (req, res) => {
     }
 };
 
+export const deleteStudent = async (req, res , next ) => {
+   
+    console.log(req.params.id);
+ 
+   const student = await StudentModel.findOneAndDelete({_id : req.params.id});
+ 
+   if(student)  return res.status(200).json("successfully removed ")
+ 
+    
+ }
+
 
 //change password of student
 export const changepassword = async (req, res) => {
@@ -97,7 +120,7 @@ export const changepassword = async (req, res) => {
         }
     } catch (err) {
         console.log(err);
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ error: err.message }); 
     }
 }
 

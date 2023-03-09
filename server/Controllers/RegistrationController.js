@@ -31,5 +31,5 @@ export const Applyregistration = async (req, res, next) => {
       
  
   const savedUser = await user.save();
-  return res.status(200).json("sucessfully registered !!");
+  return res.status(200).json("Application submitted sucessfully!! \nYou will shortly be receiving response from us in your mail ");
 }

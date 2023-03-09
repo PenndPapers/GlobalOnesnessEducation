@@ -91,9 +91,9 @@ const Home = () => {
           height="500"
           className="mx-auto   w-full ring-4 ring-orange     "
           style={{ border: 0 }}
-          allowfullscreen=""
+          allowFullScreen={true}
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          referrerPolicy="no-referrer-when-downgrade"
         />
       </section>
     </div>

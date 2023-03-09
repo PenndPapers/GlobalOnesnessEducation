@@ -1,5 +1,5 @@
 import express from 'express';
-import { studentlogin, teacherlogin ,studentregister, changepassword,adminlogin, adminregister, teacherregister,forgotpassword ,changeadminpassword,changeteacherpassword} from '../Controllers/AuthController.js';
+import { studentlogin, teacherlogin , deleteStudent ,studentregister, changepassword,adminlogin, adminregister,changeadminpassword, teacherregister,forgotpassword , changeteacherpassword} from '../Controllers/AuthController.js';
 
 const router = express.Router();
 
@@ -15,6 +15,8 @@ router.post('/adminlogin',adminlogin)
 router.post('/adminregister', adminregister)
 router.post('/changeadminpassword', changeadminpassword)
 router.post('/forgotpassword', forgotpassword)
+
+router.delete('/deleteStudent/:id', deleteStudent)
 
 
 export default router;
