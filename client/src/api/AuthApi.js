@@ -13,3 +13,5 @@ export const teacherLogin= (formData) => Api.post('/auth/teacherlogin', formData
 export const ChangePassword = (formData) => Api.post('/auth/changepassword', formData);
 
 export const forgotPassword = (formData) => Api.post('/auth/forgotpassword', formData);
+
+export const deleteStudent= (query) => Api.delete(`/auth/deleteStudent/${query}`);

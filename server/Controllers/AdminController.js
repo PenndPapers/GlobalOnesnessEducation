@@ -8,7 +8,7 @@ export const AddCourse = async (req, res, next) => {
 
 
    const newCourse = new CoursesModel(req.body)
-   console.log(newCourse)
+   
      let existingCourse = await CoursesModel.findOne({CourseId : newCourse.CourseId  });
    if (existingCourse) return res.status(400).json("Course already exist");
   
@@ -32,7 +32,7 @@ export const deleteCourse = async (req, res , next ) => {
 export const getAllStudents = async (req, res, next) => {
 
    const AllStudent = await StudentModel.find();
-   console.log(AllStudent);
+   
    if (AllStudent.length === 0 ) return res.status(400).json("No Course ");
  
    else  res.status(200).json(AllStudent)
@@ -47,7 +47,7 @@ export const getAllCoursebyclass = async (req, res, next) => {
 export const getAllCourse = async (req, res, next) => {
 
    const AllCourse = await CoursesModel.find();
-   console.log(AddCourse);
+   
    if (AllCourse.length === 0 ) return res.status(400).json("No Course ");
  
    else  res.status(200).json(AllCourse)
@@ -57,7 +57,7 @@ export const getAllCourse = async (req, res, next) => {
 export const getStudentApplication = async (req, res , next ) => {
    
      const students = await  RegistrationModel.find();
-     console.log(students);
+     
      return res.status(200).json(students);
 }
 

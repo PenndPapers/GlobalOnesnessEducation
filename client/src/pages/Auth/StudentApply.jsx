@@ -108,7 +108,7 @@ const StudentApply = () => {
       e.preventDefault();
       ApplyRegisteration({ userData, course })
         .then((res) => {
-          if (res.status === 200) toast.success("Registration Successfull");
+          if (res.status === 200) toast.success(res.data);
           setUserData({
             firstname: "",
             lastname: "",
@@ -260,7 +260,7 @@ const StudentApply = () => {
                   value={userData.class}
                   onChange={onChangeHandler}
                 >
-                  <option selected value="">
+                  <option  value="">
                     Class
                   </option>
                   <option value="9">9</option>
@@ -325,8 +325,8 @@ const StudentApply = () => {
                 );
               })}
             </div>
-            <label className=" md:mt-6 p-2 text-center"> <input required={true} type="checkbox" class="rounded text-pink-500" /> 
-             <span > I , accept <Link to="../termsofuse" className="text-blue-500">terms</Link> , <Link to="../privacypolicy" className="text-blue-500">privacy policy</Link>  , <Link to="../refundandcancellatoin" className="text-blue-500">refund and cancellation</Link>   by submitted by application </span>
+            <label className=" md:mt-6 p-2 text-center"> <input required={true} type="checkbox" className="rounded text-pink-500" /> 
+             <span > I , accept <Link to="../termsofuse" className="text-blue-500">terms</Link> , <Link to="../privacypolicy" className="text-blue-500">privacy policy</Link>  , <Link to="../refundandcancellatoin" className="text-blue-500">refund and cancellation</Link>   by submitted my application </span>
              </label>
             <button className="md:mx-10 mx-12 border-2 p-2 font-[Poppins] rounded-md   btn bg-[var(--buttonBlue)] text-white py-2 px-3 ">
               Register
