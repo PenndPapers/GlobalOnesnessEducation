@@ -1,5 +1,5 @@
 import express from 'express';
-import {AddImportantNotes, AddImportantPYQ,getAllImportantNotes,getAllImportantPYQ,getAllDocuments} from '../Controllers/StudentController.js';
+import {AddImportantNotes, AddImportantPYQ,getAllImportantNotes,getAllImportantPYQ,getAllDocuments} from '../Controllers/studentController.js';
 import {addFeedback} from '../Controllers/feedbackController.js';
 
 const router = express.Router();
