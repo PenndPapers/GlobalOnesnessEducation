@@ -17,7 +17,7 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const corsOptions ={
-    origin:'http://localhost:3000', 
+    origin:'https://globaloneness.netlify.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
