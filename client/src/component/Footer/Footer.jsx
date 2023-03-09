@@ -12,7 +12,7 @@ const Footer = () => {
     return (
         <footer className="bg-gray-900 text-white font-[Lato]  mt-auto ">
 
-            {user.usertype==="" &&
+            {user.usertype === "" &&
                 <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-[#ffffff19] py-7">
                     <h1
                         className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-semibold
@@ -139,6 +139,7 @@ const Footer = () => {
 
                 </div>
 
+
                 <div className="text-logo-color">
 
                     <span className="p-2 cursor-pointer inline-flex items-center   rounded-full bg-gray-700 mx-1.5 text-xl hover:text-gray-100 hover:bg-logo-color    duration-300 "    >
@@ -156,6 +157,10 @@ const Footer = () => {
 
 
                 </div>
+
+            </div>
+            <div className="w-full font-[Poppins]  gap-1 text-gray-400 text-sm flex justify-center   ">
+                Devloped By : <a target="_blank" href="https://www.linkedin.com/in/ashutoshuniyal-012/">Ashutosh </a>&<a  target="_blank" href="https://www.linkedin.com/in/ankit-rawat-2397791bb/">Ankit </a> 
             </div>
         </footer>
     );
