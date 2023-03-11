@@ -10,7 +10,7 @@ const About = () => {
             <div className='sm:flex sm:flex-row  justify-between  items-center  '>
                 <div className='sm:order-2 flex flex-col justify-center    ' >
                     <img className='    h-[200px] w-[200px]  m-5   sm:w-[300px] sm:h-[300px]  ' src={p} alt="pawan" />
-                    <div className='text-center font-bold '>Director Mr. Pawan Dev </div>
+                    <div className='text-center font-bold '>Director Mr. Pawan Dev Khanduri</div>
                 </div>
                 <div className=' flex flex-col gap-5 w-full  sm:w-[60%] font-[Poppins]   '>
                     <span>  At Global Oneness, we strive to foster a strong foundation of knowledge and concepts in students, in order to help them achieve their career goals. Our highly qualified and experienced faculty are devoted to providing students with the best academic support and personal care, as well as a platform for the preparation of competitive exams and board level education. We are dedicated to helping our students achieve success in JEE (Main+Advanced), JEE (Main), Pre-Medical (NEET-UG), Pre-Nurture & Career Foundation (Class VI to X, NTSE & Olympiads) and Commerce Education (11th, 12th, CA & CS). We also strive to provide our students with value-based career education, abundant resources, and individual attention, while also being responsible to the parents and society to nurture ethical and responsible career leadership in the children, and to provide a lifelong connection to ethics and excellence in global leaders.</span>
